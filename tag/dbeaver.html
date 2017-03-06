@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width">
+  <title>Just Numbers & Things - Dbeaver</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.min.css">
+    <link rel="stylesheet" href="../theme/css/main.6e96f7d8.css">
+  <style media="print">.is-hidden-print{display:none !important}</style>
+      <link rel="stylesheet" href="../custom.css">
+</head>
+
+<body id="index" class="home">
+<header class="hero is-primary">
+  <div class="hero-head">
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-left">
+          <a class="nav-item is-brand title is-3"
+             href="../">Just Numbers & Things</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<nav class="nav has-shadow is-hidden-print">
+  <div class="container">
+    <div class="nav-center"></div>
+    <span id="navToggle" class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div id="navMenu" class="nav-right nav-menu">
+          <a class="nav-item is-tab "
+             href="../category/tinkerer.html">Tinkerer</a>
+          <a class="nav-item is-tab "
+             href="../category/analyst.html">Analyst</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="section columns">
+    <div class="column is-three-quarters-desktop is-two-thirds-tablet">
+      <aside id="featured" class="body">
+        <article>
+          <h1 class="title">
+            <a href="../2017-05-06-Dbeaver-Hive-Kerberos.html">Connecting to Hive with Dbeaver using Kerberos Authentication</a>
+          </h1>
+<footer class="post-info">
+  <abbr class="published" title="2017-05-06T00:00:00-07:00">
+    Published <span class="is-info">Sat 06 May 2017</span>
+    in <a href="../category/analyst.html">Analyst</a>
+  </abbr>
+
+    <p class="author">
+      <em>by           <a class="url fn" href="../author/r-richmond.html">r-richmond</a>
+</em>
+      <span class="tag is-small"><a href="../tag/sql.html">SQL</a></span>
+      <span class="tag is-small"><a href="../tag/dbeaver.html">Dbeaver</a></span>
+      <span class="tag is-small"><a href="../tag/hive.html">Hive</a></span>
+      <span class="tag is-small"><a href="../tag/kerberos.html">Kerberos</a></span>
+    </p>
+  
+</footer>          <div class="section">
+            <h1>0) Install Dbeaver</h1>
+<p>You can find installation instructions <a href="../2017-03-26-Dbeaver-on-Mac.html">here</a></p>
+<h1>1) Download the latest drivers</h1>
+<p>You can find the latest drivers on the <a href="https://www.cloudera.com/downloads/connectors/hive/jdbc.html">Cloudera website</a></p>
+<h1>2) Create a folder</h1>
+<p><code>mkdir ~/.dbeaver-drivers/cloudera-hive/</code></p>
+<h1>3) Extract driver jars and move to folder</h1>
+<p><img alt="jars_in_folder" src="../images/20170506_hive_jars_in_place.png"></p>
+<h1>4) Create New Driver in Dbeaver</h1>
+<ol>
+<li>Navigate to Database &gt; Driver Manager &gt; New</li>
+<li>Add all the files from <code>~/.dbeaver-drivers/cloudera-hive/</code></li>
+<li>Driver name: <code>Hive-Cloudera</code> (for labeling only)</li>
+<li>Class name: <code>com.cloudera.hive.jdbc41.HS2Driver</code> (at the time of this writing)</li>
+<li>Default port: <code>10000</code></li>
+<li>URL template: <code>jdbc:hive2://{host}:{port}/{database};AuthMech=1;KrbRealm=FOO.BAR;KrbHostFQDN={server}; KrbServiceName=hive;KrbAuthType=2</code><ul>
+<li>Note you need to change <code>FOO.BAR</code> to match your krb5.conf settings</li>
+</ul>
+</li>
+</ol>
+<h1>5) Create New Connection</h1>
+<ol>
+<li>Navigate to Database &gt; New Connection</li>
+<li>Select Hive-Cloudera</li>
+<li>Fill in the appropriate values for host &amp; database (I set database to default)</li>
+<li>Set server to be your KrbHostFQDN</li>
+<li>Leave your user name &amp; password blank</li>
+<li>Test connection</li>
+<li>Press next, next, &amp; change the name of this connection as you see fit</li>
+<li>Press finish</li>
+</ol>
+<p>Congrats you've successfully connected to hive using kerberos authentication!</p>
+<h1>6) Troubleshooting</h1>
+<p>If you are receiving <code>[Cloudera][HiveJDBCDriver](500168) Error creating login context using ticket cache: Unable to obtain Principal Name for authentication</code> make sure to check the following</p>
+<ol>
+<li>Ensure that you have the latest cryptography libraries installed<ul>
+<li>Java 9 includes these libraries by default</li>
+</ul>
+</li>
+<li>That you've configured your <code>/etc/krb5.conf</code> successfully<ul>
+<li>If you've done this correctly you should be able to run <code>kinit</code> in terminal and create a ticket without issue</li>
+</ul>
+</li>
+<li>For Windows adding the following lines to your dbeaver.ini may be necessary as well<ul>
+<li><code>Djava.security.krb5.conf=c:\kerberos\krb5.ini</code></li>
+<li><code>Djava.security.auth.login.config=c:\kerberos\jaas.conf</code></li>
+<li>success has been reported with the following jaas.conf file &amp; keytab usage
+  <code>Client {
+   com.sun.security.auth.module.Krb5LoginModule required
+        debug=true
+        doNotPrompt=true
+        useKeyTab=true
+        keyTab="C:\Users\{user}\krb5cc_{user}"
+        useTicketCache=true
+        renewTGT=true
+        principal="{user}@FOO.BAR"
+    ;
+};</code></li>
+</ul>
+</li>
+</ol>
+<p><a href="../2017-05-06-Dbeaver-Hive-Kerberos.html#disqus_thread"></a></p>          </div>
+        </article>
+      </aside>
+  <div class="is-hidden-print">
+    <h2 class="subtitle">Other articles</h2>
+    <div class="columns is-multiline">
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card is-fullwidth is-fullheight">
+            <div class="card-content">
+              <a href="../2017-03-26-Dbeaver-on-Mac.html">
+                <h3 class="title is-5">Installing Dbeaver on a Mac</h3>
+                <div class="heading subtitle">Sun 26 March 2017</div>
+                <div><p>How to setup Dbeaver on a Mac</p></div>
+              </a>
+<p><a href="../2017-03-26-Dbeaver-on-Mac.html#disqus_thread"></a></p>            </div>
+          </div>
+        </div>
+    </div>
+<nav class="pagination is-centered">
+    <a class="pagination-previous" href="#" disabled>
+      Previous
+    </a>
+    <a class="pagination-next" href="#" disabled>
+      Next page
+    </a>
+  <ul class="pagination-list">
+    <li>Page 1 / 1</li>
+  </ul>
+</nav>
+<br>  </div>
+    </div>
+
+    <div class="column is-one-quarter-desktop is-one-third-tablet is-hidden-print">
+      <aside class="menu">
+          <p class="menu-label">Other Pages</p>
+          <ul class="menu-list">
+                <li><a                        href="../pages/About.html">
+                  <span class="icon is-small"><i class="fa fa-book"></i></span>
+                  <span class="link-text">About</span>
+                </a></li>
+          </ul>
+          <p class="menu-label">Links</p>
+          <ul class="menu-list">
+              <li><a href="http://getpelican.com/">
+                <span class="icon is-small"><i class="fa fa-globe fa-fw"></i></span>
+                <span class="link-text">Pelican</span>
+              </a></li>
+              <li><a href="http://python.org/">
+                <span class="icon is-small"><i class="fa fa-globe fa-fw"></i></span>
+                <span class="link-text">Python.org</span>
+              </a></li>
+              <li><a href="https://news.ycombinator.com/">
+                <span class="icon is-small"><i class="fa fa-globe fa-fw"></i></span>
+                <span class="link-text">Hacker News</span>
+              </a></li>
+          </ul>
+<p class="menu-label">Social</p>
+<ul class="menu-list">
+    <li><a href="https://github.com/r-richmond">
+      <span class="icon is-small">
+          <i class="fa fa-github fa-fw"></i>
+      </span>
+      <span class="link-text">Github</span>
+    </a></li>
+</ul>      </aside>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container has-text-centered">
+ <p class="subtitle">A place for thoughts</p>    <p><a href="https://github.com/textbook/bulrush">Bulrush</a> theme for
+        <a href="https://blog.getpelican.com/">Pelican</a>
+      | <span class="icon is-small"><i class="fa fa-html5"></i></span> HTML 5
+      | <span class="icon is-small"><i class="fa fa-css3"></i></span> CSS 3
+    </p>
+  </div>
+</footer>
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-96235563-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+<script type="text/javascript">
+    var disqus_shortname = 'justnumbersandthings';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<script type="text/javascript">
+  document.getElementById('navToggle').addEventListener('click', function () {
+    var nav = document.getElementById('navMenu');
+    var className = nav.getAttribute('class');
+    if (className == 'nav-right nav-menu') {
+      nav.className = 'nav-right nav-menu is-active';
+    } else {
+      nav.className = 'nav-right nav-menu';
+    }
+  });
+</script>
+</body>
+</html>

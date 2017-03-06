@@ -1,0 +1,49 @@
+.hero.is-primary {
+  background-color: #1b7db6;
+}
+
+footer.footer .github-fork-ribbon-wrapper .github-fork-ribbon {
+  background-color: #1b7db6;
+}
+
+a, .card-content a h3 {
+  color: #1b7db6;
+}
+
+.menu-list a.is-active {
+  background-color: #2d4654;
+}
+
+a.nav-item.is-tab.is-active, a.nav-item.is-tab.is-active:hover {
+  border-bottom-color: #2d4654;
+  color: #2d4654;
+}
+
+footer.footer .github-fork-ribbon-wrapper .github-fork-ribbon:hover a {
+  border-color: #f7b733;
+  color: #f7b733;
+}
+
+article a:hover, footer a:hover, #content a:hover, .menu-list a:hover, .card-content a:hover h3 {
+  color: #2d4654;
+}
+
+a.nav-item.is-tab:hover {
+  border-bottom-color: #2d4654;
+}
+
+article code {
+  color: #2d4654;
+}
+
+.menu-list a.is-active:hover {
+  color: #2d4654;
+}
+
+#mc_embed_signup_scroll button.is-success {
+  background-color: #2d4654;
+}
+
+#mc_embed_signup_scroll .response.is-success {
+    color: #2d4654;
+}
