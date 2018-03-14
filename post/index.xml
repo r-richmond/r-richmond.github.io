@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Just Numbers &amp; Things</title>
-    <link>https://justnumbersandthings.com/post/</link>
+    <link>http://justnumbersandthings.com/post/</link>
     <description>Recent content in Posts on Just Numbers &amp; Things</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Thu, 28 Dec 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://justnumbersandthings.com/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://justnumbersandthings.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>macOS EGPU Adventures</title>
-      <link>https://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</link>
+      <link>http://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</link>
       <pubDate>Thu, 28 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</guid>
+      <guid>http://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</guid>
       <description>1) What is an EGPU &amp;amp; when did Apple start supporting them? The acronym EGPU stands for external GPU. Until recently they were relatively niche however, with the release of thunderbolt3 they have begun to gain traction. At WWDC17 Apple announced that they would be fully supported in High Sierra sometime during the spring of 2018. This news was welcomed at egpu.io where a community of capable individuals have been trail blazing EGPUs on macOS prior to 10.</description>
     </item>
     
     <item>
       <title>Improving Tableau&#39;s Document API</title>
-      <link>https://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</link>
+      <link>http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</link>
       <pubDate>Sun, 04 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</guid>
+      <guid>http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</guid>
       <description>1) What is Tableau&amp;rsquo;s Document API? With the release of Tableau 10, Tableau released a python utility called the Tableau Document API (or TDA for short). TDA allows users to easily programmatically modify tableau workbooks. Modifying tableau workbooks without using Tableau Desktop was possible before as tableau files .twb are actually just xml files. However manually editing the xml of .twb files could easily result in an unusable corrupted workbook.</description>
     </item>
     
     <item>
       <title> Connecting to Hive with Dbeaver using Kerberos Authentication</title>
-      <link>https://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</link>
+      <link>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</link>
       <pubDate>Sat, 06 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</guid>
+      <guid>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</guid>
       <description>0) Install Dbeaver You can find installation instructions here
 1) Download the latest drivers You can find the latest drivers on the Cloudera website
 2) Create a folder mkdir ~/.dbeaver-drivers/cloudera-hive/
@@ -44,10 +44,10 @@
     
     <item>
       <title>Installing Dbeaver on a Mac</title>
-      <link>https://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</link>
+      <link>http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</link>
       <pubDate>Sun, 26 Mar 2017 21:35:50 -0800</pubDate>
       
-      <guid>https://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</guid>
+      <guid>http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</guid>
       <description>0) What is Dbeaver? Quite simply Dbeaver is the best multi-database SQL IDE that I&amp;rsquo;ve used. It supports every JDBC connection that I&amp;rsquo;ve thrown at it and has advanced features for some of the more popular databases such as Mysql &amp;amp; Postgres. Many thanks to serge-rider for creating such an awesome tool.
 1) Install Java First we need to install java which can be easily done as follows:
 brew cask install java  Note: Previous versions of this article instructed an installation of the cask jce-unlimited-strength-policy but that has been removed as its contents have been incorporated into the cask java with the release of 9.</description>

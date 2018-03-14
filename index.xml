@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Just Numbers &amp; Things on Just Numbers &amp; Things</title>
-    <link>https://justnumbersandthings.com/</link>
+    <link>http://justnumbersandthings.com/</link>
     <description>Recent content in Just Numbers &amp; Things on Just Numbers &amp; Things</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>macOS EGPU Adventures</title>
-      <link>https://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</link>
+      <link>http://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</link>
       <pubDate>Thu, 28 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</guid>
+      <guid>http://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</guid>
       <description>
 
 &lt;h1 id=&#34;1-what-is-an-egpu-when-did-apple-start-supporting-them&#34;&gt;1) What is an EGPU &amp;amp; when did Apple start supporting them?&lt;/h1&gt;
@@ -30,11 +30,11 @@
 
 &lt;p&gt;After plugging it in and turning it on for the first time I was excited to see that everything was working out of the box.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://justnumbersandthings.com/img/20171228_egpu_plug_n_play.png&#34; alt=&#34;plug_n_play&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20171228_egpu_plug_n_play.png&#34; alt=&#34;plug_n_play&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The only oddity that I noticed at first is that system information lists the Vega64 as &amp;ldquo;AMD RX xxx&amp;rdquo;. However, his appears to only be a cosmetic issue so I ignore it.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://justnumbersandthings.com/img/20171228_system_information.png&#34; alt=&#34;system_information&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20171228_system_information.png&#34; alt=&#34;system_information&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;So after my initial excitement I tried playing a couple games with my new setup and quickly stumbled across something I should have uncovered sooner in my research. The Vega64 is quite power hungry and the enclosure I purchased &lt;a href=&#34;https://myMantiz.com/pages/faq&#34; target=&#34;_blank&#34;&gt;doesn&amp;rsquo;t actually support it, it only supports Vega56&lt;/a&gt;.&lt;/p&gt;
 
@@ -56,11 +56,11 @@
 
 &lt;p&gt;Using the AMD Pro 555 in my macbook-pro I received a score of &lt;a href=&#34;https://browser.geekbench.com/v4/compute/1670314&#34; target=&#34;_blank&#34;&gt;37,697&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://justnumbersandthings.com/img/20171228_internal_score.png&#34; alt=&#34;internal_score&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20171228_internal_score.png&#34; alt=&#34;internal_score&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Using my EGPU setup I received a score of &lt;a href=&#34;https://browser.geekbench.com/v4/compute/1670320&#34; target=&#34;_blank&#34;&gt;175,303&lt;/a&gt; a 4.65x improvement over the internal GPU offered by Apple. Quite the improvement!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://justnumbersandthings.com/img/20171228_external_score.png&#34; alt=&#34;external_score&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20171228_external_score.png&#34; alt=&#34;external_score&#34; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;7-final-thoughts&#34;&gt;7) Final Thoughts&lt;/h1&gt;
 
@@ -119,10 +119,10 @@
     
     <item>
       <title>Improving Tableau&#39;s Document API</title>
-      <link>https://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</link>
+      <link>http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</link>
       <pubDate>Sun, 04 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</guid>
+      <guid>http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</guid>
       <description>
 
 &lt;h1 id=&#34;1-what-is-tableau-s-document-api&#34;&gt;1) What is Tableau&amp;rsquo;s Document API?&lt;/h1&gt;
@@ -163,15 +163,15 @@ tableau_workbook.save()
     
     <item>
       <title> Connecting to Hive with Dbeaver using Kerberos Authentication</title>
-      <link>https://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</link>
+      <link>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</link>
       <pubDate>Sat, 06 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</guid>
+      <guid>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</guid>
       <description>
 
 &lt;h1 id=&#34;0-install-dbeaver&#34;&gt;0) Install Dbeaver&lt;/h1&gt;
 
-&lt;p&gt;You can find installation instructions &lt;a href=&#34;https://justnumbersandthings.com/post/dbeaver-mac/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You can find installation instructions &lt;a href=&#34;http://justnumbersandthings.com/post/dbeaver-mac/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;1-download-the-latest-drivers&#34;&gt;1) Download the latest drivers&lt;/h1&gt;
 
@@ -183,7 +183,7 @@ tableau_workbook.save()
 
 &lt;h1 id=&#34;3-extract-driver-jars-and-move-to-folder&#34;&gt;3) Extract driver jars and move to folder&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://justnumbersandthings.com/img/20170506_hive_jars_in_place.png&#34; alt=&#34;jars_in_folder&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20170506_hive_jars_in_place.png&#34; alt=&#34;jars_in_folder&#34; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;4-create-new-driver-in-dbeaver&#34;&gt;4) Create New Driver in Dbeaver&lt;/h1&gt;
 
@@ -259,10 +259,10 @@ principal=&amp;quot;{user}@FOO.BAR&amp;quot;
     
     <item>
       <title>Installing Dbeaver on a Mac</title>
-      <link>https://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</link>
+      <link>http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</link>
       <pubDate>Sun, 26 Mar 2017 21:35:50 -0800</pubDate>
       
-      <guid>https://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</guid>
+      <guid>http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</guid>
       <description>
 
 &lt;h1 id=&#34;0-what-is-dbeaver-http-dbeaver-jkiss-org&#34;&gt;0) What is &lt;a href=&#34;http://dbeaver.jkiss.org/&#34; target=&#34;_blank&#34;&gt;Dbeaver&lt;/a&gt;?&lt;/h1&gt;
