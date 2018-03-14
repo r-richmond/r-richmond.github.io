@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Just Numbers &amp; Things on Just Numbers &amp; Things</title>
+    <link>https://justnumbersandthings.com/</link>
+    <description>Recent content in Just Numbers &amp; Things on Just Numbers &amp; Things</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>macOS EGPU Adventures</title>
+      <link>https://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</link>
+      <pubDate>Thu, 28 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</guid>
+      <description>
+
+&lt;h1 id=&#34;1-what-is-an-egpu-when-did-apple-start-supporting-them&#34;&gt;1) What is an EGPU &amp;amp; when did Apple start supporting them?&lt;/h1&gt;
+
+&lt;p&gt;The acronym EGPU stands for external &lt;a href=&#34;https://en.wikipedia.org/wiki/Graphics_processing_unit&#34; target=&#34;_blank&#34;&gt;GPU&lt;/a&gt;. Until recently they were relatively niche however, with the release of thunderbolt3 they have begun to gain traction. At WWDC17 Apple announced that they would be fully supported in High Sierra sometime during the spring of 2018. This news was welcomed at &lt;a href=&#34;egpu.io&#34; target=&#34;_blank&#34;&gt;egpu.io&lt;/a&gt; where a community of capable individuals have been trail blazing EGPUs on macOS &lt;a href=&#34;https://EGPU.io/setup-guide-external-graphics-card-mac/&#34; target=&#34;_blank&#34;&gt;prior to 10.13&lt;/a&gt; &amp;amp; Windows. They quickly updated some of their &lt;a href=&#34;https://EGPU.io/macos-high-sierra-official-external-gpu/&#34; target=&#34;_blank&#34;&gt;guides and recommendations&lt;/a&gt; to help beginners, such as myself, start their EGPU journey on High Sierra.&lt;/p&gt;
+
+&lt;h1 id=&#34;2-my-setup&#34;&gt;2) My setup&lt;/h1&gt;
+
+&lt;p&gt;So after reading about the success and watching several youtube reviews I thought it was time to give this EGPU thing a go. For my enclosure I decided to go with the &lt;a href=&#34;http://amzn.to/2CgKwQR&#34; target=&#34;_blank&#34;&gt;Mantiz Venus&lt;/a&gt; ($399). For my graphics card I decided to go with the &lt;a href=&#34;http://amzn.to/2Ci1wpR&#34; target=&#34;_blank&#34;&gt;Vega64&lt;/a&gt;. As a side note it looks like some users have had success with Nvidia cards on macOS after some elbow grease but AMD cards were reported to be plug and play; hence my decisions to go with AMD.&lt;/p&gt;
+
+&lt;h1 id=&#34;3-initial-experiences&#34;&gt;3) Initial experiences&lt;/h1&gt;
+
+&lt;p&gt;After plugging it in and turning it on for the first time I was excited to see that everything was working out of the box.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://justnumbersandthings.com/img/20171228_egpu_plug_n_play.png&#34; alt=&#34;plug_n_play&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The only oddity that I noticed at first is that system information lists the Vega64 as &amp;ldquo;AMD RX xxx&amp;rdquo;. However, his appears to only be a cosmetic issue so I ignore it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://justnumbersandthings.com/img/20171228_system_information.png&#34; alt=&#34;system_information&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So after my initial excitement I tried playing a couple games with my new setup and quickly stumbled across something I should have uncovered sooner in my research. The Vega64 is quite power hungry and the enclosure I purchased &lt;a href=&#34;https://myMantiz.com/pages/faq&#34; target=&#34;_blank&#34;&gt;doesn&amp;rsquo;t actually support it, it only supports Vega56&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For reference the problem that you&amp;rsquo;ll encounter is that the entire enclosure will shut down which results in a soft or sometimes a hard system crash. So for those are thinking about purchasing the Mantiz &amp;amp; Vega make sure to go with the Vega56 rather than the Vega64. However, if you are like me and already have a Vega64 and/or you want to try an unsupported setup keep reading.&lt;/p&gt;
+
+&lt;h1 id=&#34;4-resolving-the-power-draw-issue&#34;&gt;4) Resolving the power draw issue.&lt;/h1&gt;
+
+&lt;p&gt;After some more research I found a new &lt;a href=&#34;https://www.newegg.com/Product/Product.aspx?Item=N82E16817273013&#34; target=&#34;_blank&#34;&gt;power supply&lt;/a&gt; ($190) that would provide the needed power &amp;amp; had the same dimensions as the power supply that ships with the Mantiz. I&amp;rsquo;m happy to report that installing this part turned out to be essentially painless. The existing power supply comes out without much fuss and the new power supply fits perfectly in place of the old one. The only exception here is that the new power supply is a little longer than the existing one but there is ample room in the enclosure to accommodate this.&lt;/p&gt;
+
+&lt;h1 id=&#34;5-subsequent-experiences&#34;&gt;5) Subsequent experiences&lt;/h1&gt;
+
+&lt;p&gt;After upgrading the power supply I&amp;rsquo;ve yet to experience another power related crash and have had a far more enjoyable experience.&lt;/p&gt;
+
+&lt;p&gt;The only remaining issue that I&amp;rsquo;ve had is a rare crash. Twice I&amp;rsquo;ve had macOS freeze for several seconds followed by a flash which results in all of my applications being closed (according to the dock, force-quite dialogs, &amp;amp; command-tab) but leaving the underlying processes untouched. This results in a bizarre situation where I can&amp;rsquo;t view my application however, I can still hear the audio and see the process running in activity monitor. I expect/hope that this is one of those things that will be squashed once Apple rolls out official EGPU support in the spring with 10.13.x.&lt;/p&gt;
+
+&lt;h1 id=&#34;6-benchmarks&#34;&gt;6) Benchmarks&lt;/h1&gt;
+
+&lt;p&gt;What review of an EGPU setup would be complete without some benchmarks? Given the wide variety of applications &amp;amp; uses for an EGPU I decided to stay simple with some Geekbench benchmarks.&lt;/p&gt;
+
+&lt;p&gt;Using the AMD Pro 555 in my macbook-pro I received a score of &lt;a href=&#34;https://browser.geekbench.com/v4/compute/1670314&#34; target=&#34;_blank&#34;&gt;37,697&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://justnumbersandthings.com/img/20171228_internal_score.png&#34; alt=&#34;internal_score&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Using my EGPU setup I received a score of &lt;a href=&#34;https://browser.geekbench.com/v4/compute/1670320&#34; target=&#34;_blank&#34;&gt;175,303&lt;/a&gt; a 4.65x improvement over the internal GPU offered by Apple. Quite the improvement!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://justnumbersandthings.com/img/20171228_external_score.png&#34; alt=&#34;external_score&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;7-final-thoughts&#34;&gt;7) Final Thoughts&lt;/h1&gt;
+
+&lt;h2 id=&#34;pros&#34;&gt;Pros&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Performance
+
+&lt;ul&gt;
+&lt;li&gt;The Geekbench results show a 4.65x increase and my experiences with this increase have been tremendously positive&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Flexibility
+
+&lt;ul&gt;
+&lt;li&gt;If I need my laptop to be portable it is as simple as unplugging a cord&lt;/li&gt;
+&lt;li&gt;If I need my laptop to be ultra-fast it is as simple as plugging in a cord&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Upgradability
+
+&lt;ul&gt;
+&lt;li&gt;With this setup my Apple laptop now has an upgradable GPU which means I can keep my machine going for longer&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Ports
+
+&lt;ul&gt;
+&lt;li&gt;One of the nice things about the Mantiz enclosure is that it provides a lot of ports (5 USB &amp;amp; 1 gigabit ethernet port) and even includes a spot for a &lt;a href=&#34;https://www.amazon.com/gp/search?ie=UTF8&amp;amp;tag=justnumbersan-20&amp;amp;linkCode=ur2&amp;amp;linkId=f73bf29f7e5ed526f77b4bfb06ae1826&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;index=electronics&amp;amp;keywords=SSD&#34; target=&#34;_blank&#34;&gt;2.5&amp;rdquo; SSD Drive&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;So rather than buying more dongles you can utilize the Mantiz as a hub as well&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;cons&#34;&gt;Cons&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Weight
+
+&lt;ul&gt;
+&lt;li&gt;One thing that caught me off guard was just how heavy the enclosure &amp;amp; GPU were&lt;/li&gt;
+&lt;li&gt;It is far lighter than a desktop tower but still heavy enough to dissuade any thoughts of lugging it around&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Drivers
+
+&lt;ul&gt;
+&lt;li&gt;I thought that the Vega series would have first class support as an EGPU because of the Vega&amp;rsquo;s inclusion in the iMac Pro however, since system information doesn&amp;rsquo;t accurately identify the card it is clear that some support is still yet to come, likely in the spring&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Support
+
+&lt;ul&gt;
+&lt;li&gt;If you go with the Vega or really any other setup other than the &lt;a href=&#34;https://developer.apple.com/development-kit/external-graphics/&#34; target=&#34;_blank&#34;&gt;Apple EGPU kit&lt;/a&gt; you are in an area that isn&amp;rsquo;t officially supported&lt;/li&gt;
+&lt;li&gt;That being said you won&amp;rsquo;t be alone or the first so don&amp;rsquo;t let that hold you back too much&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In summary I&amp;rsquo;d recommend an EGPU to anyone who is looking for a more robust GPU. The Pros are very compelling and the cons while worth considering don&amp;rsquo;t represent a significant cost. The only other thing I&amp;rsquo;ll call out is that I&amp;rsquo;d recommend the &lt;a href=&#34;http://amzn.to/2C4u4Gw&#34; target=&#34;_blank&#34;&gt;Vega56&lt;/a&gt; + &lt;a href=&#34;http://amzn.to/2CgKwQR&#34; target=&#34;_blank&#34;&gt;Mantiz&lt;/a&gt; rather than the &lt;a href=&#34;http://amzn.to/2Ci1wpR&#34; target=&#34;_blank&#34;&gt;Vega64&lt;/a&gt; + Mantiz given the Vega64 requires an unsupported/warranty-breaking modification.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Improving Tableau&#39;s Document API</title>
+      <link>https://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</link>
+      <pubDate>Sun, 04 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</guid>
+      <description>
+
+&lt;h1 id=&#34;1-what-is-tableau-s-document-api&#34;&gt;1) What is Tableau&amp;rsquo;s Document API?&lt;/h1&gt;
+
+&lt;p&gt;With the release of Tableau 10, Tableau released a &lt;a href=&#34;https://github.com/tableau/document-api-python&#34; target=&#34;_blank&#34;&gt;python utility&lt;/a&gt; called the Tableau Document API (or TDA for short). TDA allows users to easily programmatically modify tableau workbooks. Modifying tableau workbooks without using Tableau Desktop was possible before as tableau files &lt;code&gt;.twb&lt;/code&gt; are actually just xml files. However manually editing the xml of &lt;code&gt;.twb&lt;/code&gt; files could easily result in an unusable corrupted workbook. Fortunately with the release of this tool it is now much simpler to modify workbooks without using Tableau Desktop.&lt;/p&gt;
+
+&lt;h1 id=&#34;2-using-tableau-s-document-api&#34;&gt;2) Using Tableau&amp;rsquo;s Document API&lt;/h1&gt;
+
+&lt;p&gt;TDA is written in Python so using it is as simple as &lt;code&gt;pip install TableauDocumentApi&lt;/code&gt; and &lt;code&gt;import TableauDocumentApi&lt;/code&gt;. For example if you needed to update the connection strings in a dozen local tableau files you could use the following script to update them all.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from TableauDocumentApi import Workbook
+import glob, os
+
+os.chdir(&amp;quot;my_folder&amp;quot;)
+for file in glob.glob(&amp;quot;*.twb&amp;quot;):
+  tableau_workbook = tda.Workbook(file)
+  for datasource in tableau_workbook.datasources:
+    for connection in datasource.connections:
+      connection.server = &#39;my-new-host&#39;
+tableau_workbook.save()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;3-tableau-s-query-bands-initial-sql&#34;&gt;3) Tableau&amp;rsquo;s Query Bands &amp;amp; Initial SQL&lt;/h1&gt;
+
+&lt;p&gt;Taking a step away from TDA for a moment Tableau has two less visible but still immensely useful features: &lt;a href=&#34;http://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_teradata.html#initial_sql&#34; target=&#34;_blank&#34;&gt;Initial SQL&lt;/a&gt; &amp;amp; &lt;a href=&#34;http://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_teradata.html#query_band&#34; target=&#34;_blank&#34;&gt;querybands&lt;/a&gt;. I&amp;rsquo;ve personally used these features to stage temporary tables &amp;amp; tag each query(There are so many&amp;hellip;) that tableau runs.&lt;/p&gt;
+
+&lt;h1 id=&#34;4-how-does-this-relate-to-the-tableaudocumentapi&#34;&gt;4) How does this relate to the TableauDocumentAPI&lt;/h1&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/t8y8/document-api-python/blob/3a38058f168e29874dc95af4f697888bba71a4fe/tableaudocumentapi/connection.py&#34; target=&#34;_blank&#34;&gt;first version I used of Tableau&amp;rsquo;s Document API&lt;/a&gt; did not support modifying initial sql &amp;amp; query bands. After being faced with modifying 1,000+ workbooks to use query bands I decided to review the library and see if support could be easily added. Glancing at the source code I could see that each of the properties of a connection was cleanly defined. Using Port as an example I was able to submit a &lt;a href=&#34;https://github.com/tableau/document-api-python/pull/123&#34; target=&#34;_blank&#34;&gt;pull request&lt;/a&gt; implementing the functionality. Fortunately, the Tableau team was very responsive and quickly merged the pull request.&lt;/p&gt;
+
+&lt;h1 id=&#34;5-tying-it-all-together&#34;&gt;5) Tying it all together&lt;/h1&gt;
+
+&lt;p&gt;So now if you find yourself in a situation where you need to modify the query bands or the initial sql in your workbooks you can use the TDA to save yourself some time.&lt;/p&gt;
+
+&lt;p&gt;Cheers!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title> Connecting to Hive with Dbeaver using Kerberos Authentication</title>
+      <link>https://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</link>
+      <pubDate>Sat, 06 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</guid>
+      <description>
+
+&lt;h1 id=&#34;0-install-dbeaver&#34;&gt;0) Install Dbeaver&lt;/h1&gt;
+
+&lt;p&gt;You can find installation instructions &lt;a href=&#34;https://justnumbersandthings.com/post/dbeaver-mac/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;1-download-the-latest-drivers&#34;&gt;1) Download the latest drivers&lt;/h1&gt;
+
+&lt;p&gt;You can find the latest drivers on the &lt;a href=&#34;https://www.cloudera.com/downloads/connectors/hive/jdbc.html&#34; target=&#34;_blank&#34;&gt;Cloudera website&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;2-create-a-folder&#34;&gt;2) Create a folder&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;mkdir ~/.dbeaver-drivers/cloudera-hive/&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;3-extract-driver-jars-and-move-to-folder&#34;&gt;3) Extract driver jars and move to folder&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://justnumbersandthings.com/img/20170506_hive_jars_in_place.png&#34; alt=&#34;jars_in_folder&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;4-create-new-driver-in-dbeaver&#34;&gt;4) Create New Driver in Dbeaver&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Navigate to Database &amp;gt; Driver Manager &amp;gt; New&lt;/li&gt;
+&lt;li&gt;Add all the files from &lt;code&gt;~/.dbeaver-drivers/cloudera-hive/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Driver name: &lt;code&gt;Hive-Cloudera&lt;/code&gt; (for labeling only)&lt;/li&gt;
+&lt;li&gt;Class name: &lt;code&gt;com.cloudera.hive.jdbc41.HS2Driver&lt;/code&gt; (at the time of this writing)&lt;/li&gt;
+&lt;li&gt;Default port: &lt;code&gt;10000&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;URL template: &lt;code&gt;jdbc:hive2://{host}:{port}/{database};AuthMech=1;KrbRealm=FOO.BAR;KrbHostFQDN={server}; KrbServiceName=hive;KrbAuthType=2&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Note you need to change &lt;code&gt;FOO.BAR&lt;/code&gt; to match your krb5.conf settings&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;5-create-new-connection&#34;&gt;5) Create New Connection&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Navigate to Database &amp;gt; New Connection&lt;/li&gt;
+&lt;li&gt;Select Hive-Cloudera&lt;/li&gt;
+&lt;li&gt;Fill in the appropriate values for host &amp;amp; database (I set database to default)&lt;/li&gt;
+&lt;li&gt;Set server to be your KrbHostFQDN&lt;/li&gt;
+&lt;li&gt;Leave your user name &amp;amp; password blank&lt;/li&gt;
+&lt;li&gt;Test connection&lt;/li&gt;
+&lt;li&gt;Press next, next, &amp;amp; change the name of this connection as you see fit&lt;/li&gt;
+&lt;li&gt;Press finish&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Congrats you&amp;rsquo;ve successfully connected to hive using kerberos authentication!&lt;/p&gt;
+
+&lt;h1 id=&#34;6-troubleshooting&#34;&gt;6) Troubleshooting&lt;/h1&gt;
+
+&lt;p&gt;If you are receiving &lt;code&gt;[Cloudera][HiveJDBCDriver](500168) Error creating login context using ticket cache: Unable to obtain Principal Name for authentication&lt;/code&gt; make sure to check the following&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Ensure that you have the latest cryptography libraries installed
+
+&lt;ul&gt;
+&lt;li&gt;Java 9 includes these libraries by default&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;That you&amp;rsquo;ve configured your &lt;code&gt;/etc/krb5.conf&lt;/code&gt; successfully
+
+&lt;ul&gt;
+&lt;li&gt;If you&amp;rsquo;ve done this correctly you should be able to run &lt;code&gt;kinit&lt;/code&gt; in terminal and create a ticket without issue&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;For Windows adding the following lines to your dbeaver.ini may be necessary as well
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Djava.security.krb5.conf=c:\kerberos\krb5.ini&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Djava.security.auth.login.config=c:\kerberos\jaas.conf&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;success has been reported with the following jaas.conf file &amp;amp; keytab usage
+&lt;code&gt;
+Client {
+com.sun.security.auth.module.Krb5LoginModule required
+debug=true
+doNotPrompt=true
+useKeyTab=true
+keyTab=&amp;quot;C:\Users\{user}\krb5cc_{user}&amp;quot;
+useTicketCache=true
+renewTGT=true
+principal=&amp;quot;{user}@FOO.BAR&amp;quot;
+;
+};
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installing Dbeaver on a Mac</title>
+      <link>https://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</link>
+      <pubDate>Sun, 26 Mar 2017 21:35:50 -0800</pubDate>
+      
+      <guid>https://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</guid>
+      <description>
+
+&lt;h1 id=&#34;0-what-is-dbeaver-http-dbeaver-jkiss-org&#34;&gt;0) What is &lt;a href=&#34;http://dbeaver.jkiss.org/&#34; target=&#34;_blank&#34;&gt;Dbeaver&lt;/a&gt;?&lt;/h1&gt;
+
+&lt;p&gt;Quite simply Dbeaver is the best multi-database SQL IDE that I&amp;rsquo;ve used. It supports every JDBC connection that I&amp;rsquo;ve thrown at it and has advanced features for some of the more popular databases such as Mysql &amp;amp; Postgres. Many thanks to &lt;a href=&#34;https://github.com/serge-rider&#34; target=&#34;_blank&#34;&gt;serge-rider&lt;/a&gt; for creating such an awesome tool.&lt;/p&gt;
+
+&lt;h1 id=&#34;1-install-java&#34;&gt;1) Install Java&lt;/h1&gt;
+
+&lt;p&gt;First we need to install java which can be easily done as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install java
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note: Previous versions of this article instructed an installation of the cask &lt;code&gt;jce-unlimited-strength-policy&lt;/code&gt; but that has been removed as its contents have been incorporated into the cask &lt;code&gt;java&lt;/code&gt; with the release of 9.0&lt;/p&gt;
+
+&lt;h2 id=&#34;notes&#34;&gt;Notes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you don&amp;rsquo;t have &lt;a href=&#34;https://brew.sh/&#34; target=&#34;_blank&#34;&gt;Homebrew install it here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;I recommend the newest version of Java as Dbeaver has regularly and depreciates old versions of Java
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.apple.com/kb/DL1572?locale=en_US&#34; target=&#34;_blank&#34;&gt;Java SE6&lt;/a&gt; is not supported&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;2-install-dbeaver&#34;&gt;2) Install Dbeaver&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download the &lt;a href=&#34;http://dbeaver.jkiss.org/download/&#34; target=&#34;_blank&#34;&gt;latest version&lt;/a&gt; | &lt;a href=&#34;https://github.com/serge-rider/dbeaver/releases&#34; target=&#34;_blank&#34;&gt;Github Alternate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;After downloading drag and drop into your application folder
+
+&lt;ul&gt;
+&lt;li&gt;The first time you run the application you may need to right-click on the application and then press open&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Congratulations you&amp;rsquo;ve installed Dbeaver!&lt;/p&gt;
+
+&lt;p&gt;Your next step is configuring a connection(s) to your database(s).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
