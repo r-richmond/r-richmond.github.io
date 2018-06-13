@@ -8,15 +8,15 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Tue, 12 Jun 2018 00:00:00 +0000</lastBuildDate>
-
+    
 	<atom:link href="http://justnumbersandthings.com/tags/sql/index.xml" rel="self" type="application/rss+xml" />
-
-
+    
+    
     <item>
       <title>Importing a CSV into a database using DBeaver</title>
       <link>http://justnumbersandthings.com/post/2018-06-12-dbeaver-import-csv/</link>
       <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
-
+      
       <guid>http://justnumbersandthings.com/post/2018-06-12-dbeaver-import-csv/</guid>
       <description>0) Install DBeaver You can find installation instructions here
 1) Create a folder to be used as your CSV Database mkdir ~/desktop/csvs
@@ -24,29 +24,29 @@ Place the CSV you want to load into this folder
 2) Create a CSV database connection In the menubar select Database &amp;gt; Create a New Connection &amp;amp; from the list of drivers select Flat files(CSV) &amp;gt; CSV/DBF
 Set the path of the connection to the folder you created earlier (the JDBC URL will auto-populate)</description>
     </item>
-
+    
     <item>
       <title> Connecting to Hive with DBeaver using Kerberos Authentication</title>
       <link>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</link>
       <pubDate>Sat, 06 May 2017 00:00:00 +0000</pubDate>
-
+      
       <guid>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</guid>
       <description>0) Install DBeaver You can find installation instructions here
 1) Download the latest drivers You can find the latest drivers on the Cloudera website
 2) Create a folder mkdir ~/.dbeaver-drivers/cloudera-hive/
 3) Extract driver jars and move to folder 4) Create New Driver in DBeaver  Navigate to Database &amp;gt; Driver Manager &amp;gt; New Add all the files from ~/.dbeaver-drivers/cloudera-hive/ Driver name: Hive-Cloudera (for labeling only) Class name: com.cloudera.hive.jdbc41.HS2Driver (at the time of this writing) Default port: 10000 URL template: jdbc:hive2://{host}:{port}/{database};AuthMech=1;KrbRealm=FOO.</description>
     </item>
-
+    
     <item>
       <title>Installing DBeaver on a Mac</title>
       <link>http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</link>
       <pubDate>Sun, 26 Mar 2017 21:35:50 -0800</pubDate>
-
+      
       <guid>http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</guid>
       <description>0) What is DBeaver? Quite simply DBeaver is the best multi-database SQL IDE that I&amp;rsquo;ve used. It supports every JDBC connection that I&amp;rsquo;ve thrown at it and has advanced features for some of the more popular databases such as Mysql &amp;amp; Postgres. Many thanks to serge-rider for creating such an awesome tool.
 1) Install Java First we need to install java which can be easily done as follows:
 brew cask install java  Note: Previous versions of this article instructed an installation of the cask jce-unlimited-strength-policy but that has been removed as its contents have been incorporated into the cask java with the release of 9.</description>
     </item>
-
+    
   </channel>
 </rss>

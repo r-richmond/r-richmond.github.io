@@ -16,7 +16,7 @@
       <title>Importing a CSV into a database using DBeaver</title>
       <link>http://justnumbersandthings.com/post/2018-06-12-dbeaver-import-csv/</link>
       <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
-
+      
       <guid>http://justnumbersandthings.com/post/2018-06-12-dbeaver-import-csv/</guid>
       <description>0) Install DBeaver You can find installation instructions here
 1) Create a folder to be used as your CSV Database mkdir ~/desktop/csvs
@@ -24,7 +24,7 @@ Place the CSV you want to load into this folder
 2) Create a CSV database connection In the menubar select Database &amp;gt; Create a New Connection &amp;amp; from the list of drivers select Flat files(CSV) &amp;gt; CSV/DBF
 Set the path of the connection to the folder you created earlier (the JDBC URL will auto-populate)</description>
     </item>
-
+    
     <item>
       <title>Moved to Hugo</title>
       <link>http://justnumbersandthings.com/post/2018-03-23-hugo-migration/</link>

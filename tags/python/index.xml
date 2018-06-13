@@ -8,29 +8,29 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Sun, 04 Jun 2017 00:00:00 +0000</lastBuildDate>
-
+    
 	<atom:link href="http://justnumbersandthings.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
-
-
+    
+    
     <item>
       <title>Improving Tableau&#39;s Document API</title>
       <link>http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</link>
       <pubDate>Sun, 04 Jun 2017 00:00:00 +0000</pubDate>
-
+      
       <guid>http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</guid>
       <description>1) What is Tableau&amp;rsquo;s Document API? With the release of Tableau 10, Tableau released a python utility called the Tableau Document API (or TDA for short). TDA allows users to easily programmatically modify tableau workbooks. Modifying tableau workbooks without using Tableau Desktop was possible before as tableau files .twb are actually just xml files. However manually editing the xml of .twb files could easily result in an unusable corrupted workbook.</description>
     </item>
-
+    
     <item>
       <title>First Blog With Pelican</title>
       <link>http://justnumbersandthings.com/post/2017-03-03-pelican-intro/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
-
+      
       <guid>http://justnumbersandthings.com/post/2017-03-03-pelican-intro/</guid>
       <description>Update 2018-03-18: I&amp;rsquo;ve since moved to Hugo This is my first blog post using Pelican and Markdown. A lot of the content below is to be used as reference mostly for myself and any others who are exploring using Python3, Pelican, &amp;amp; Markdown to create a blog.
 How to get up and running
 mkvirtualenv personal_blog pip install pelican pip install markdown pip install fabric3 pip install ghp-import pip install webassets npm install less -g cd Dropbox/projects/python/personal_blog/ git clone https://github.</description>
     </item>
-
+    
   </channel>
 </rss>
