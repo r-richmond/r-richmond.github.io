@@ -1,91 +1,55 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Just Numbers &amp; Things</title>
-    <link>http://justnumbersandthings.com/post/</link>
-    <description>Recent content in Posts on Just Numbers &amp; Things</description>
+    <title>Tinkerer on Just Numbers &amp; Things</title>
+    <link>http://justnumbersandthings.com/categories/tinkerer/</link>
+    <description>Recent content in Tinkerer on Just Numbers &amp; Things</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Tue, 12 Jun 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://justnumbersandthings.com/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Importing a CSV into a database using DBeaver</title>
-      <link>http://justnumbersandthings.com/post/2018-06-12-dbeaver-import-csv/</link>
-      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    <lastBuildDate>Fri, 23 Mar 2018 00:00:00 +0000</lastBuildDate>
 
-      <guid>http://justnumbersandthings.com/post/2018-06-12-dbeaver-import-csv/</guid>
-      <description>0) Install DBeaver You can find installation instructions here
-1) Create a folder to be used as your CSV Database mkdir ~/desktop/csvs
-Place the CSV you want to load into this folder
-2) Create a CSV database connection In the menubar select Database &amp;gt; Create a New Connection &amp;amp; from the list of drivers select Flat files(CSV) &amp;gt; CSV/DBF
-Set the path of the connection to the folder you created earlier (the JDBC URL will auto-populate)</description>
-    </item>
+	<atom:link href="http://justnumbersandthings.com/categories/tinkerer/index.xml" rel="self" type="application/rss+xml" />
+
 
     <item>
       <title>Moved to Hugo</title>
       <link>http://justnumbersandthings.com/post/2018-03-23-hugo-migration/</link>
       <pubDate>Fri, 23 Mar 2018 00:00:00 +0000</pubDate>
-      
+
       <guid>http://justnumbersandthings.com/post/2018-03-23-hugo-migration/</guid>
       <description>What was I using before Previously I was using Pelican a static site generator written in Python. Personally I&amp;rsquo;m a huge Python fan which led me to search out Pelican rather than go with a more popular solution such as Jekyll.
 Why Change As it turns out if you aren&amp;rsquo;t going to be modifying the static site generator in anyway you don&amp;rsquo;t need to concern yourself with the language that it is written in.</description>
     </item>
-    
+
     <item>
       <title>macOS 10.13.2 EGPU Adventures</title>
       <link>http://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</link>
       <pubDate>Thu, 28 Dec 2017 00:00:00 +0000</pubDate>
-      
+
       <guid>http://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</guid>
       <description>1) What is an EGPU &amp;amp; when did Apple start supporting them? The acronym EGPU stands for external GPU. Until recently they were relatively niche however, with the release of thunderbolt3 they have begun to gain traction. At WWDC17 Apple announced that they would be fully supported in High Sierra sometime during the spring of 2018. This news was welcomed at egpu.io where a community of capable individuals have been trail blazing EGPUs on macOS prior to 10.</description>
     </item>
-    
+
     <item>
       <title>Improving Tableau&#39;s Document API</title>
       <link>http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</link>
       <pubDate>Sun, 04 Jun 2017 00:00:00 +0000</pubDate>
-      
+
       <guid>http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</guid>
       <description>1) What is Tableau&amp;rsquo;s Document API? With the release of Tableau 10, Tableau released a python utility called the Tableau Document API (or TDA for short). TDA allows users to easily programmatically modify tableau workbooks. Modifying tableau workbooks without using Tableau Desktop was possible before as tableau files .twb are actually just xml files. However manually editing the xml of .twb files could easily result in an unusable corrupted workbook.</description>
     </item>
-    
-    <item>
-      <title> Connecting to Hive with DBeaver using Kerberos Authentication</title>
-      <link>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</link>
-      <pubDate>Sat, 06 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</guid>
-      <description>0) Install DBeaver You can find installation instructions here
-1) Download the latest drivers You can find the latest drivers on the Cloudera website
-2) Create a folder mkdir ~/.dbeaver-drivers/cloudera-hive/
-3) Extract driver jars and move to folder 4) Create New Driver in DBeaver  Navigate to Database &amp;gt; Driver Manager &amp;gt; New Add all the files from ~/.dbeaver-drivers/cloudera-hive/ Driver name: Hive-Cloudera (for labeling only) Class name: com.cloudera.hive.jdbc41.HS2Driver (at the time of this writing) Default port: 10000 URL template: jdbc:hive2://{host}:{port}/{database};AuthMech=1;KrbRealm=FOO.</description>
-    </item>
-    
-    <item>
-      <title>Installing DBeaver on a Mac</title>
-      <link>http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</link>
-      <pubDate>Sun, 26 Mar 2017 21:35:50 -0800</pubDate>
-      
-      <guid>http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</guid>
-      <description>0) What is DBeaver? Quite simply DBeaver is the best multi-database SQL IDE that I&amp;rsquo;ve used. It supports every JDBC connection that I&amp;rsquo;ve thrown at it and has advanced features for some of the more popular databases such as Mysql &amp;amp; Postgres. Many thanks to serge-rider for creating such an awesome tool.
-1) Install Java First we need to install java which can be easily done as follows:
-brew cask install java  Note: Previous versions of this article instructed an installation of the cask jce-unlimited-strength-policy but that has been removed as its contents have been incorporated into the cask java with the release of 9.</description>
-    </item>
-    
+
     <item>
       <title>First Blog With Pelican</title>
       <link>http://justnumbersandthings.com/post/2017-03-03-pelican-intro/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
-      
+
       <guid>http://justnumbersandthings.com/post/2017-03-03-pelican-intro/</guid>
       <description>Update 2018-03-18: I&amp;rsquo;ve since moved to Hugo This is my first blog post using Pelican and Markdown. A lot of the content below is to be used as reference mostly for myself and any others who are exploring using Python3, Pelican, &amp;amp; Markdown to create a blog.
 How to get up and running
 mkvirtualenv personal_blog pip install pelican pip install markdown pip install fabric3 pip install ghp-import pip install webassets npm install less -g cd Dropbox/projects/python/personal_blog/ git clone https://github.</description>
     </item>
-    
+
   </channel>
 </rss>

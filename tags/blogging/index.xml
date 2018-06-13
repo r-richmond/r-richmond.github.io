@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogging on Just Numbers &amp; Things</title>
+    <link>http://justnumbersandthings.com/tags/blogging/</link>
+    <description>Recent content in Blogging on Just Numbers &amp; Things</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Fri, 23 Mar 2018 00:00:00 +0000</lastBuildDate>
+
+	<atom:link href="http://justnumbersandthings.com/tags/blogging/index.xml" rel="self" type="application/rss+xml" />
+
+
+    <item>
+      <title>Moved to Hugo</title>
+      <link>http://justnumbersandthings.com/post/2018-03-23-hugo-migration/</link>
+      <pubDate>Fri, 23 Mar 2018 00:00:00 +0000</pubDate>
+
+      <guid>http://justnumbersandthings.com/post/2018-03-23-hugo-migration/</guid>
+      <description>What was I using before Previously I was using Pelican a static site generator written in Python. Personally I&amp;rsquo;m a huge Python fan which led me to search out Pelican rather than go with a more popular solution such as Jekyll.
+Why Change As it turns out if you aren&amp;rsquo;t going to be modifying the static site generator in anyway you don&amp;rsquo;t need to concern yourself with the language that it is written in.</description>
+    </item>
+
+    <item>
+      <title>First Blog With Pelican</title>
+      <link>http://justnumbersandthings.com/post/2017-03-03-pelican-intro/</link>
+      <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
+
+      <guid>http://justnumbersandthings.com/post/2017-03-03-pelican-intro/</guid>
+      <description>Update 2018-03-18: I&amp;rsquo;ve since moved to Hugo This is my first blog post using Pelican and Markdown. A lot of the content below is to be used as reference mostly for myself and any others who are exploring using Python3, Pelican, &amp;amp; Markdown to create a blog.
+How to get up and running
+mkvirtualenv personal_blog pip install pelican pip install markdown pip install fabric3 pip install ghp-import pip install webassets npm install less -g cd Dropbox/projects/python/personal_blog/ git clone https://github.</description>
+    </item>
+
+  </channel>
+</rss>

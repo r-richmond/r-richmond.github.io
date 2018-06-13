@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>EGPU on Just Numbers &amp; Things</title>
+    <link>http://justnumbersandthings.com/tags/egpu/</link>
+    <description>Recent content in EGPU on Just Numbers &amp; Things</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 28 Dec 2017 00:00:00 +0000</lastBuildDate>
+
+	<atom:link href="http://justnumbersandthings.com/tags/egpu/index.xml" rel="self" type="application/rss+xml" />
+
+
+    <item>
+      <title>macOS 10.13.2 EGPU Adventures</title>
+      <link>http://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</link>
+      <pubDate>Thu, 28 Dec 2017 00:00:00 +0000</pubDate>
+
+      <guid>http://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</guid>
+      <description>1) What is an EGPU &amp;amp; when did Apple start supporting them? The acronym EGPU stands for external GPU. Until recently they were relatively niche however, with the release of thunderbolt3 they have begun to gain traction. At WWDC17 Apple announced that they would be fully supported in High Sierra sometime during the spring of 2018. This news was welcomed at egpu.io where a community of capable individuals have been trail blazing EGPUs on macOS prior to 10.</description>
+    </item>
+
+  </channel>
+</rss>

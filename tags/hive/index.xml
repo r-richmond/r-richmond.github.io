@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hive on Just Numbers &amp; Things</title>
+    <link>http://justnumbersandthings.com/tags/hive/</link>
+    <description>Recent content in Hive on Just Numbers &amp; Things</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sat, 06 May 2017 00:00:00 +0000</lastBuildDate>
+
+	<atom:link href="http://justnumbersandthings.com/tags/hive/index.xml" rel="self" type="application/rss+xml" />
+
+
+    <item>
+      <title> Connecting to Hive with DBeaver using Kerberos Authentication</title>
+      <link>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</link>
+      <pubDate>Sat, 06 May 2017 00:00:00 +0000</pubDate>
+
+      <guid>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</guid>
+      <description>0) Install DBeaver You can find installation instructions here
+1) Download the latest drivers You can find the latest drivers on the Cloudera website
+2) Create a folder mkdir ~/.dbeaver-drivers/cloudera-hive/
+3) Extract driver jars and move to folder 4) Create New Driver in DBeaver  Navigate to Database &amp;gt; Driver Manager &amp;gt; New Add all the files from ~/.dbeaver-drivers/cloudera-hive/ Driver name: Hive-Cloudera (for labeling only) Class name: com.cloudera.hive.jdbc41.HS2Driver (at the time of this writing) Default port: 10000 URL template: jdbc:hive2://{host}:{port}/{database};AuthMech=1;KrbRealm=FOO.</description>
+    </item>
+
+  </channel>
+</rss>

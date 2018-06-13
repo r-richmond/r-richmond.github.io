@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.37.1" />
+  <meta name="generator" content="Hugo 0.42" />
   <meta name="author" content="richmond">
 
   
@@ -42,7 +42,7 @@
   
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
   
@@ -58,6 +58,7 @@
     <script>
       window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
       ga('create', 'UA-96235563-1', 'auto');
+
       ga('require', 'eventTracker');
       ga('require', 'outboundLinkTracker');
       ga('require', 'urlChangeTracker');
@@ -70,8 +71,8 @@
   
 
   
-  <link rel="alternate" href="http://justnumbersandthings.com/index.xml" type="application/rss+xml" title="Just Numbers &amp; Things">
-  <link rel="feed" href="http://justnumbersandthings.com/index.xml" type="application/rss+xml" title="Just Numbers &amp; Things">
+  <link rel="alternate" href="http://justnumbersandthings.com/tags/dbeaver/index.xml" type="application/rss+xml" title="Just Numbers &amp; Things">
+  <link rel="feed" href="http://justnumbersandthings.com/tags/dbeaver/index.xml" type="application/rss+xml" title="Just Numbers &amp; Things">
   
 
   <link rel="manifest" href="/site.webmanifest">
@@ -84,16 +85,17 @@
   
   <meta property="og:site_name" content="Just Numbers &amp; Things">
   <meta property="og:url" content="http://justnumbersandthings.com/tags/dbeaver/">
-  <meta property="og:title" content="Dbeaver | Just Numbers &amp; Things">
+  <meta property="og:title" content="DBeaver | Just Numbers &amp; Things">
   <meta property="og:description" content="An analytically minded individual with a passion towards all things data">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2017-05-06T00:00:00&#43;00:00">
+  <meta property="og:updated_time" content="2018-06-12T00:00:00&#43;00:00">
   
 
   
 
-  <title>Dbeaver | Just Numbers &amp; Things</title>
+
+  <title>DBeaver | Just Numbers &amp; Things</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" class="dark">
@@ -230,29 +232,42 @@
 
 <div class="universal-wrapper">
 
-  <h1>Dbeaver</h1>
+  <h1>DBeaver</h1>
 
   
 
   
   
   <div>
-    <h2><a href="http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/"> Connecting to Hive with Dbeaver using Kerberos Authentication</a></h2>
+    <h2><a href="http://justnumbersandthings.com/post/2018-06-12-dbeaver-import-csv/">Importing a CSV into a database using DBeaver</a></h2>
+    <div class="article-style">
+
+      0) Install DBeaver You can find installation instructions here
+1) Create a folder to be used as your CSV Database mkdir ~/desktop/csvs
+Place the CSV you want to load into this folder
+2) Create a CSV database connection In the menubar select Database &gt; Create a New Connection &amp; from the list of drivers select Flat files(CSV) &gt; CSV/DBF
+Set the path of the connection to the folder you created earlier (the JDBC URL will auto-populate)
+
+    </div>
+  </div>
+
+  <div>
+    <h2><a href="http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/"> Connecting to Hive with DBeaver using Kerberos Authentication</a></h2>
     <div class="article-style">
       
-      0) Install Dbeaver You can find installation instructions here
+      0) Install DBeaver You can find installation instructions here
 1) Download the latest drivers You can find the latest drivers on the Cloudera website
 2) Create a folder mkdir ~/.dbeaver-drivers/cloudera-hive/
-3) Extract driver jars and move to folder 4) Create New Driver in Dbeaver  Navigate to Database &gt; Driver Manager &gt; New Add all the files from ~/.dbeaver-drivers/cloudera-hive/ Driver name: Hive-Cloudera (for labeling only) Class name: com.cloudera.hive.jdbc41.HS2Driver (at the time of this writing) Default port: 10000 URL template: jdbc:hive2://{host}:{port}/{database};AuthMech=1;KrbRealm=FOO.
+3) Extract driver jars and move to folder 4) Create New Driver in DBeaver  Navigate to Database &gt; Driver Manager &gt; New Add all the files from ~/.dbeaver-drivers/cloudera-hive/ Driver name: Hive-Cloudera (for labeling only) Class name: com.cloudera.hive.jdbc41.HS2Driver (at the time of this writing) Default port: 10000 URL template: jdbc:hive2://{host}:{port}/{database};AuthMech=1;KrbRealm=FOO.
       
     </div>
   </div>
   
   <div>
-    <h2><a href="http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/">Installing Dbeaver on a Mac</a></h2>
+    <h2><a href="http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/">Installing DBeaver on a Mac</a></h2>
     <div class="article-style">
       
-      0) What is Dbeaver? Quite simply Dbeaver is the best multi-database SQL IDE that I&rsquo;ve used. It supports every JDBC connection that I&rsquo;ve thrown at it and has advanced features for some of the more popular databases such as Mysql &amp; Postgres. Many thanks to serge-rider for creating such an awesome tool.
+      0) What is DBeaver? Quite simply DBeaver is the best multi-database SQL IDE that I&rsquo;ve used. It supports every JDBC connection that I&rsquo;ve thrown at it and has advanced features for some of the more popular databases such as Mysql &amp; Postgres. Many thanks to serge-rider for creating such an awesome tool.
 1) Install Java First we need to install java which can be easily done as follows:
 brew cask install java  Note: Previous versions of this article instructed an installation of the cask jce-unlimited-strength-policy but that has been removed as its contents have been incorporated into the cask java with the release of 9.
       
