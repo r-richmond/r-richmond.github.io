@@ -19,8 +19,8 @@
   
   <meta name="description" content="0) Install DBeaver You can find installation instructions here
 1) Download the latest drivers You can find the latest drivers on the Cloudera website
-2) Create a folder mkdir ~/.dbeaver-drivers/cloudera-hive/
-3) Extract driver jars and move to folder 4) Create New Driver in DBeaver  Navigate to Database &gt; Driver Manager &gt; New Add all the files from ~/.dbeaver-drivers/cloudera-hive/ Driver name: Hive-Cloudera (for labeling only) Class name: com.cloudera.hive.jdbc41.HS2Driver (at the time of this writing) Default port: 10000 URL template: jdbc:hive2://{host}:{port}/{database};AuthMech=1;KrbRealm=FOO.">
+2) Create a folder to store the drivers mkdir ~/.dbeaver-drivers/cloudera-hive/
+3) Extract driver jars and move to the folder we made earlier 4) Create a New Driver in DBeaver  Navigate to Database &gt; Driver Manager &gt; New Add all the files from ~/.dbeaver-drivers/cloudera-hive/ Driver name: Hive-Cloudera (for labeling only) Class name: com.">
 
   
   <link rel="alternate" hreflang="en-us" href="http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/">
@@ -93,8 +93,8 @@
   <meta property="og:title" content=" Connecting to Hive with DBeaver using Kerberos Authentication | Just Numbers &amp; Things">
   <meta property="og:description" content="0) Install DBeaver You can find installation instructions here
 1) Download the latest drivers You can find the latest drivers on the Cloudera website
-2) Create a folder mkdir ~/.dbeaver-drivers/cloudera-hive/
-3) Extract driver jars and move to folder 4) Create New Driver in DBeaver  Navigate to Database &gt; Driver Manager &gt; New Add all the files from ~/.dbeaver-drivers/cloudera-hive/ Driver name: Hive-Cloudera (for labeling only) Class name: com.cloudera.hive.jdbc41.HS2Driver (at the time of this writing) Default port: 10000 URL template: jdbc:hive2://{host}:{port}/{database};AuthMech=1;KrbRealm=FOO.">
+2) Create a folder to store the drivers mkdir ~/.dbeaver-drivers/cloudera-hive/
+3) Extract driver jars and move to the folder we made earlier 4) Create a New Driver in DBeaver  Navigate to Database &gt; Driver Manager &gt; New Add all the files from ~/.dbeaver-drivers/cloudera-hive/ Driver name: Hive-Cloudera (for labeling only) Class name: com.">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2017-05-06T00:00:00&#43;00:00">
@@ -344,15 +344,15 @@
 
 <p>You can find the latest drivers on the <a href="https://www.cloudera.com/downloads/connectors/hive/jdbc.html" target="_blank">Cloudera website</a></p>
 
-<h1 id="2-create-a-folder">2) Create a folder</h1>
+<h1 id="2-create-a-folder-to-store-the-drivers">2) Create a folder to store the drivers</h1>
 
 <p><code>mkdir ~/.dbeaver-drivers/cloudera-hive/</code></p>
 
-<h1 id="3-extract-driver-jars-and-move-to-folder">3) Extract driver jars and move to folder</h1>
+<h1 id="3-extract-driver-jars-and-move-to-the-folder-we-made-earlier">3) Extract driver jars and move to the folder we made earlier</h1>
 
 <p><img src="/img/20170506_hive_jars_in_place.png" alt="jars_in_folder" /></p>
 
-<h1 id="4-create-new-driver-in-dbeaver">4) Create New Driver in DBeaver</h1>
+<h1 id="4-create-a-new-driver-in-dbeaver">4) Create a New Driver in DBeaver</h1>
 
 <ol>
 <li>Navigate to Database &gt; Driver Manager &gt; New</li>
@@ -367,10 +367,10 @@
 </ul></li>
 </ol>
 
-<h1 id="5-create-new-connection">5) Create New Connection</h1>
+<h1 id="5-create-a-new-connection">5) Create a New Connection</h1>
 
 <ol>
-<li>Navigate to Database &gt; New Connection</li>
+<li>In the menu bar Navigate to <code>Database &gt; New Connection</code></li>
 <li>Select Hive-Cloudera</li>
 <li>Fill in the appropriate values for host &amp; database (I set database to default)</li>
 <li>Set server to be your KrbHostFQDN</li>
@@ -404,7 +404,7 @@
 <li><code>Djava.security.auth.login.config=c:\kerberos\jaas.conf</code>
 
 <ul>
-<li>success has been reported with the following jaas.conf file &amp; keytab usage
+<li>success has also been reported with the following jaas.conf file &amp; keytab usage
 <code>
 Client {
 com.sun.security.auth.module.Krb5LoginModule required

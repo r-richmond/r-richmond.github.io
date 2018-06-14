@@ -30,7 +30,7 @@
 
 &lt;h2 id=&#34;2-create-a-csv-database-connection&#34;&gt;2) Create a CSV database connection&lt;/h2&gt;
 
-&lt;p&gt;In the menubar select &lt;code&gt;Database &amp;gt; Create a New Connection&lt;/code&gt;
+&lt;p&gt;In the menu bar select &lt;code&gt;Database &amp;gt; Create a New Connection&lt;/code&gt;
  &amp;amp; from the list of drivers select &lt;code&gt;Flat files(CSV) &amp;gt; CSV/DBF&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_select_driver.png&#34; alt=&#34;select_driver&#34; /&gt;&lt;/p&gt;
@@ -47,7 +47,7 @@
 
 &lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_import_table_data.png&#34; alt=&#34;import_table_data&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;3.2) Next select your target CSV as the source container&lt;/p&gt;
+&lt;p&gt;3.2) Next select your source CSV from your CSV connection as the source container&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_select_csv_table.png&#34; alt=&#34;select_csv_table&#34; /&gt;&lt;/p&gt;
 
@@ -56,7 +56,7 @@
 &lt;h2 id=&#34;4-ensure-that-the-mappings-of-each-of-your-columns-is-correct&#34;&gt;4) Ensure that the mappings of each of your columns is correct&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;For columns that are exact match DBeaver will map them correctly for you&lt;/li&gt;
+&lt;li&gt;For column names that are an exact match DBeaver will automatically map them for you&lt;/li&gt;
 &lt;li&gt;For the remaining columns make sure to map the source columns to your desired target columns&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -68,25 +68,24 @@
 
 &lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_data_finished.png&#34; alt=&#34;data_finished&#34; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;6-check-to-make-sure-that-the-data-has-finished-loading&#34;&gt;6) Check to make sure that the data has finished loading&lt;/h2&gt;
+&lt;h2 id=&#34;6-check-to-make-sure-that-the-data-has-loaded-correctly&#34;&gt;6) Check to make sure that the data has loaded correctly&lt;/h2&gt;
 
-&lt;p&gt;As a last optional step it is good practice to make sure that everything loaded correctly which you can see here&lt;/p&gt;
+&lt;p&gt;As a last optional step it is good practice to make sure that everything loaded correctly which can easily be done by running a query against your target DB&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_data_in_table.png&#34; alt=&#34;data_in_table&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;7-final-notes-thoughts&#34;&gt;7) Final Notes &amp;amp; Thoughts&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;While this process takes a little bit more time to get setup than other tools the setup part is only a one time pain&lt;/li&gt;
-&lt;li&gt;After setting this up you are also able to easily query CSVs using SQL within the best SQL IDE on the market :)
+&lt;li&gt;While this process takes a little bit more time to get setup than other tools setting up the CSV connection only needs to be done once
 
 &lt;ul&gt;
-&lt;li&gt;Simply use the CSV connection like any other connection&lt;/li&gt;
+&lt;li&gt;One side benefit of this as well is that you are now able to run SQL queries against CSVs very easily&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;The only real pain point that I have run across is that if you add a new CSV file or add/delete columns in an active CSV connection you have to restart the import wizard &amp;amp; refresh the CSV connection for the changes to be picked up
+&lt;li&gt;The only real pain point that I have run across is that if you add a new CSV file or add/delete columns in an active CSV connection you have to cancel the import wizard &amp;amp; refresh the CSV connection for the changes to be picked up
 
 &lt;ul&gt;
-&lt;li&gt;this feedback was provided in &lt;a href=&#34;https://github.com/dbeaver/dbeaver/issues/926&#34; target=&#34;_blank&#34;&gt;issue 926&lt;/a&gt; hopefully it is resolved in a future update&lt;/li&gt;
+&lt;li&gt;this feedback was provided in &lt;a href=&#34;https://github.com/dbeaver/dbeaver/issues/926&#34; target=&#34;_blank&#34;&gt;issue 926&lt;/a&gt; and hopefully it will be resolved in a future update&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
@@ -106,9 +105,7 @@
 
 &lt;h2 id=&#34;why-change&#34;&gt;Why Change&lt;/h2&gt;
 
-&lt;p&gt;As it turns out if you aren&amp;rsquo;t going to be modifying the static site generator in anyway you don&amp;rsquo;t need to concern yourself with the language that it is written in. This fact escaped me while I was seeking out Pelican. Coming to this realization opened up a world of possibilities and when I saw an article discussing Hugo and its killer feature, I made the jump!&lt;/p&gt;
-
-&lt;p&gt;Hugo&amp;rsquo;s killer feature: &lt;a href=&#34;https://gohugo.io/getting-started/usage/#livereload&#34; target=&#34;_blank&#34;&gt;Live Reload&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;As it turns out if you aren&amp;rsquo;t going to be modifying the static site generator in anyway you don&amp;rsquo;t need to concern yourself with the language that it is written in. This fact escaped me while I was seeking out Pelican. Coming to this realization opened up a world of possibilities and when I saw an article discussing Hugo and its killer feature, &lt;a href=&#34;https://gohugo.io/getting-started/usage/#livereload&#34; target=&#34;_blank&#34;&gt;Live Reload&lt;/a&gt;, I made the jump!&lt;/p&gt;
 
 &lt;h2 id=&#34;unique-migration-tasks&#34;&gt;Unique Migration tasks&lt;/h2&gt;
 
@@ -220,16 +217,17 @@ aliases = [
 
 &lt;ul&gt;
 &lt;li&gt;I thought that the Vega series would have first class support as an EGPU because of the Vega&amp;rsquo;s inclusion in the iMac Pro however, since system information doesn&amp;rsquo;t accurately identify the card it is clear that some support is still yet to come, likely in the spring&lt;/li&gt;
+&lt;li&gt;Update as of 10.13.4 This has been resolved with Apple now officially supporting EGPU setups&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Support
+&lt;li&gt;Support (Apple now officially supports EGPU setups for AMD cards)
 
 &lt;ul&gt;
-&lt;li&gt;If you go with the Vega or really any other setup other than the &lt;a href=&#34;https://developer.apple.com/development-kit/external-graphics/&#34; target=&#34;_blank&#34;&gt;Apple EGPU kit&lt;/a&gt; you are in an area that isn&amp;rsquo;t officially supported&lt;/li&gt;
-&lt;li&gt;That being said you won&amp;rsquo;t be alone or the first so don&amp;rsquo;t let that hold you back too much&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;If you go with the Vega or really any other setup other than the &lt;a href=&#34;https://developer.apple.com/development-kit/external-graphics/&#34; target=&#34;_blank&#34;&gt;Apple EGPU kit&lt;/a&gt; you are in an area that isn&amp;rsquo;t officially supported&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;That being said you won&amp;rsquo;t be alone or the first so don&amp;rsquo;t let that hold you back too much&lt;/del&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;In summary I&amp;rsquo;d recommend an EGPU to anyone who is looking for a more robust GPU. The Pros are very compelling and the cons while worth considering don&amp;rsquo;t represent a significant cost. The only other thing I&amp;rsquo;ll call out is that I&amp;rsquo;d recommend the &lt;a href=&#34;http://amzn.to/2C4u4Gw&#34; target=&#34;_blank&#34;&gt;Vega56&lt;/a&gt; + &lt;a href=&#34;http://amzn.to/2CgKwQR&#34; target=&#34;_blank&#34;&gt;Mantiz&lt;/a&gt; rather than the &lt;a href=&#34;http://amzn.to/2Ci1wpR&#34; target=&#34;_blank&#34;&gt;Vega64&lt;/a&gt; + Mantiz given the Vega64 requires an unsupported/warranty-breaking modification.&lt;/p&gt;
+&lt;p&gt;In summary I&amp;rsquo;d recommend an EGPU to anyone who is looking for a more robust GPU. The Pros are very compelling and the cons while worth considering don&amp;rsquo;t out weight the benefits for anyone looking for improved performance. The only other thing I&amp;rsquo;ll call out is that I&amp;rsquo;d recommend the &lt;a href=&#34;http://amzn.to/2C4u4Gw&#34; target=&#34;_blank&#34;&gt;Vega56&lt;/a&gt; + &lt;a href=&#34;http://amzn.to/2CgKwQR&#34; target=&#34;_blank&#34;&gt;Mantiz&lt;/a&gt; rather than the &lt;a href=&#34;http://amzn.to/2Ci1wpR&#34; target=&#34;_blank&#34;&gt;Vega64&lt;/a&gt; + Mantiz given the Vega64 requires an unsupported/warranty-breaking modification.&lt;/p&gt;
 </description>
     </item>
     
@@ -243,13 +241,13 @@ aliases = [
 
 &lt;h1 id=&#34;1-what-is-tableau-s-document-api&#34;&gt;1) What is Tableau&amp;rsquo;s Document API?&lt;/h1&gt;
 
-&lt;p&gt;With the release of Tableau 10, Tableau released a &lt;a href=&#34;https://github.com/tableau/document-api-python&#34; target=&#34;_blank&#34;&gt;python utility&lt;/a&gt; called the Tableau Document API (or TDA for short). TDA allows users to easily programmatically modify tableau workbooks. Modifying tableau workbooks without using Tableau Desktop was possible before as tableau files &lt;code&gt;.twb&lt;/code&gt; are actually just xml files. However manually editing the xml of &lt;code&gt;.twb&lt;/code&gt; files could easily result in an unusable corrupted workbook. Fortunately with the release of this tool it is now much simpler to modify workbooks without using Tableau Desktop.&lt;/p&gt;
+&lt;p&gt;With the release of Tableau 10, Tableau released a &lt;a href=&#34;https://github.com/tableau/document-api-python&#34; target=&#34;_blank&#34;&gt;python utility&lt;/a&gt; called the Tableau Document API (or TDA for short). TDA allows users to easily programmatically modify tableau workbooks. Modifying tableau workbooks without using Tableau Desktop was possible before as tableau files &lt;code&gt;.twb&lt;/code&gt; are actually just xml files. However, manually editing the xml of &lt;code&gt;.twb&lt;/code&gt; files could easily result in a corrupted workbook. Fortunately with the release of this tool it is now much less risky to modify workbooks without using Tableau Desktop.&lt;/p&gt;
 
 &lt;h1 id=&#34;2-using-tableau-s-document-api&#34;&gt;2) Using Tableau&amp;rsquo;s Document API&lt;/h1&gt;
 
 &lt;p&gt;TDA is written in Python so using it is as simple as &lt;code&gt;pip install TableauDocumentApi&lt;/code&gt; and &lt;code&gt;import TableauDocumentApi&lt;/code&gt;. For example if you needed to update the connection strings in a dozen local tableau files you could use the following script to update them all.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from TableauDocumentApi import Workbook
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import TableauDocumentApi as tda
 import glob, os
 
 os.chdir(&amp;quot;my_folder&amp;quot;)
@@ -263,17 +261,17 @@ tableau_workbook.save()
 
 &lt;h1 id=&#34;3-tableau-s-query-bands-initial-sql&#34;&gt;3) Tableau&amp;rsquo;s Query Bands &amp;amp; Initial SQL&lt;/h1&gt;
 
-&lt;p&gt;Taking a step away from TDA for a moment Tableau has two less visible but still immensely useful features: &lt;a href=&#34;http://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_teradata.html#initial_sql&#34; target=&#34;_blank&#34;&gt;Initial SQL&lt;/a&gt; &amp;amp; &lt;a href=&#34;http://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_teradata.html#query_band&#34; target=&#34;_blank&#34;&gt;querybands&lt;/a&gt;. I&amp;rsquo;ve personally used these features to stage temporary tables &amp;amp; tag each query(There are so many&amp;hellip;) that tableau runs.&lt;/p&gt;
+&lt;p&gt;Taking a step away from TDA for a moment Tableau has two less visible but still immensely useful features: &lt;a href=&#34;http://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_teradata.html#initial_sql&#34; target=&#34;_blank&#34;&gt;Initial SQL&lt;/a&gt; &amp;amp; &lt;a href=&#34;http://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_teradata.html#query_band&#34; target=&#34;_blank&#34;&gt;querybands&lt;/a&gt;. I&amp;rsquo;ve personally used these features to stage temporary tables &amp;amp; tag each query (there are so many&amp;hellip;) that tableau runs.&lt;/p&gt;
 
 &lt;h1 id=&#34;4-how-does-this-relate-to-the-tableaudocumentapi&#34;&gt;4) How does this relate to the TableauDocumentAPI&lt;/h1&gt;
 
-&lt;p&gt;The &lt;a href=&#34;https://github.com/t8y8/document-api-python/blob/3a38058f168e29874dc95af4f697888bba71a4fe/tableaudocumentapi/connection.py&#34; target=&#34;_blank&#34;&gt;first version I used of Tableau&amp;rsquo;s Document API&lt;/a&gt; did not support modifying initial sql &amp;amp; query bands. After being faced with modifying 1,000+ workbooks to use query bands I decided to review the library and see if support could be easily added. Glancing at the source code I could see that each of the properties of a connection was cleanly defined. Using Port as an example I was able to submit a &lt;a href=&#34;https://github.com/tableau/document-api-python/pull/123&#34; target=&#34;_blank&#34;&gt;pull request&lt;/a&gt; implementing the functionality. Fortunately, the Tableau team was very responsive and quickly merged the pull request.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;https://github.com/t8y8/document-api-python/blob/3a38058f168e29874dc95af4f697888bba71a4fe/tableaudocumentapi/connection.py&#34; target=&#34;_blank&#34;&gt;first version I used of Tableau&amp;rsquo;s Document API&lt;/a&gt; did not support modifying initial sql &amp;amp; query bands. After being faced with modifying thousands of workbooks to use query bands I decided to review the library and see if support could be easily added. Glancing at the source code I could see that each of the properties of a connection was cleanly defined. Using Port as an example I was able to submit a &lt;a href=&#34;https://github.com/tableau/document-api-python/pull/123&#34; target=&#34;_blank&#34;&gt;pull request&lt;/a&gt; implementing the functionality. Fortunately, the Tableau team was very responsive and quickly merged the pull request.&lt;/p&gt;
 
 &lt;h1 id=&#34;5-tying-it-all-together&#34;&gt;5) Tying it all together&lt;/h1&gt;
 
 &lt;p&gt;So now if you find yourself in a situation where you need to modify the query bands or the initial sql in your workbooks you can use the TDA to save yourself some time.&lt;/p&gt;
 
-&lt;p&gt;Update: Looks like Tableau was even kind enough to mention this new feature in the &lt;a href=&#34;https://www.tableau.com/about/blog/2017/2/check-out-new-enterprise-features-tableau-102-66459&#34; target=&#34;_blank&#34;&gt;release notes of 10.2&lt;/a&gt; Search for &amp;ldquo;And with our Document API&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Update: Looks like Tableau was even kind enough to mention this new feature in the &lt;a href=&#34;https://www.tableau.com/about/blog/2017/2/check-out-new-enterprise-features-tableau-102-66459&#34; target=&#34;_blank&#34;&gt;release notes of 10.2&lt;/a&gt; Search for &amp;ldquo;and with our Document API&amp;rdquo;&lt;/p&gt;
 
 &lt;p&gt;Cheers!&lt;/p&gt;
 </description>
@@ -295,15 +293,15 @@ tableau_workbook.save()
 
 &lt;p&gt;You can find the latest drivers on the &lt;a href=&#34;https://www.cloudera.com/downloads/connectors/hive/jdbc.html&#34; target=&#34;_blank&#34;&gt;Cloudera website&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;2-create-a-folder&#34;&gt;2) Create a folder&lt;/h1&gt;
+&lt;h1 id=&#34;2-create-a-folder-to-store-the-drivers&#34;&gt;2) Create a folder to store the drivers&lt;/h1&gt;
 
 &lt;p&gt;&lt;code&gt;mkdir ~/.dbeaver-drivers/cloudera-hive/&lt;/code&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;3-extract-driver-jars-and-move-to-folder&#34;&gt;3) Extract driver jars and move to folder&lt;/h1&gt;
+&lt;h1 id=&#34;3-extract-driver-jars-and-move-to-the-folder-we-made-earlier&#34;&gt;3) Extract driver jars and move to the folder we made earlier&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20170506_hive_jars_in_place.png&#34; alt=&#34;jars_in_folder&#34; /&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;4-create-new-driver-in-dbeaver&#34;&gt;4) Create New Driver in DBeaver&lt;/h1&gt;
+&lt;h1 id=&#34;4-create-a-new-driver-in-dbeaver&#34;&gt;4) Create a New Driver in DBeaver&lt;/h1&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Navigate to Database &amp;gt; Driver Manager &amp;gt; New&lt;/li&gt;
@@ -318,10 +316,10 @@ tableau_workbook.save()
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h1 id=&#34;5-create-new-connection&#34;&gt;5) Create New Connection&lt;/h1&gt;
+&lt;h1 id=&#34;5-create-a-new-connection&#34;&gt;5) Create a New Connection&lt;/h1&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Navigate to Database &amp;gt; New Connection&lt;/li&gt;
+&lt;li&gt;In the menu bar Navigate to &lt;code&gt;Database &amp;gt; New Connection&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Select Hive-Cloudera&lt;/li&gt;
 &lt;li&gt;Fill in the appropriate values for host &amp;amp; database (I set database to default)&lt;/li&gt;
 &lt;li&gt;Set server to be your KrbHostFQDN&lt;/li&gt;
@@ -355,7 +353,7 @@ tableau_workbook.save()
 &lt;li&gt;&lt;code&gt;Djava.security.auth.login.config=c:\kerberos\jaas.conf&lt;/code&gt;
 
 &lt;ul&gt;
-&lt;li&gt;success has been reported with the following jaas.conf file &amp;amp; keytab usage
+&lt;li&gt;success has also been reported with the following jaas.conf file &amp;amp; keytab usage
 &lt;code&gt;
 Client {
 com.sun.security.auth.module.Krb5LoginModule required
@@ -389,7 +387,7 @@ principal=&amp;quot;{user}@FOO.BAR&amp;quot;
 
 &lt;h1 id=&#34;1-install-java&#34;&gt;1) Install Java&lt;/h1&gt;
 
-&lt;p&gt;First we need to install java which can be easily done as follows:&lt;/p&gt;
+&lt;p&gt;First we need to install java which can be easily by running the following command in terminal (&lt;a href=&#34;https://brew.sh/&#34; target=&#34;_blank&#34;&gt;homebrew required&lt;/a&gt;):&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install java
 &lt;/code&gt;&lt;/pre&gt;
@@ -399,7 +397,6 @@ principal=&amp;quot;{user}@FOO.BAR&amp;quot;
 &lt;h2 id=&#34;notes&#34;&gt;Notes&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;If you don&amp;rsquo;t have &lt;a href=&#34;https://brew.sh/&#34; target=&#34;_blank&#34;&gt;Homebrew install it here&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;I recommend the newest version of Java as DBeaver regularly depreciates old versions of Java
 
 &lt;ul&gt;
