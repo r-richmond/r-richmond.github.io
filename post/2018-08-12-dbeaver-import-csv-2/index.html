@@ -15,10 +15,12 @@
   
     
   
-  <meta name="description" content="1) What is Tableau&rsquo;s Document API? With the release of Tableau 10, Tableau released a python utility called the Tableau Document API (or TDA for short). TDA allows users to easily programmatically modify tableau workbooks. Modifying tableau workbooks without using Tableau Desktop was possible before as tableau files .twb are actually just xml files. However, manually editing the xml of .twb files could easily result in a corrupted workbook. Fortunately with the release of this tool it is now much less risky to modify workbooks without using Tableau Desktop.">
+  <meta name="description" content="Forward This is a followup to my previous post. My previous post demonstrated how to import a CSV using Dbeaver&rsquo;s database to database export &amp; import feature. As of version 5.1.5 Dbeaver introduced a direct CSV option for importing CSVs.
+0) Install DBeaver You can find installation instructions here
+1) Connect to your target database 1.1) Navigate through your target database &amp; schema and right click on your target table and select import table data">
 
   
-  <link rel="alternate" hreflang="en-us" href="http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/">
+  <link rel="alternate" hreflang="en-us" href="http://justnumbersandthings.com/post/2018-08-12-dbeaver-import-csv-2/">
 
   
 
@@ -94,26 +96,28 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/">
+  <link rel="canonical" href="http://justnumbersandthings.com/post/2018-08-12-dbeaver-import-csv-2/">
 
   <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="Just Numbers &amp; Things">
-  <meta property="og:url" content="http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/">
-  <meta property="og:title" content="Improving Tableau&#39;s Document API | Just Numbers &amp; Things">
-  <meta property="og:description" content="1) What is Tableau&rsquo;s Document API? With the release of Tableau 10, Tableau released a python utility called the Tableau Document API (or TDA for short). TDA allows users to easily programmatically modify tableau workbooks. Modifying tableau workbooks without using Tableau Desktop was possible before as tableau files .twb are actually just xml files. However, manually editing the xml of .twb files could easily result in a corrupted workbook. Fortunately with the release of this tool it is now much less risky to modify workbooks without using Tableau Desktop.">
+  <meta property="og:url" content="http://justnumbersandthings.com/post/2018-08-12-dbeaver-import-csv-2/">
+  <meta property="og:title" content="Importing a CSV into a database using DBeaver Part 2 | Just Numbers &amp; Things">
+  <meta property="og:description" content="Forward This is a followup to my previous post. My previous post demonstrated how to import a CSV using Dbeaver&rsquo;s database to database export &amp; import feature. As of version 5.1.5 Dbeaver introduced a direct CSV option for importing CSVs.
+0) Install DBeaver You can find installation instructions here
+1) Connect to your target database 1.1) Navigate through your target database &amp; schema and right click on your target table and select import table data">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2017-06-04T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2018-08-12T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2017-06-04T00:00:00&#43;00:00">
-  
-
+  <meta property="article:modified_time" content="2018-08-12T00:00:00&#43;00:00">
   
 
   
 
-  <title>Improving Tableau&#39;s Document API | Just Numbers &amp; Things</title>
+  
+
+  <title>Importing a CSV into a database using DBeaver Part 2 | Just Numbers &amp; Things</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" class="dark">
@@ -251,7 +255,7 @@
 
 
   <div class="article-container">
-    <h1 itemprop="name">Improving Tableau&#39;s Document API</h1>
+    <h1 itemprop="name">Importing a CSV into a database using DBeaver Part 2</h1>
 
     
 
@@ -266,9 +270,9 @@
 
   <span class="article-date">
     
-    <meta content="2017-06-04 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-    <time datetime="2017-06-04 00:00:00 &#43;0000 UTC" itemprop="dateModified">
-      2017-06-04
+    <meta content="2018-08-12 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+    <time datetime="2018-08-12 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+      2018-08-12
     </time>
   </span>
   <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
@@ -278,14 +282,14 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    1 min read
   </span>
   
 
   
   
   <span class="middot-divider"></span>
-  <a href="http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/#disqus_thread"></a>
+  <a href="http://justnumbersandthings.com/post/2018-08-12-dbeaver-import-csv-2/#disqus_thread"></a>
   
 
   
@@ -295,7 +299,7 @@
   <span class="article-categories">
     <i class="fa fa-folder"></i>
     
-    <a href="http://justnumbersandthings.com/categories/tinkerer/">Tinkerer</a>
+    <a href="http://justnumbersandthings.com/categories/analyst/">Analyst</a>
     
   </span>
   
@@ -307,35 +311,35 @@
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Improving%20Tableau%27s%20Document%20API&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2017-06-04-improving-tableaus-document-api%2f"
+         href="https://twitter.com/intent/tweet?text=Importing%20a%20CSV%20into%20a%20database%20using%20DBeaver%20Part%202&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-08-12-dbeaver-import-csv-2%2f"
          target="_blank" rel="noopener">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2017-06-04-improving-tableaus-document-api%2f"
+         href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-08-12-dbeaver-import-csv-2%2f"
          target="_blank" rel="noopener">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2017-06-04-improving-tableaus-document-api%2f&amp;title=Improving%20Tableau%27s%20Document%20API"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-08-12-dbeaver-import-csv-2%2f&amp;title=Importing%20a%20CSV%20into%20a%20database%20using%20DBeaver%20Part%202"
          target="_blank" rel="noopener">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2017-06-04-improving-tableaus-document-api%2f&amp;title=Improving%20Tableau%27s%20Document%20API"
+         href="http://service.weibo.com/share/share.php?url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-08-12-dbeaver-import-csv-2%2f&amp;title=Importing%20a%20CSV%20into%20a%20database%20using%20DBeaver%20Part%202"
          target="_blank" rel="noopener">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Improving%20Tableau%27s%20Document%20API&amp;body=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2017-06-04-improving-tableaus-document-api%2f">
+         href="mailto:?subject=Importing%20a%20CSV%20into%20a%20database%20using%20DBeaver%20Part%202&amp;body=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-08-12-dbeaver-import-csv-2%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -351,41 +355,48 @@
     <div class="article-style" itemprop="articleBody">
       
 
-<h1 id="1-what-is-tableau-s-document-api">1) What is Tableau&rsquo;s Document API?</h1>
+<h2 id="forward">Forward</h2>
 
-<p>With the release of Tableau 10, Tableau released a <a href="https://github.com/tableau/document-api-python" target="_blank">python utility</a> called the Tableau Document API (or TDA for short). TDA allows users to easily programmatically modify tableau workbooks. Modifying tableau workbooks without using Tableau Desktop was possible before as tableau files <code>.twb</code> are actually just xml files. However, manually editing the xml of <code>.twb</code> files could easily result in a corrupted workbook. Fortunately with the release of this tool it is now much less risky to modify workbooks without using Tableau Desktop.</p>
+<p>This is a followup to my previous <a href="/post/2018-06-12-dbeaver-import-csv/">post</a>. My previous post demonstrated how to import a CSV using Dbeaver&rsquo;s database to database export &amp; import feature. As of version 5.1.5 Dbeaver introduced a direct CSV option for importing CSVs.</p>
 
-<h1 id="2-using-tableau-s-document-api">2) Using Tableau&rsquo;s Document API</h1>
+<h2 id="0-install-dbeaver">0) Install DBeaver</h2>
 
-<p>TDA is written in Python so using it is as simple as <code>pip install TableauDocumentApi</code> and <code>import TableauDocumentApi</code>. For example if you needed to update the connection strings in a dozen local tableau files you could use the following script to update them all.</p>
+<p>You can find installation instructions <a href="/post/2017-03-26-dbeaver-mac/">here</a></p>
 
-<pre><code class="language-python">import TableauDocumentApi as tda
-import glob, os
+<h2 id="1-connect-to-your-target-database">1) Connect to your target database</h2>
 
-os.chdir(&quot;my_folder&quot;)
-for file in glob.glob(&quot;*.twb&quot;):
-  tableau_workbook = tda.Workbook(file)
-  for datasource in tableau_workbook.datasources:
-    for connection in datasource.connections:
-      connection.server = 'my-new-host'
-tableau_workbook.save()
-</code></pre>
+<p>1.1) Navigate through your target database &amp; schema and right click on your target table and select import table data</p>
 
-<h1 id="3-tableau-s-query-bands-initial-sql">3) Tableau&rsquo;s Query Bands &amp; Initial SQL</h1>
+<p><img src="/img/20180612_import_table_data.png" alt="import_table_data" /></p>
 
-<p>Taking a step away from TDA for a moment Tableau has two less visible but still immensely useful features: <a href="http://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_teradata.html#initial_sql" target="_blank">Initial SQL</a> &amp; <a href="http://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_teradata.html#query_band" target="_blank">querybands</a>. I&rsquo;ve personally used these features to stage temporary tables &amp; tag each query (there are so many&hellip;) that tableau runs.</p>
+<p>1.2) Next select CSV from the list</p>
 
-<h1 id="4-how-does-this-relate-to-the-tableaudocumentapi">4) How does this relate to the TableauDocumentAPI</h1>
+<p><img src="/img/20180812_select_csv_option.png" alt="select_csv_option" /></p>
 
-<p>The <a href="https://github.com/t8y8/document-api-python/blob/3a38058f168e29874dc95af4f697888bba71a4fe/tableaudocumentapi/connection.py" target="_blank">first version I used of Tableau&rsquo;s Document API</a> did not support modifying initial sql &amp; query bands. After being faced with modifying thousands of workbooks to use query bands I decided to review the library and see if support could be easily added. Glancing at the source code I could see that each of the properties of a connection was cleanly defined. Using Port as an example I was able to submit a <a href="https://github.com/tableau/document-api-python/pull/123" target="_blank">pull request</a> implementing the functionality. Fortunately, the Tableau team was very responsive and quickly merged the pull request.</p>
+<p>1.3) Select your CSV file for upload</p>
 
-<h1 id="5-tying-it-all-together">5) Tying it all together</h1>
+<p><img src="/img/20180812_select_csv_file.png" alt="select_csv_table" /></p>
 
-<p>So now if you find yourself in a situation where you need to modify the query bands or the initial sql in your workbooks you can use the TDA to save yourself some time.</p>
+<h2 id="2-ensure-that-the-mappings-of-each-of-your-columns-is-correct">2) Ensure that the mappings of each of your columns is correct</h2>
 
-<p>Update: Looks like Tableau was even kind enough to mention this new feature in the <a href="https://www.tableau.com/about/blog/2017/2/check-out-new-enterprise-features-tableau-102-66459" target="_blank">release notes of 10.2</a> Search for &ldquo;and with our Document API&rdquo;</p>
+<ul>
+<li>For column names that are an exact match DBeaver will automatically map them for you</li>
+<li>For the remaining columns make sure to map the source columns to your desired target columns</li>
+</ul>
 
-<p>Cheers!</p>
+<p><img src="/img/20180812_map_columns.png" alt="map_columns" /></p>
+
+<h2 id="3-complete-the-wizard-and-watch-dbeaver-import-your-data">3) Complete the wizard and watch DBeaver import your data</h2>
+
+<p>Note: For large files it may be necessary to go get lunch but in my case 4 records doesn&rsquo;t take long to import :)</p>
+
+<p><img src="/img/20180612_data_finished.png" alt="data_finished" /></p>
+
+<h2 id="4-check-to-make-sure-that-the-data-has-loaded-correctly">4) Check to make sure that the data has loaded correctly</h2>
+
+<p>As a last optional step it is good practice to make sure that everything loaded correctly which can easily be done by running a query against your target DB</p>
+
+<p><img src="/img/20180612_data_in_table.png" alt="data_in_table" /></p>
 
     </div>
 
@@ -394,9 +405,11 @@ tableau_workbook.save()
 
 <div class="article-tags">
   
-  <a class="label label-default" href="http://justnumbersandthings.com/tags/tableau/">Tableau</a>
+  <a class="label label-default" href="http://justnumbersandthings.com/tags/sql/">SQL</a>
   
-  <a class="label label-default" href="http://justnumbersandthings.com/tags/python/">Python</a>
+  <a class="label label-default" href="http://justnumbersandthings.com/tags/dbeaver/">DBeaver</a>
+  
+  <a class="label label-default" href="http://justnumbersandthings.com/tags/csv/">CSV</a>
   
 </div>
 
@@ -410,7 +423,11 @@ tableau_workbook.save()
       <h3>Related</h3>
       <ul>
         
-        <li><a href="/post/2017-03-03-pelican-intro/">First Blog With Pelican</a></li>
+        <li><a href="/post/2018-06-12-dbeaver-import-csv/">Importing a CSV into a database using DBeaver</a></li>
+        
+        <li><a href="/post/2017-05-06-dbeaver-hive/"> Connecting to Hive with DBeaver using Kerberos Authentication</a></li>
+        
+        <li><a href="/post/2017-03-26-dbeaver-mac/">Installing DBeaver on a Mac</a></li>
         
       </ul>
     </div>
