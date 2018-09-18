@@ -406,27 +406,31 @@ tableau_workbook.save()
 &lt;li&gt;For Windows adding the following lines to your dbeaver.ini may be necessary as well
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Djava.security.krb5.conf=c:\kerberos\krb5.ini&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Djava.security.auth.login.config=c:\kerberos\jaas.conf&lt;/code&gt;
+&lt;li&gt;&lt;code&gt;-Djava.security.krb5.conf=c:\kerberos\krb5.ini&lt;/code&gt;
 
 &lt;ul&gt;
-&lt;li&gt;success has also been reported with the following jaas.conf file &amp;amp; keytab usage
-&lt;code&gt;
-Client {
-com.sun.security.auth.module.Krb5LoginModule required
-debug=true
-doNotPrompt=true
-useKeyTab=true
-keyTab=&amp;quot;C:\Users\{user}\krb5cc_{user}&amp;quot;
-useTicketCache=true
-renewTGT=true
-principal=&amp;quot;{user}@FOO.BAR&amp;quot;
-;
-};
-&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;note: this is the windows equivalent of &lt;code&gt;/etc/krb5.conf&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-Djava.security.auth.login.config=c:\kerberos\jaas.conf&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;success has also been reported with the following jaas.conf file &amp;amp; keytab usage&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;Client {
+   com.sun.security.auth.module.Krb5LoginModule required
+        debug=true
+        doNotPrompt=true
+        useKeyTab=true
+        keyTab=&amp;quot;C:\Users\{user}\krb5cc_{user}&amp;quot;
+        useTicketCache=true
+        renewTGT=true
+        principal=&amp;quot;{user}@FOO.BAR&amp;quot;
+    ;
+};
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
