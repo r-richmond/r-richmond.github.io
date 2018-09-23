@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BigQuery on Just Numbers &amp; Things</title>
+    <link>http://justnumbersandthings.com/tags/bigquery/</link>
+    <description>Recent content in BigQuery on Just Numbers &amp; Things</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sat, 22 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://justnumbersandthings.com/tags/bigquery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title> Connecting to Google BigQuery with DBeaver</title>
+      <link>http://justnumbersandthings.com/post/2018-09-22-dbeaver-bigquery/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://justnumbersandthings.com/post/2018-09-22-dbeaver-bigquery/</guid>
+      <description>0) Install DBeaver You can find installation instructions here
+1) Download the latest drivers You can find the latest drivers on Google&amp;rsquo;s website
+2) Create a folder to store the drivers mkdir ~/.dbeaver-drivers/bigquery/
+3) Extract driver jars and move to the folder we made earlier 4) Create a New Driver in DBeaver  Navigate to Database &amp;gt; Driver Manager &amp;gt; New Add all the files from ~/.dbeaver-drivers/bigquery/ Driver name: BigQuery (for labeling only) Class name: com.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -11,6 +11,77 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title> Connecting to Google BigQuery with DBeaver</title>
+      <link>http://justnumbersandthings.com/post/2018-09-22-dbeaver-bigquery/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://justnumbersandthings.com/post/2018-09-22-dbeaver-bigquery/</guid>
+      <description>
+
+&lt;h1 id=&#34;0-install-dbeaver&#34;&gt;0) Install DBeaver&lt;/h1&gt;
+
+&lt;p&gt;You can find installation instructions &lt;a href=&#34;http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;1-download-the-latest-drivers&#34;&gt;1) Download the latest drivers&lt;/h1&gt;
+
+&lt;p&gt;You can find the latest drivers on &lt;a href=&#34;https://cloud.google.com/bigquery/partners/simba-drivers/&#34; target=&#34;_blank&#34;&gt;Google&amp;rsquo;s website&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;2-create-a-folder-to-store-the-drivers&#34;&gt;2) Create a folder to store the drivers&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;mkdir ~/.dbeaver-drivers/bigquery/&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;3-extract-driver-jars-and-move-to-the-folder-we-made-earlier&#34;&gt;3) Extract driver jars and move to the folder we made earlier&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180922_bigquery_jars_in_place.png&#34; alt=&#34;jars_in_folder&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;4-create-a-new-driver-in-dbeaver&#34;&gt;4) Create a New Driver in DBeaver&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Navigate to &lt;code&gt;Database &amp;gt; Driver Manager &amp;gt; New&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add all the files from &lt;code&gt;~/.dbeaver-drivers/bigquery/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Driver name: &lt;code&gt;BigQuery&lt;/code&gt; (for labeling only)&lt;/li&gt;
+&lt;li&gt;Class name: &lt;code&gt;com.simba.googlebigquery.jdbc42.Driver&lt;/code&gt; (at the time of this writing)&lt;/li&gt;
+&lt;li&gt;Default port: &lt;code&gt;443&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;URL template: &lt;code&gt;jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId={server};OAuthType=0;OAuthServiceAcctEmail={user};OAuthPvtKeyPath={host};&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Note there are 4 different ways to connect to BigQuery using the JDBC driver. This tutorial illustrates connecting using the service account authorization method.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;5-create-a-new-service-account&#34;&gt;5) Create a new service account&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Instructions &amp;amp; details for creating a new service account can be found on &lt;a href=&#34;https://cloud.google.com/docs/authentication/production#auth-cloud-implicit-python&#34; target=&#34;_blank&#34;&gt;Google&amp;rsquo;s website&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Grant your desired BigQuery permissions to your new service account&lt;/li&gt;
+&lt;li&gt;Download the service account key&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;6-create-a-new-connection&#34;&gt;6) Create a New Connection&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;In the menu bar Navigate to &lt;code&gt;Database &amp;gt; New Connection&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Select BigQuery&lt;/li&gt;
+&lt;li&gt;Fill in the appropriate values for host, server, user&lt;/li&gt;
+&lt;li&gt;Set host to the path the service account key i.e. &lt;code&gt;/Users/admin/.dbeaver_drivers/bigquery/project_name-####.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Set server to project id for your BigQuery project&lt;/li&gt;
+&lt;li&gt;Set user to the email address for the generated service account&lt;/li&gt;
+&lt;li&gt;Press finish&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Congrats you&amp;rsquo;ve successfully connected to BigQuery using Dbeaver!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180922_bigquery_connection.png&#34; alt=&#34;successful connection&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;7-troubleshooting&#34;&gt;7) Troubleshooting&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you receive &lt;code&gt;[Simba][BigQueryJDBCDriver](100004) HttpTransport IO error : 403 Forbidden&lt;/code&gt; make sure you&amp;rsquo;ve created a service account with the necessary permissions.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Importing a CSV into a database using DBeaver Part 2</title>
       <link>http://justnumbersandthings.com/post/2018-08-12-dbeaver-import-csv-2/</link>
       <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
@@ -361,7 +432,7 @@ tableau_workbook.save()
 &lt;h1 id=&#34;4-create-a-new-driver-in-dbeaver&#34;&gt;4) Create a New Driver in DBeaver&lt;/h1&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Navigate to Database &amp;gt; Driver Manager &amp;gt; New&lt;/li&gt;
+&lt;li&gt;Navigate to &lt;code&gt;Database &amp;gt; Driver Manager &amp;gt; New&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Add all the files from &lt;code&gt;~/.dbeaver-drivers/cloudera-hive/&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Driver name: &lt;code&gt;Hive-Cloudera&lt;/code&gt; (for labeling only)&lt;/li&gt;
 &lt;li&gt;Class name: &lt;code&gt;com.cloudera.hive.jdbc41.HS2Driver&lt;/code&gt; (at the time of this writing)&lt;/li&gt;
