@@ -15,13 +15,11 @@
   
     
   
-  <meta name="description" content="0) Install DBeaver You can find installation instructions here
-1) Download the latest drivers You can find the latest drivers on the Cloudera website
-2) Create a folder to store the drivers mkdir ~/.dbeaver-drivers/cloudera-hive/
-3) Extract driver jars and move to the folder we made earlier 4) Create a New Driver in DBeaver  Navigate to Database &gt; Driver Manager &gt; New Add all the files from ~/.dbeaver-drivers/cloudera-hive/ Driver name: Hive-Cloudera (for labeling only) Class name: com.">
+  <meta name="description" content="Introduction Google&rsquo;s BigQuery has support for complex types (arrays &amp; structs) which are relatively new in analytical databases. While the ideas and of arrays and structs aren&rsquo;t unique to BigQuery some of the syntax and capabilities are unique. In this post I&rsquo;ll be going over what I&rsquo;ve found to be the most useful patterns and tricks.
+Arrays Put plainly an array is a series of values of the same type stored within a single value.">
 
   
-  <link rel="alternate" hreflang="en-us" href="http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/">
+  <link rel="alternate" hreflang="en-us" href="http://justnumbersandthings.com/post/2018-09-23-exploring-complex-types-bigquery/">
 
   
 
@@ -97,29 +95,27 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/">
+  <link rel="canonical" href="http://justnumbersandthings.com/post/2018-09-23-exploring-complex-types-bigquery/">
 
   <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="Just Numbers &amp; Things">
-  <meta property="og:url" content="http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/">
-  <meta property="og:title" content=" Connecting to Hive with DBeaver using Kerberos Authentication | Just Numbers &amp; Things">
-  <meta property="og:description" content="0) Install DBeaver You can find installation instructions here
-1) Download the latest drivers You can find the latest drivers on the Cloudera website
-2) Create a folder to store the drivers mkdir ~/.dbeaver-drivers/cloudera-hive/
-3) Extract driver jars and move to the folder we made earlier 4) Create a New Driver in DBeaver  Navigate to Database &gt; Driver Manager &gt; New Add all the files from ~/.dbeaver-drivers/cloudera-hive/ Driver name: Hive-Cloudera (for labeling only) Class name: com.">
+  <meta property="og:url" content="http://justnumbersandthings.com/post/2018-09-23-exploring-complex-types-bigquery/">
+  <meta property="og:title" content="Exploring Complex Types in BigQuery | Just Numbers &amp; Things">
+  <meta property="og:description" content="Introduction Google&rsquo;s BigQuery has support for complex types (arrays &amp; structs) which are relatively new in analytical databases. While the ideas and of arrays and structs aren&rsquo;t unique to BigQuery some of the syntax and capabilities are unique. In this post I&rsquo;ll be going over what I&rsquo;ve found to be the most useful patterns and tricks.
+Arrays Put plainly an array is a series of values of the same type stored within a single value.">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2017-05-06T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2018-09-23T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2017-05-06T00:00:00&#43;00:00">
-  
-
+  <meta property="article:modified_time" content="2018-09-23T00:00:00&#43;00:00">
   
 
   
 
-  <title> Connecting to Hive with DBeaver using Kerberos Authentication | Just Numbers &amp; Things</title>
+  
+
+  <title>Exploring Complex Types in BigQuery | Just Numbers &amp; Things</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -255,7 +251,7 @@
 
 
   <div class="article-container">
-    <h1 itemprop="name"> Connecting to Hive with DBeaver using Kerberos Authentication</h1>
+    <h1 itemprop="name">Exploring Complex Types in BigQuery</h1>
 
     
 
@@ -270,9 +266,9 @@
 
   <span class="article-date">
     
-    <meta content="2017-05-06 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-    <time datetime="2017-05-06 00:00:00 &#43;0000 UTC" itemprop="dateModified">
-      2017-05-06
+    <meta content="2018-09-23 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+    <time datetime="2018-09-23 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+      2018-09-23
     </time>
   </span>
   <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
@@ -282,14 +278,14 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
   
   
   <span class="middot-divider"></span>
-  <a href="/post/2017-05-06-dbeaver-hive/#disqus_thread"></a>
+  <a href="/post/2018-09-23-exploring-complex-types-bigquery/#disqus_thread"></a>
   
 
   
@@ -311,35 +307,35 @@
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=%20Connecting%20to%20Hive%20with%20DBeaver%20using%20Kerberos%20Authentication&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2017-05-06-dbeaver-hive%2f"
+         href="https://twitter.com/intent/tweet?text=Exploring%20Complex%20Types%20in%20BigQuery&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-09-23-exploring-complex-types-bigquery%2f"
          target="_blank" rel="noopener">
         <i class="fab fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2017-05-06-dbeaver-hive%2f"
+         href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-09-23-exploring-complex-types-bigquery%2f"
          target="_blank" rel="noopener">
         <i class="fab fa-facebook-f"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2017-05-06-dbeaver-hive%2f&amp;title=%20Connecting%20to%20Hive%20with%20DBeaver%20using%20Kerberos%20Authentication"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-09-23-exploring-complex-types-bigquery%2f&amp;title=Exploring%20Complex%20Types%20in%20BigQuery"
          target="_blank" rel="noopener">
         <i class="fab fa-linkedin-in"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2017-05-06-dbeaver-hive%2f&amp;title=%20Connecting%20to%20Hive%20with%20DBeaver%20using%20Kerberos%20Authentication"
+         href="http://service.weibo.com/share/share.php?url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-09-23-exploring-complex-types-bigquery%2f&amp;title=Exploring%20Complex%20Types%20in%20BigQuery"
          target="_blank" rel="noopener">
         <i class="fab fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=%20Connecting%20to%20Hive%20with%20DBeaver%20using%20Kerberos%20Authentication&amp;body=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2017-05-06-dbeaver-hive%2f">
+         href="mailto:?subject=Exploring%20Complex%20Types%20in%20BigQuery&amp;body=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-09-23-exploring-complex-types-bigquery%2f">
         <i class="fas fa-envelope"></i>
       </a>
     </li>
@@ -355,94 +351,145 @@
     <div class="article-style" itemprop="articleBody">
       
 
-<h1 id="0-install-dbeaver">0) Install DBeaver</h1>
+<h1 id="introduction">Introduction</h1>
 
-<p>You can find installation instructions <a href="/post/2017-03-26-dbeaver-mac/">here</a></p>
+<p>Google&rsquo;s BigQuery has support for complex types (arrays &amp; structs) which are relatively new in analytical databases.
+While the ideas and of arrays and structs aren&rsquo;t unique to BigQuery some of the syntax and capabilities are unique.
+In this post I&rsquo;ll be going over what I&rsquo;ve found to be the most useful patterns and tricks.</p>
 
-<h1 id="1-download-the-latest-drivers">1) Download the latest drivers</h1>
+<h2 id="arrays">Arrays</h2>
 
-<p>You can find the latest drivers on the <a href="https://www.cloudera.com/downloads/connectors/hive/jdbc.html" target="_blank">Cloudera website</a></p>
+<p>Put plainly an array is a series of values of the same type stored within a single value.
+You can create array literals via brackets <code>[]</code> as demonstrated by the following snippet.</p>
 
-<h1 id="2-create-a-folder-to-store-the-drivers">2) Create a folder to store the drivers</h1>
+<pre><code class="language-sql">select [1, 2, 3] as array_of_ints
+</code></pre>
 
-<p><code>mkdir ~/.dbeaver-drivers/cloudera-hive/</code></p>
+<p>You can also explicitly declare the type of an array as follows.</p>
 
-<h1 id="3-extract-driver-jars-and-move-to-the-folder-we-made-earlier">3) Extract driver jars and move to the folder we made earlier</h1>
+<pre><code class="language-sql">select
+  ['2018-01-01', '2018-02-01', '2018-03-01'] as array_of_string,
+  array&lt;date&gt;['2018-01-01', '2018-02-01', '2018-03-01'] as array_of_date
+</code></pre>
 
-<p><img src="/img/20170506_hive_jars_in_place.png" alt="jars_in_folder" /></p>
+<h2 id="structs">Structs</h2>
 
-<h1 id="4-create-a-new-driver-in-dbeaver">4) Create a New Driver in DBeaver</h1>
+<p>A struct is a grouping of values that need not be of the same type and is very similar to the concept of tuples.
+They are commonly used to group related values together.
+You can create struct literals using the function struct</p>
 
-<ol>
-<li>Navigate to <code>Database &gt; Driver Manager &gt; New</code></li>
-<li>Add all the files from <code>~/.dbeaver-drivers/cloudera-hive/</code></li>
-<li>Driver name: <code>Hive-Cloudera</code> (for labeling only)</li>
-<li>Class name: <code>com.cloudera.hive.jdbc41.HS2Driver</code> (at the time of this writing)</li>
-<li>Default port: <code>10000</code></li>
-<li>URL template: <code>jdbc:hive2://{host}:{port}/{database};AuthMech=1;KrbRealm=FOO.BAR;KrbHostFQDN={server}; KrbServiceName=hive;KrbAuthType=2</code>
+<pre><code class="language-sql">select struct(1 as id, 2 as value) as user_info
+</code></pre>
 
-<ul>
-<li>Note you need to change <code>FOO.BAR</code> to match your krb5.conf settings</li>
-</ul></li>
-</ol>
+<h2 id="purpose">Purpose</h2>
 
-<h1 id="5-create-a-new-connection">5) Create a New Connection</h1>
+<p>Arrays and structs allow for a more compact organization of related data which makes writing and reading many queries easier.
+So while BigQuery is the engine that I&rsquo;m covering today I expect these concepts to spread to other databases as knowledge of their utility spreads.</p>
 
-<ol>
-<li>In the menu bar Navigate to <code>Database &gt; New Connection</code></li>
-<li>Select Hive-Cloudera</li>
-<li>Fill in the appropriate values for host &amp; database (I set database to default)</li>
-<li>Set server to be your KrbHostFQDN</li>
-<li>Leave your user name &amp; password blank</li>
-<li>Test connection</li>
-<li>Press next, next, &amp; change the name of this connection as you see fit</li>
-<li>Press finish</li>
-</ol>
+<h1 id="basic-usage">Basic Usage</h1>
 
-<p>Congrats you&rsquo;ve successfully connected to hive using kerberos authentication!</p>
+<h2 id="example-dataset">Example DataSet</h2>
 
-<h1 id="6-troubleshooting">6) Troubleshooting</h1>
+<p>I&rsquo;ll be using the following CTE to demonstrate various functions for arrays &amp; structs.</p>
 
-<p>If you are receiving <code>[Cloudera][HiveJDBCDriver](500168) Error creating login context using ticket cache: Unable to obtain Principal Name for authentication</code> make sure to check the following</p>
+<pre><code class="language-sql">with data_sample as (
+  select
+    1 as id_race,
+    date'2018-08-01' as date_race,
+    [3, 4] as id_participants,
+    [ struct(7.0 as distance, 1 as lap_number, [struct(3 as id_participant, 1 as position),
+                                                struct(4 as id_participant, 2 as position)] as finish_order),
+      struct(6.5 as distance, 2 as lap_number, [struct(3 as id_participant, 1 as position),
+                                                struct(4 as id_participant, 2 as position)] as finish_order),
+      struct(7.2 as distance, 3 as lap_number, [struct(4 as id_participant, 1 as position),
+                                                struct(3 as id_participant, 2 as position)] as finish_order)
+      ] as race_laps
+  union all
+  select
+    2 as id_race,
+    date'2018-08-08' as date_race,
+    [3, 5] as id_participants,
+    [ struct(7.5 as distance, 1 as lap_number, [struct(5 as id_participant, 1 as position),
+                                                struct(3 as id_participant, 2 as position)] as finish_order),
+      struct(7.4 as distance, 2 as lap_number, [struct(5 as id_participant, 1 as position),
+                                                struct(3 as id_participant, 2 as position)] as finish_order),
+      struct(7.3 as distance, 3 as lap_number, [struct(5 as id_participant, 1 as position),
+                                                struct(3 as id_participant, 2 as position)] as finish_order)
+      ] as race_laps
+)
+</code></pre>
 
-<ol>
-<li>Ensure that you have the latest cryptography libraries installed
+<h2 id="access-an-individual-element-from-an-array">Access an individual element from an array</h2>
 
-<ul>
-<li>Java 9 includes these libraries by default</li>
-</ul></li>
-<li>That you&rsquo;ve configured your <code>/etc/krb5.conf</code> successfully
+<pre><code class="language-sql">with data_sample as (
+  --See above
+  --Note: these lines will be omitted from subsequent examples
+)
+select
+  ds.id_participants[offset(0)] as first_participant, --zero based
+  ds.id_participants[ordinal(1)] as first_participant_also --one based
+from data_sample as ds
+</code></pre>
 
-<ul>
-<li>If you&rsquo;ve done this correctly you should be able to run <code>kinit</code> in terminal and create a ticket without issue</li>
-</ul></li>
-<li>For Windows adding the following lines to your dbeaver.ini may be necessary as well
+<h2 id="determine-the-length-of-an-array">Determine the length of an array</h2>
 
-<ul>
-<li><code>-Djava.security.krb5.conf=c:\kerberos\krb5.ini</code>
+<pre><code class="language-sql">select
+  array_length(ds.id_participants) as number_of_participants
+from data_sample as ds
+</code></pre>
 
-<ul>
-<li>note: this is the windows equivalent of <code>/etc/krb5.conf</code></li>
-</ul></li>
-<li><code>-Djava.security.auth.login.config=c:\kerberos\jaas.conf</code>
+<h2 id="access-values-structs-within-an-array">Access values &amp; structs within an array</h2>
 
-<ul>
-<li>success has also been reported with the following jaas.conf file &amp; keytab usage</li>
-</ul></li>
-</ul></li>
-</ol>
+<p>There are a couple of different ways to interact with arrays in BigQuery. The following three examples show different ways to access the example data structure and calculate the total distance for each race.</p>
 
-<pre><code>Client {
-   com.sun.security.auth.module.Krb5LoginModule required
-        debug=true
-        doNotPrompt=true
-        useKeyTab=true
-        keyTab=&quot;C:\Users\{user}\krb5cc_{user}&quot;
-        useTicketCache=true
-        renewTGT=true
-        principal=&quot;{user}@FOO.BAR&quot;
-    ;
-};
+<h3 id="by-joining-the-lap-array">by joining the lap array</h3>
+
+<pre><code class="language-sql">select
+  ds.id_race,
+  sum(rl.distance) as race_distance
+from data_sample as ds
+join ds.race_laps as rl
+group by 1
+</code></pre>
+
+<h3 id="by-unnesting-the-lap-array">by unnesting the lap array</h3>
+
+<pre><code class="language-sql">select
+  ds.id_race,
+  sum(rl.distance) as race_distance
+from data_sample as ds,
+unnest(ds.race_laps) as rl
+group by 1
+</code></pre>
+
+<h3 id="by-using-at-inline-query">by using at inline query</h3>
+
+<pre><code class="language-sql">select
+  ds.id_race,
+  (select sum(rl.distance) from unnest(ds.race_laps) as rl) as race_distance
+from data_sample as ds
+</code></pre>
+
+<h3 id="by-joining-multiple-arrays">by joining multiple arrays</h3>
+
+<p>The following query returns a list of race ids &amp; participants ids &amp; and a comma separated string showing that participants place each lap of each race.</p>
+
+<pre><code class="language-sql">select
+  ds.id_race,
+  fo.id_participant,
+  string_agg(cast(fo.position as string), ', ' order by rl.lap_number) lap_positions
+from data_sample as ds
+join ds.race_laps as rl
+join rl.finish_order as fo
+group by 1, 2
+</code></pre>
+
+<h2 id="filtering-by-contents-of-an-array">Filtering by contents of an array</h2>
+
+<pre><code class="language-sql">select
+  ds.id_race
+from data_sample as ds
+where 3 in unnest(ds.id_participants)
 </code></pre>
 
     </div>
@@ -454,11 +501,7 @@
   
   <a class="badge badge-light" href="/tags/sql/">SQL</a>
   
-  <a class="badge badge-light" href="/tags/dbeaver/">DBeaver</a>
-  
-  <a class="badge badge-light" href="/tags/hive/">Hive</a>
-  
-  <a class="badge badge-light" href="/tags/kerberos/">Kerberos</a>
+  <a class="badge badge-light" href="/tags/bigquery/">BigQuery</a>
   
 </div>
 
@@ -471,6 +514,14 @@
       <div class="hr-light"></div>
       <h3>Related</h3>
       <ul>
+        
+        <li><a href="/post/2018-09-22-dbeaver-bigquery/"> Connecting to Google BigQuery with DBeaver</a></li>
+        
+        <li><a href="/post/2018-08-12-dbeaver-import-csv-2/">Importing a CSV into a database using DBeaver Part 2</a></li>
+        
+        <li><a href="/post/2018-06-12-dbeaver-import-csv/">Importing a CSV into a database using DBeaver</a></li>
+        
+        <li><a href="/post/2017-05-06-dbeaver-hive/"> Connecting to Hive with DBeaver using Kerberos Authentication</a></li>
         
         <li><a href="/post/2017-03-26-dbeaver-mac/">Installing DBeaver on a Mac</a></li>
         

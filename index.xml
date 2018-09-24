@@ -11,6 +11,157 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Exploring Complex Types in BigQuery</title>
+      <link>http://justnumbersandthings.com/post/2018-09-23-exploring-complex-types-bigquery/</link>
+      <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://justnumbersandthings.com/post/2018-09-23-exploring-complex-types-bigquery/</guid>
+      <description>
+
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Google&amp;rsquo;s BigQuery has support for complex types (arrays &amp;amp; structs) which are relatively new in analytical databases.
+While the ideas and of arrays and structs aren&amp;rsquo;t unique to BigQuery some of the syntax and capabilities are unique.
+In this post I&amp;rsquo;ll be going over what I&amp;rsquo;ve found to be the most useful patterns and tricks.&lt;/p&gt;
+
+&lt;h2 id=&#34;arrays&#34;&gt;Arrays&lt;/h2&gt;
+
+&lt;p&gt;Put plainly an array is a series of values of the same type stored within a single value.
+You can create array literals via brackets &lt;code&gt;[]&lt;/code&gt; as demonstrated by the following snippet.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select [1, 2, 3] as array_of_ints
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can also explicitly declare the type of an array as follows.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  [&#39;2018-01-01&#39;, &#39;2018-02-01&#39;, &#39;2018-03-01&#39;] as array_of_string,
+  array&amp;lt;date&amp;gt;[&#39;2018-01-01&#39;, &#39;2018-02-01&#39;, &#39;2018-03-01&#39;] as array_of_date
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;structs&#34;&gt;Structs&lt;/h2&gt;
+
+&lt;p&gt;A struct is a grouping of values that need not be of the same type and is very similar to the concept of tuples.
+They are commonly used to group related values together.
+You can create struct literals using the function struct&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select struct(1 as id, 2 as value) as user_info
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;purpose&#34;&gt;Purpose&lt;/h2&gt;
+
+&lt;p&gt;Arrays and structs allow for a more compact organization of related data which makes writing and reading many queries easier.
+So while BigQuery is the engine that I&amp;rsquo;m covering today I expect these concepts to spread to other databases as knowledge of their utility spreads.&lt;/p&gt;
+
+&lt;h1 id=&#34;basic-usage&#34;&gt;Basic Usage&lt;/h1&gt;
+
+&lt;h2 id=&#34;example-dataset&#34;&gt;Example DataSet&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;ll be using the following CTE to demonstrate various functions for arrays &amp;amp; structs.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;with data_sample as (
+  select
+    1 as id_race,
+    date&#39;2018-08-01&#39; as date_race,
+    [3, 4] as id_participants,
+    [ struct(7.0 as distance, 1 as lap_number, [struct(3 as id_participant, 1 as position),
+                                                struct(4 as id_participant, 2 as position)] as finish_order),
+      struct(6.5 as distance, 2 as lap_number, [struct(3 as id_participant, 1 as position),
+                                                struct(4 as id_participant, 2 as position)] as finish_order),
+      struct(7.2 as distance, 3 as lap_number, [struct(4 as id_participant, 1 as position),
+                                                struct(3 as id_participant, 2 as position)] as finish_order)
+      ] as race_laps
+  union all
+  select
+    2 as id_race,
+    date&#39;2018-08-08&#39; as date_race,
+    [3, 5] as id_participants,
+    [ struct(7.5 as distance, 1 as lap_number, [struct(5 as id_participant, 1 as position),
+                                                struct(3 as id_participant, 2 as position)] as finish_order),
+      struct(7.4 as distance, 2 as lap_number, [struct(5 as id_participant, 1 as position),
+                                                struct(3 as id_participant, 2 as position)] as finish_order),
+      struct(7.3 as distance, 3 as lap_number, [struct(5 as id_participant, 1 as position),
+                                                struct(3 as id_participant, 2 as position)] as finish_order)
+      ] as race_laps
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;access-an-individual-element-from-an-array&#34;&gt;Access an individual element from an array&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;with data_sample as (
+  --See above
+  --Note: these lines will be omitted from subsequent examples
+)
+select
+  ds.id_participants[offset(0)] as first_participant, --zero based
+  ds.id_participants[ordinal(1)] as first_participant_also --one based
+from data_sample as ds
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;determine-the-length-of-an-array&#34;&gt;Determine the length of an array&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  array_length(ds.id_participants) as number_of_participants
+from data_sample as ds
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;access-values-structs-within-an-array&#34;&gt;Access values &amp;amp; structs within an array&lt;/h2&gt;
+
+&lt;p&gt;There are a couple of different ways to interact with arrays in BigQuery. The following three examples show different ways to access the example data structure and calculate the total distance for each race.&lt;/p&gt;
+
+&lt;h3 id=&#34;by-joining-the-lap-array&#34;&gt;by joining the lap array&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  ds.id_race,
+  sum(rl.distance) as race_distance
+from data_sample as ds
+join ds.race_laps as rl
+group by 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;by-unnesting-the-lap-array&#34;&gt;by unnesting the lap array&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  ds.id_race,
+  sum(rl.distance) as race_distance
+from data_sample as ds,
+unnest(ds.race_laps) as rl
+group by 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;by-using-at-inline-query&#34;&gt;by using at inline query&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  ds.id_race,
+  (select sum(rl.distance) from unnest(ds.race_laps) as rl) as race_distance
+from data_sample as ds
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;by-joining-multiple-arrays&#34;&gt;by joining multiple arrays&lt;/h3&gt;
+
+&lt;p&gt;The following query returns a list of race ids &amp;amp; participants ids &amp;amp; and a comma separated string showing that participants place each lap of each race.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  ds.id_race,
+  fo.id_participant,
+  string_agg(cast(fo.position as string), &#39;, &#39; order by rl.lap_number) lap_positions
+from data_sample as ds
+join ds.race_laps as rl
+join rl.finish_order as fo
+group by 1, 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;filtering-by-contents-of-an-array&#34;&gt;Filtering by contents of an array&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  ds.id_race
+from data_sample as ds
+where 3 in unnest(ds.id_participants)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title> Connecting to Google BigQuery with DBeaver</title>
       <link>http://justnumbersandthings.com/post/2018-09-22-dbeaver-bigquery/</link>
       <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
@@ -46,6 +197,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;Note there are 4 different ways to connect to BigQuery using the JDBC driver. This tutorial illustrates connecting using the service account authorization method.&lt;/li&gt;
+&lt;li&gt;Additionally, at the time of this writing, Dbeaver only supports a couple URL template variables (e.g. server, user, host) which is why I&amp;rsquo;ve used the &lt;code&gt;host&lt;/code&gt; variable for a path to key file rather than something like &lt;code&gt;key_path&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -63,7 +215,7 @@
 &lt;li&gt;In the menu bar Navigate to &lt;code&gt;Database &amp;gt; New Connection&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Select BigQuery&lt;/li&gt;
 &lt;li&gt;Fill in the appropriate values for host, server, user&lt;/li&gt;
-&lt;li&gt;Set host to the path the service account key i.e. &lt;code&gt;/Users/admin/.dbeaver_drivers/bigquery/project_name-####.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Set host to the path the service account key e.g., &lt;code&gt;/Users/admin/.dbeaver_drivers/bigquery/project_name-####.json&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Set server to project id for your BigQuery project&lt;/li&gt;
 &lt;li&gt;Set user to the email address for the generated service account&lt;/li&gt;
 &lt;li&gt;Press finish&lt;/li&gt;
@@ -77,6 +229,12 @@
 
 &lt;ul&gt;
 &lt;li&gt;If you receive &lt;code&gt;[Simba][BigQueryJDBCDriver](100004) HttpTransport IO error : 403 Forbidden&lt;/code&gt; make sure you&amp;rsquo;ve created a service account with the necessary permissions.&lt;/li&gt;
+&lt;li&gt;As of Dbeaver 5.2.0 Dbeaver is unable to return arrays of ints and other numerics
+
+&lt;ul&gt;
+&lt;li&gt;e.g., select [1, 2] as ids results in &lt;code&gt;org.jkiss.dbeaver.model.exec.DBCException: SQL Error [10140] [22003]: [Simba][JDBC](10140) Error converting value to long.&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;You can still use&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

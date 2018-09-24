@@ -52,7 +52,7 @@
     
       
       
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/sunburst.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/obsidian.min.css" crossorigin="anonymous">
       
     
 
@@ -383,6 +383,7 @@
 
 <ul>
 <li>Note there are 4 different ways to connect to BigQuery using the JDBC driver. This tutorial illustrates connecting using the service account authorization method.</li>
+<li>Additionally, at the time of this writing, Dbeaver only supports a couple URL template variables (e.g. server, user, host) which is why I&rsquo;ve used the <code>host</code> variable for a path to key file rather than something like <code>key_path</code></li>
 </ul></li>
 </ol>
 
@@ -400,7 +401,7 @@
 <li>In the menu bar Navigate to <code>Database &gt; New Connection</code></li>
 <li>Select BigQuery</li>
 <li>Fill in the appropriate values for host, server, user</li>
-<li>Set host to the path the service account key i.e. <code>/Users/admin/.dbeaver_drivers/bigquery/project_name-####.json</code></li>
+<li>Set host to the path the service account key e.g., <code>/Users/admin/.dbeaver_drivers/bigquery/project_name-####.json</code></li>
 <li>Set server to project id for your BigQuery project</li>
 <li>Set user to the email address for the generated service account</li>
 <li>Press finish</li>
@@ -414,6 +415,12 @@
 
 <ul>
 <li>If you receive <code>[Simba][BigQueryJDBCDriver](100004) HttpTransport IO error : 403 Forbidden</code> make sure you&rsquo;ve created a service account with the necessary permissions.</li>
+<li>As of Dbeaver 5.2.0 Dbeaver is unable to return arrays of ints and other numerics
+
+<ul>
+<li>e.g., select [1, 2] as ids results in <code>org.jkiss.dbeaver.model.exec.DBCException: SQL Error [10140] [22003]: [Simba][JDBC](10140) Error converting value to long.</code></li>
+<li>You can still use</li>
+</ul></li>
 </ul>
 
     </div>

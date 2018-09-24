@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sat, 22 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 23 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://justnumbersandthings.com/tags/sql/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Exploring Complex Types in BigQuery</title>
+      <link>http://justnumbersandthings.com/post/2018-09-23-exploring-complex-types-bigquery/</link>
+      <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://justnumbersandthings.com/post/2018-09-23-exploring-complex-types-bigquery/</guid>
+      <description>Introduction Google&amp;rsquo;s BigQuery has support for complex types (arrays &amp;amp; structs) which are relatively new in analytical databases. While the ideas and of arrays and structs aren&amp;rsquo;t unique to BigQuery some of the syntax and capabilities are unique. In this post I&amp;rsquo;ll be going over what I&amp;rsquo;ve found to be the most useful patterns and tricks.
+Arrays Put plainly an array is a series of values of the same type stored within a single value.</description>
+    </item>
     
     <item>
       <title> Connecting to Google BigQuery with DBeaver</title>
