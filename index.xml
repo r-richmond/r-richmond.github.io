@@ -11,6 +11,55 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title> Connecting to Google BigQuery with DBeaver</title>
+      <link>http://justnumbersandthings.com/post/2018-10-07-dbeaver-bigquery-part2/</link>
+      <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://justnumbersandthings.com/post/2018-10-07-dbeaver-bigquery-part2/</guid>
+      <description>
+
+&lt;h1 id=&#34;0-install-dbeaver&#34;&gt;0) Install DBeaver&lt;/h1&gt;
+
+&lt;p&gt;You can find installation instructions &lt;a href=&#34;http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/&#34;&gt;here&lt;/a&gt;.
+Make sure to install version 5.2.2 or later. If you haven&amp;rsquo;t updated to 5.2.2 or later you may use this &lt;a href=&#34;http://justnumbersandthings.com/post/2018-09-22-dbeaver-bigquery/&#34;&gt;post&lt;/a&gt;
+as a guide for connecting to BigQuery.&lt;/p&gt;
+
+&lt;h1 id=&#34;1-create-a-new-service-account&#34;&gt;1) Create a new service account&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Instructions &amp;amp; details for creating a new service account can be found on &lt;a href=&#34;https://cloud.google.com/docs/authentication/production#auth-cloud-implicit-python&#34; target=&#34;_blank&#34;&gt;Google&amp;rsquo;s website&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Grant your desired BigQuery permissions to your new service account&lt;/li&gt;
+&lt;li&gt;Download the service account key&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;2-create-a-new-connection&#34;&gt;2) Create a new connection&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;In the menu bar navigate to &lt;code&gt;Database &amp;gt; New Connection&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Select BigQuery &amp;amp; press next&lt;/li&gt;
+&lt;li&gt;Fill in project with the name of your BigQuery Project
+
+&lt;ul&gt;
+&lt;li&gt;Optional, add additional projects in the subsequent field&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Select service-based&lt;/li&gt;
+&lt;li&gt;Fill in the name of the service account ex: &lt;code&gt;bigquery-demo@project_name.iam.gserviceaccount.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Fill in the path to the service key downloaded earlier&lt;/li&gt;
+&lt;li&gt;Press finish&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Congrats you&amp;rsquo;ve successfully connected to BigQuery using Dbeaver!&lt;/p&gt;
+
+&lt;h1 id=&#34;7-troubleshooting&#34;&gt;7) Troubleshooting&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you receive
+&lt;code&gt;[Simba][BigQueryJDBCDriver](100004) HttpTransport IO error : 403 Forbidden&lt;/code&gt; make sure you&amp;rsquo;ve created a service account with the necessary permissions.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Exploring Complex Types in BigQuery</title>
       <link>http://justnumbersandthings.com/post/2018-09-23-exploring-complex-types-bigquery/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
@@ -162,12 +211,18 @@ where 3 in unnest(ds.id_participants)
     </item>
     
     <item>
-      <title> Connecting to Google BigQuery with DBeaver</title>
+      <title> Connecting to Google BigQuery with DBeaver with JDBC Drivers</title>
       <link>http://justnumbersandthings.com/post/2018-09-22-dbeaver-bigquery/</link>
       <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>http://justnumbersandthings.com/post/2018-09-22-dbeaver-bigquery/</guid>
       <description>
+
+&lt;h1 id=&#34;update-2018-10-07&#34;&gt;Update (2018-10-07)&lt;/h1&gt;
+
+&lt;p&gt;Shortly after this post DBeaver was updated with a native connector.
+Please see this &lt;a href=&#34;http://justnumbersandthings.com/post/2018-10-07-dbeaver-bigquery-part2/&#34;&gt;post&lt;/a&gt; for a more up to date connection instructions if
+you have updated DBeaver to 5.2.2 or later.&lt;/p&gt;
 
 &lt;h1 id=&#34;0-install-dbeaver&#34;&gt;0) Install DBeaver&lt;/h1&gt;
 
@@ -212,7 +267,7 @@ where 3 in unnest(ds.id_participants)
 &lt;h1 id=&#34;6-create-a-new-connection&#34;&gt;6) Create a New Connection&lt;/h1&gt;
 
 &lt;ol&gt;
-&lt;li&gt;In the menu bar Navigate to &lt;code&gt;Database &amp;gt; New Connection&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;In the menu bar navigate to &lt;code&gt;Database &amp;gt; New Connection&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Select BigQuery&lt;/li&gt;
 &lt;li&gt;Fill in the appropriate values for host, server, user&lt;/li&gt;
 &lt;li&gt;Set host to the path the service account key e.g., &lt;code&gt;/Users/admin/.dbeaver_drivers/bigquery/project_name-####.json&lt;/code&gt;&lt;/li&gt;
@@ -229,11 +284,10 @@ where 3 in unnest(ds.id_participants)
 
 &lt;ul&gt;
 &lt;li&gt;If you receive &lt;code&gt;[Simba][BigQueryJDBCDriver](100004) HttpTransport IO error : 403 Forbidden&lt;/code&gt; make sure you&amp;rsquo;ve created a service account with the necessary permissions.&lt;/li&gt;
-&lt;li&gt;As of Dbeaver 5.2.0 Dbeaver is unable to return arrays of ints and other numerics
+&lt;li&gt;-As of Dbeaver 5.2.0 Dbeaver is unable to return arrays of ints and other numerics-
 
 &lt;ul&gt;
 &lt;li&gt;e.g., select [1, 2] as ids results in &lt;code&gt;org.jkiss.dbeaver.model.exec.DBCException: SQL Error [10140] [22003]: [Simba][JDBC](10140) Error converting value to long.&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;You can still use&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>

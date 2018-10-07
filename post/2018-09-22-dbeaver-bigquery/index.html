@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Source Themes Academic 2.4.0">
-  <meta name="generator" content="Hugo 0.48" />
+  <meta name="generator" content="Hugo 0.49" />
   <meta name="author" content="richmond">
 
   
@@ -15,10 +15,11 @@
   
     
   
-  <meta name="description" content="0) Install DBeaver You can find installation instructions here
+  <meta name="description" content="Update (2018-10-07) Shortly after this post DBeaver was updated with a native connector. Please see this post for a more up to date connection instructions if you have updated DBeaver to 5.2.2 or later.
+0) Install DBeaver You can find installation instructions here
 1) Download the latest drivers You can find the latest drivers on Google&rsquo;s website
 2) Create a folder to store the drivers mkdir ~/.dbeaver-drivers/bigquery/
-3) Extract driver jars and move to the folder we made earlier 4) Create a New Driver in DBeaver  Navigate to Database &gt; Driver Manager &gt; New Add all the files from ~/.dbeaver-drivers/bigquery/ Driver name: BigQuery (for labeling only) Class name: com.">
+3) Extract driver jars and move to the folder we made earlier 4) Create a New Driver in DBeaver  Navigate to Database &gt; Driver Manager &gt; New Add all the files from ~/.">
 
   
   <link rel="alternate" hreflang="en-us" href="http://justnumbersandthings.com/post/2018-09-22-dbeaver-bigquery/">
@@ -103,11 +104,12 @@
   
   <meta property="og:site_name" content="Just Numbers &amp; Things">
   <meta property="og:url" content="http://justnumbersandthings.com/post/2018-09-22-dbeaver-bigquery/">
-  <meta property="og:title" content=" Connecting to Google BigQuery with DBeaver | Just Numbers &amp; Things">
-  <meta property="og:description" content="0) Install DBeaver You can find installation instructions here
+  <meta property="og:title" content=" Connecting to Google BigQuery with DBeaver with JDBC Drivers | Just Numbers &amp; Things">
+  <meta property="og:description" content="Update (2018-10-07) Shortly after this post DBeaver was updated with a native connector. Please see this post for a more up to date connection instructions if you have updated DBeaver to 5.2.2 or later.
+0) Install DBeaver You can find installation instructions here
 1) Download the latest drivers You can find the latest drivers on Google&rsquo;s website
 2) Create a folder to store the drivers mkdir ~/.dbeaver-drivers/bigquery/
-3) Extract driver jars and move to the folder we made earlier 4) Create a New Driver in DBeaver  Navigate to Database &gt; Driver Manager &gt; New Add all the files from ~/.dbeaver-drivers/bigquery/ Driver name: BigQuery (for labeling only) Class name: com.">
+3) Extract driver jars and move to the folder we made earlier 4) Create a New Driver in DBeaver  Navigate to Database &gt; Driver Manager &gt; New Add all the files from ~/.">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-09-22T00:00:00&#43;00:00">
@@ -119,7 +121,7 @@
 
   
 
-  <title> Connecting to Google BigQuery with DBeaver | Just Numbers &amp; Things</title>
+  <title> Connecting to Google BigQuery with DBeaver with JDBC Drivers | Just Numbers &amp; Things</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -255,7 +257,7 @@
 
 
   <div class="article-container">
-    <h1 itemprop="name"> Connecting to Google BigQuery with DBeaver</h1>
+    <h1 itemprop="name"> Connecting to Google BigQuery with DBeaver with JDBC Drivers</h1>
 
     
 
@@ -311,7 +313,7 @@
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=%20Connecting%20to%20Google%20BigQuery%20with%20DBeaver&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-09-22-dbeaver-bigquery%2f"
+         href="https://twitter.com/intent/tweet?text=%20Connecting%20to%20Google%20BigQuery%20with%20DBeaver%20with%20JDBC%20Drivers&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-09-22-dbeaver-bigquery%2f"
          target="_blank" rel="noopener">
         <i class="fab fa-twitter"></i>
       </a>
@@ -325,21 +327,21 @@
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-09-22-dbeaver-bigquery%2f&amp;title=%20Connecting%20to%20Google%20BigQuery%20with%20DBeaver"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-09-22-dbeaver-bigquery%2f&amp;title=%20Connecting%20to%20Google%20BigQuery%20with%20DBeaver%20with%20JDBC%20Drivers"
          target="_blank" rel="noopener">
         <i class="fab fa-linkedin-in"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-09-22-dbeaver-bigquery%2f&amp;title=%20Connecting%20to%20Google%20BigQuery%20with%20DBeaver"
+         href="http://service.weibo.com/share/share.php?url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-09-22-dbeaver-bigquery%2f&amp;title=%20Connecting%20to%20Google%20BigQuery%20with%20DBeaver%20with%20JDBC%20Drivers"
          target="_blank" rel="noopener">
         <i class="fab fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=%20Connecting%20to%20Google%20BigQuery%20with%20DBeaver&amp;body=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-09-22-dbeaver-bigquery%2f">
+         href="mailto:?subject=%20Connecting%20to%20Google%20BigQuery%20with%20DBeaver%20with%20JDBC%20Drivers&amp;body=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-09-22-dbeaver-bigquery%2f">
         <i class="fas fa-envelope"></i>
       </a>
     </li>
@@ -354,6 +356,12 @@
 
     <div class="article-style" itemprop="articleBody">
       
+
+<h1 id="update-2018-10-07">Update (2018-10-07)</h1>
+
+<p>Shortly after this post DBeaver was updated with a native connector.
+Please see this <a href="/post/2018-10-07-dbeaver-bigquery-part2/">post</a> for a more up to date connection instructions if
+you have updated DBeaver to 5.2.2 or later.</p>
 
 <h1 id="0-install-dbeaver">0) Install DBeaver</h1>
 
@@ -398,7 +406,7 @@
 <h1 id="6-create-a-new-connection">6) Create a New Connection</h1>
 
 <ol>
-<li>In the menu bar Navigate to <code>Database &gt; New Connection</code></li>
+<li>In the menu bar navigate to <code>Database &gt; New Connection</code></li>
 <li>Select BigQuery</li>
 <li>Fill in the appropriate values for host, server, user</li>
 <li>Set host to the path the service account key e.g., <code>/Users/admin/.dbeaver_drivers/bigquery/project_name-####.json</code></li>
@@ -415,11 +423,10 @@
 
 <ul>
 <li>If you receive <code>[Simba][BigQueryJDBCDriver](100004) HttpTransport IO error : 403 Forbidden</code> make sure you&rsquo;ve created a service account with the necessary permissions.</li>
-<li>As of Dbeaver 5.2.0 Dbeaver is unable to return arrays of ints and other numerics
+<li>-As of Dbeaver 5.2.0 Dbeaver is unable to return arrays of ints and other numerics-
 
 <ul>
 <li>e.g., select [1, 2] as ids results in <code>org.jkiss.dbeaver.model.exec.DBCException: SQL Error [10140] [22003]: [Simba][JDBC](10140) Error converting value to long.</code></li>
-<li>You can still use</li>
 </ul></li>
 </ul>
 

@@ -15,11 +15,11 @@
   
     
   
-  <meta name="description" content="What was I using before Previously I was using Pelican a static site generator written in Python. Personally I&rsquo;m a huge Python fan which led me to search out Pelican rather than go with a more popular solution such as Jekyll.
-Why Change As it turns out if you aren&rsquo;t going to be modifying the static site generator in anyway you don&rsquo;t need to concern yourself with the language that it is written in.">
+  <meta name="description" content="0) Install DBeaver You can find installation instructions here. Make sure to install version 5.2.2 or later. If you haven&rsquo;t updated to 5.2.2 or later you may use this post as a guide for connecting to BigQuery.
+1) Create a new service account  Instructions &amp; details for creating a new service account can be found on Google&rsquo;s website Grant your desired BigQuery permissions to your new service account Download the service account key  2) Create a new connection  In the menu bar navigate to Database &gt; New Connection Select BigQuery &amp; press next Fill in project with the name of your BigQuery Project  Optional, add additional projects in the subsequent field  Select service-based Fill in the name of the service account ex: bigquery-demo@project_name.">
 
   
-  <link rel="alternate" hreflang="en-us" href="http://justnumbersandthings.com/post/2018-03-23-hugo-migration/">
+  <link rel="alternate" hreflang="en-us" href="http://justnumbersandthings.com/post/2018-10-07-dbeaver-bigquery-part2/">
 
   
 
@@ -95,27 +95,27 @@ Why Change As it turns out if you aren&rsquo;t going to be modifying the static 
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="http://justnumbersandthings.com/post/2018-03-23-hugo-migration/">
+  <link rel="canonical" href="http://justnumbersandthings.com/post/2018-10-07-dbeaver-bigquery-part2/">
 
   <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="Just Numbers &amp; Things">
-  <meta property="og:url" content="http://justnumbersandthings.com/post/2018-03-23-hugo-migration/">
-  <meta property="og:title" content="Moved to Hugo | Just Numbers &amp; Things">
-  <meta property="og:description" content="What was I using before Previously I was using Pelican a static site generator written in Python. Personally I&rsquo;m a huge Python fan which led me to search out Pelican rather than go with a more popular solution such as Jekyll.
-Why Change As it turns out if you aren&rsquo;t going to be modifying the static site generator in anyway you don&rsquo;t need to concern yourself with the language that it is written in.">
+  <meta property="og:url" content="http://justnumbersandthings.com/post/2018-10-07-dbeaver-bigquery-part2/">
+  <meta property="og:title" content=" Connecting to Google BigQuery with DBeaver | Just Numbers &amp; Things">
+  <meta property="og:description" content="0) Install DBeaver You can find installation instructions here. Make sure to install version 5.2.2 or later. If you haven&rsquo;t updated to 5.2.2 or later you may use this post as a guide for connecting to BigQuery.
+1) Create a new service account  Instructions &amp; details for creating a new service account can be found on Google&rsquo;s website Grant your desired BigQuery permissions to your new service account Download the service account key  2) Create a new connection  In the menu bar navigate to Database &gt; New Connection Select BigQuery &amp; press next Fill in project with the name of your BigQuery Project  Optional, add additional projects in the subsequent field  Select service-based Fill in the name of the service account ex: bigquery-demo@project_name.">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2018-03-23T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2018-10-07T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2018-03-23T00:00:00&#43;00:00">
-  
-
+  <meta property="article:modified_time" content="2018-10-07T00:00:00&#43;00:00">
   
 
   
 
-  <title>Moved to Hugo | Just Numbers &amp; Things</title>
+  
+
+  <title> Connecting to Google BigQuery with DBeaver | Just Numbers &amp; Things</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -251,7 +251,7 @@ Why Change As it turns out if you aren&rsquo;t going to be modifying the static 
 
 
   <div class="article-container">
-    <h1 itemprop="name">Moved to Hugo</h1>
+    <h1 itemprop="name"> Connecting to Google BigQuery with DBeaver</h1>
 
     
 
@@ -266,9 +266,9 @@ Why Change As it turns out if you aren&rsquo;t going to be modifying the static 
 
   <span class="article-date">
     
-    <meta content="2018-03-23 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-    <time datetime="2018-03-23 00:00:00 &#43;0000 UTC" itemprop="dateModified">
-      2018-03-23
+    <meta content="2018-10-07 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+    <time datetime="2018-10-07 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+      2018-10-07
     </time>
   </span>
   <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
@@ -285,7 +285,7 @@ Why Change As it turns out if you aren&rsquo;t going to be modifying the static 
   
   
   <span class="middot-divider"></span>
-  <a href="/post/2018-03-23-hugo-migration/#disqus_thread"></a>
+  <a href="/post/2018-10-07-dbeaver-bigquery-part2/#disqus_thread"></a>
   
 
   
@@ -295,7 +295,7 @@ Why Change As it turns out if you aren&rsquo;t going to be modifying the static 
   <span class="article-categories">
     <i class="fas fa-folder"></i>
     
-    <a href="/categories/tinkerer/">Tinkerer</a>
+    <a href="/categories/analyst/">Analyst</a>
     
   </span>
   
@@ -307,35 +307,35 @@ Why Change As it turns out if you aren&rsquo;t going to be modifying the static 
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Moved%20to%20Hugo&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-03-23-hugo-migration%2f"
+         href="https://twitter.com/intent/tweet?text=%20Connecting%20to%20Google%20BigQuery%20with%20DBeaver&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-10-07-dbeaver-bigquery-part2%2f"
          target="_blank" rel="noopener">
         <i class="fab fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-03-23-hugo-migration%2f"
+         href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-10-07-dbeaver-bigquery-part2%2f"
          target="_blank" rel="noopener">
         <i class="fab fa-facebook-f"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-03-23-hugo-migration%2f&amp;title=Moved%20to%20Hugo"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-10-07-dbeaver-bigquery-part2%2f&amp;title=%20Connecting%20to%20Google%20BigQuery%20with%20DBeaver"
          target="_blank" rel="noopener">
         <i class="fab fa-linkedin-in"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-03-23-hugo-migration%2f&amp;title=Moved%20to%20Hugo"
+         href="http://service.weibo.com/share/share.php?url=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-10-07-dbeaver-bigquery-part2%2f&amp;title=%20Connecting%20to%20Google%20BigQuery%20with%20DBeaver"
          target="_blank" rel="noopener">
         <i class="fab fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Moved%20to%20Hugo&amp;body=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-03-23-hugo-migration%2f">
+         href="mailto:?subject=%20Connecting%20to%20Google%20BigQuery%20with%20DBeaver&amp;body=http%3a%2f%2fjustnumbersandthings.com%2fpost%2f2018-10-07-dbeaver-bigquery-part2%2f">
         <i class="fas fa-envelope"></i>
       </a>
     </li>
@@ -351,27 +351,44 @@ Why Change As it turns out if you aren&rsquo;t going to be modifying the static 
     <div class="article-style" itemprop="articleBody">
       
 
-<h2 id="what-was-i-using-before">What was I using before</h2>
+<h1 id="0-install-dbeaver">0) Install DBeaver</h1>
 
-<p>Previously I was using <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> a static site generator written in Python. Personally I&rsquo;m a huge Python fan which led me to search out Pelican rather than go with a more popular solution such as <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>.</p>
+<p>You can find installation instructions <a href="/post/2017-03-26-dbeaver-mac/">here</a>.
+Make sure to install version 5.2.2 or later. If you haven&rsquo;t updated to 5.2.2 or later you may use this <a href="/post/2018-09-22-dbeaver-bigquery/">post</a>
+as a guide for connecting to BigQuery.</p>
 
-<h2 id="why-change">Why Change</h2>
+<h1 id="1-create-a-new-service-account">1) Create a new service account</h1>
 
-<p>As it turns out if you aren&rsquo;t going to be modifying the static site generator in anyway you don&rsquo;t need to concern yourself with the language that it is written in. This fact escaped me while I was seeking out Pelican. Coming to this realization opened up a world of possibilities and when I saw an article discussing Hugo and its killer feature, <a href="https://gohugo.io/getting-started/usage/#livereload" target="_blank">Live Reload</a>, I made the jump!</p>
+<ol>
+<li>Instructions &amp; details for creating a new service account can be found on <a href="https://cloud.google.com/docs/authentication/production#auth-cloud-implicit-python" target="_blank">Google&rsquo;s website</a></li>
+<li>Grant your desired BigQuery permissions to your new service account</li>
+<li>Download the service account key</li>
+</ol>
 
-<h2 id="unique-migration-tasks">Unique Migration tasks</h2>
+<h1 id="2-create-a-new-connection">2) Create a new connection</h1>
 
-<p>The most complex task of this migration for me was ensuring that the old urls would point to the correct articles after I moved. fortunately Hugo made this dead simple via url <a href="https://gohugo.io/content-management/urls/#aliases" target="_blank">Aliases</a>.</p>
+<ol>
+<li>In the menu bar navigate to <code>Database &gt; New Connection</code></li>
+<li>Select BigQuery &amp; press next</li>
+<li>Fill in project with the name of your BigQuery Project
 
-<p>Simply add the following to the front matter of the article you&rsquo;d like migrate.</p>
+<ul>
+<li>Optional, add additional projects in the subsequent field</li>
+</ul></li>
+<li>Select service-based</li>
+<li>Fill in the name of the service account ex: <code>bigquery-demo@project_name.iam.gserviceaccount.com</code></li>
+<li>Fill in the path to the service key downloaded earlier</li>
+<li>Press finish</li>
+</ol>
 
-<pre><code>+++
-aliases = [
-    &quot;/posts/my-original-url/&quot;,
-    &quot;/2010/01/01/even-earlier-url.html&quot;
-]
-+++
-</code></pre>
+<p>Congrats you&rsquo;ve successfully connected to BigQuery using Dbeaver!</p>
+
+<h1 id="7-troubleshooting">7) Troubleshooting</h1>
+
+<ul>
+<li>If you receive
+<code>[Simba][BigQueryJDBCDriver](100004) HttpTransport IO error : 403 Forbidden</code> make sure you&rsquo;ve created a service account with the necessary permissions.</li>
+</ul>
 
     </div>
 
@@ -380,7 +397,11 @@ aliases = [
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="/tags/blogging/">Blogging</a>
+  <a class="badge badge-light" href="/tags/sql/">SQL</a>
+  
+  <a class="badge badge-light" href="/tags/dbeaver/">DBeaver</a>
+  
+  <a class="badge badge-light" href="/tags/bigquery/">BigQuery</a>
   
 </div>
 
@@ -394,7 +415,15 @@ aliases = [
       <h3>Related</h3>
       <ul>
         
-        <li><a href="/post/2017-03-03-pelican-intro/">First Blog With Pelican</a></li>
+        <li><a href="/post/2018-09-22-dbeaver-bigquery/"> Connecting to Google BigQuery with DBeaver with JDBC Drivers</a></li>
+        
+        <li><a href="/post/2018-09-23-exploring-complex-types-bigquery/">Exploring Complex Types in BigQuery</a></li>
+        
+        <li><a href="/post/2018-08-12-dbeaver-import-csv-2/">Importing a CSV into a database using DBeaver Part 2</a></li>
+        
+        <li><a href="/post/2018-06-12-dbeaver-import-csv/">Importing a CSV into a database using DBeaver</a></li>
+        
+        <li><a href="/post/2017-05-06-dbeaver-hive/"> Connecting to Hive with DBeaver using Kerberos Authentication</a></li>
         
       </ul>
     </div>
