@@ -1,24 +1,122 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>EGPU on Just Numbers &amp; Things</title>
+    <title>EGPU | Just Numbers &amp; Things</title>
     <link>http://justnumbersandthings.com/tags/egpu/</link>
-    <description>Recent content in EGPU on Just Numbers &amp; Things</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Thu, 28 Dec 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://justnumbersandthings.com/tags/egpu/index.xml" rel="self" type="application/rss+xml" />
-    
+      <atom:link href="http://justnumbersandthings.com/tags/egpu/index.xml" rel="self" type="application/rss+xml" />
+    <description>EGPU</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Thu, 28 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://justnumbersandthings.com/img/icon-192.png</url>
+      <title>EGPU</title>
+      <link>http://justnumbersandthings.com/tags/egpu/</link>
+    </image>
     
     <item>
       <title>macOS 10.13.2 EGPU Adventures</title>
       <link>http://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</link>
       <pubDate>Thu, 28 Dec 2017 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/post/2017-12-28-egpu-adventures/</guid>
-      <description>1) What is an EGPU &amp;amp; when did Apple start supporting them? The acronym EGPU stands for external GPU. Until recently they were relatively niche however, with the release of thunderbolt3 they have begun to gain traction. At WWDC17 Apple announced that they would be fully supported in High Sierra sometime during the spring of 2018. This news was welcomed at egpu.io where a community of capable individuals have been trail blazing EGPUs on macOS prior to 10.</description>
+      <description>
+
+&lt;h1 id=&#34;1-what-is-an-egpu-when-did-apple-start-supporting-them&#34;&gt;1) What is an EGPU &amp;amp; when did Apple start supporting them?&lt;/h1&gt;
+
+&lt;p&gt;The acronym EGPU stands for external &lt;a href=&#34;https://en.wikipedia.org/wiki/Graphics_processing_unit&#34; target=&#34;_blank&#34;&gt;GPU&lt;/a&gt;. Until recently they were relatively niche however, with the release of thunderbolt3 they have begun to gain traction. At WWDC17 Apple announced that they would be fully supported in High Sierra sometime during the spring of 2018. This news was welcomed at &lt;a href=&#34;egpu.io&#34; target=&#34;_blank&#34;&gt;egpu.io&lt;/a&gt; where a community of capable individuals have been trail blazing EGPUs on macOS &lt;a href=&#34;https://EGPU.io/setup-guide-external-graphics-card-mac/&#34; target=&#34;_blank&#34;&gt;prior to 10.13&lt;/a&gt; &amp;amp; Windows. They quickly updated some of their &lt;a href=&#34;https://EGPU.io/macos-high-sierra-official-external-gpu/&#34; target=&#34;_blank&#34;&gt;guides and recommendations&lt;/a&gt; to help beginners, such as myself, start their EGPU journey on High Sierra.&lt;/p&gt;
+
+&lt;h1 id=&#34;2-my-setup&#34;&gt;2) My setup&lt;/h1&gt;
+
+&lt;p&gt;So after reading about the success and watching several youtube reviews I thought it was time to give this EGPU thing a go. For my enclosure I decided to go with the &lt;a href=&#34;http://amzn.to/2CgKwQR&#34; target=&#34;_blank&#34;&gt;Mantiz Venus&lt;/a&gt; ($399). For my graphics card I decided to go with the &lt;a href=&#34;http://amzn.to/2Ci1wpR&#34; target=&#34;_blank&#34;&gt;Vega64&lt;/a&gt;. As a side note it looks like some users have had success with Nvidia cards on macOS after some elbow grease but AMD cards were reported to be plug and play; hence my decisions to go with AMD.&lt;/p&gt;
+
+&lt;h1 id=&#34;3-initial-experiences&#34;&gt;3) Initial experiences&lt;/h1&gt;
+
+&lt;p&gt;After plugging it in and turning it on for the first time I was excited to see that everything was working out of the box.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20171228_egpu_plug_n_play.png&#34; alt=&#34;plug_n_play&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The only oddity that I noticed at first is that system information lists the Vega64 as &amp;ldquo;AMD RX xxx&amp;rdquo;. However, his appears to only be a cosmetic issue so I ignore it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20171228_system_information.png&#34; alt=&#34;system_information&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So after my initial excitement I tried playing a couple games with my new setup and quickly stumbled across something I should have uncovered sooner in my research. The Vega64 is quite power hungry and the enclosure I purchased &lt;a href=&#34;https://myMantiz.com/pages/faq&#34; target=&#34;_blank&#34;&gt;doesn&amp;rsquo;t actually support it, it only supports Vega56&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For reference the problem that you&amp;rsquo;ll encounter is that the entire enclosure will shut down which results in a soft or sometimes a hard system crash. So for those are thinking about purchasing the Mantiz &amp;amp; Vega make sure to go with the Vega56 rather than the Vega64. However, if you are like me and already have a Vega64 and/or you want to try an unsupported setup keep reading.&lt;/p&gt;
+
+&lt;h1 id=&#34;4-resolving-the-power-draw-issue&#34;&gt;4) Resolving the power draw issue.&lt;/h1&gt;
+
+&lt;p&gt;After some more research I found a new &lt;a href=&#34;https://www.newegg.com/Product/Product.aspx?Item=N82E16817273013&#34; target=&#34;_blank&#34;&gt;power supply&lt;/a&gt; ($190) that would provide the needed power &amp;amp; had the same dimensions as the power supply that ships with the Mantiz. I&amp;rsquo;m happy to report that installing this part turned out to be essentially painless. The existing power supply comes out without much fuss and the new power supply fits perfectly in place of the old one. The only exception here is that the new power supply is a little longer than the existing one but there is ample room in the enclosure to accommodate this.&lt;/p&gt;
+
+&lt;h1 id=&#34;5-subsequent-experiences&#34;&gt;5) Subsequent experiences&lt;/h1&gt;
+
+&lt;p&gt;After upgrading the power supply I&amp;rsquo;ve yet to experience another power related crash and have had a far more enjoyable experience.&lt;/p&gt;
+
+&lt;p&gt;The only remaining issue that I&amp;rsquo;ve had is a rare crash. Twice I&amp;rsquo;ve had macOS freeze for several seconds followed by a flash which results in all of my applications being closed (according to the dock, force-quite dialogs, &amp;amp; command-tab) but leaving the underlying processes untouched. This results in a bizarre situation where I can&amp;rsquo;t view my application however, I can still hear the audio and see the process running in activity monitor. I expect/hope that this is one of those things that will be squashed once Apple rolls out official EGPU support in the spring with 10.13.x.&lt;/p&gt;
+
+&lt;h1 id=&#34;6-benchmarks&#34;&gt;6) Benchmarks&lt;/h1&gt;
+
+&lt;p&gt;What review of an EGPU setup would be complete without some benchmarks? Given the wide variety of applications &amp;amp; uses for an EGPU I decided to stay simple with some Geekbench benchmarks.&lt;/p&gt;
+
+&lt;p&gt;Using the AMD Pro 555 in my macbook-pro I received a score of &lt;a href=&#34;https://browser.geekbench.com/v4/compute/1670314&#34; target=&#34;_blank&#34;&gt;37,697&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20171228_internal_score.png&#34; alt=&#34;internal_score&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Using my EGPU setup I received a score of &lt;a href=&#34;https://browser.geekbench.com/v4/compute/1670320&#34; target=&#34;_blank&#34;&gt;175,303&lt;/a&gt; a 4.65x improvement over the internal GPU offered by Apple. Quite the improvement!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20171228_external_score.png&#34; alt=&#34;external_score&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;7-final-thoughts&#34;&gt;7) Final Thoughts&lt;/h1&gt;
+
+&lt;h2 id=&#34;pros&#34;&gt;Pros&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Performance
+
+&lt;ul&gt;
+&lt;li&gt;The Geekbench results show a 4.65x increase and my experiences with this increase have been tremendously positive&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Flexibility
+
+&lt;ul&gt;
+&lt;li&gt;If I need my laptop to be portable it is as simple as unplugging a cord&lt;/li&gt;
+&lt;li&gt;If I need my laptop to be ultra-fast it is as simple as plugging in a cord&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Upgradability
+
+&lt;ul&gt;
+&lt;li&gt;With this setup my Apple laptop now has an upgradable GPU which means I can keep my machine going for longer&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Ports
+
+&lt;ul&gt;
+&lt;li&gt;One of the nice things about the Mantiz enclosure is that it provides a lot of ports (5 USB &amp;amp; 1 gigabit ethernet port) and even includes a spot for a &lt;a href=&#34;https://www.amazon.com/gp/search?ie=UTF8&amp;amp;tag=justnumbersan-20&amp;amp;linkCode=ur2&amp;amp;linkId=f73bf29f7e5ed526f77b4bfb06ae1826&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;index=electronics&amp;amp;keywords=SSD&#34; target=&#34;_blank&#34;&gt;2.5&amp;rdquo; SSD Drive&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;So rather than buying more dongles you can utilize the Mantiz as a hub as well&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;cons&#34;&gt;Cons&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Weight
+
+&lt;ul&gt;
+&lt;li&gt;One thing that caught me off guard was just how heavy the enclosure &amp;amp; GPU were&lt;/li&gt;
+&lt;li&gt;It is far lighter than a desktop tower but still heavy enough to dissuade any thoughts of lugging it around&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Drivers
+
+&lt;ul&gt;
+&lt;li&gt;I thought that the Vega series would have first class support as an EGPU because of the Vega&amp;rsquo;s inclusion in the iMac Pro however, since system information doesn&amp;rsquo;t accurately identify the card it is clear that some support is still yet to come, likely in the spring&lt;/li&gt;
+&lt;li&gt;Update as of 10.13.4 This has been resolved with Apple now officially supporting EGPU setups&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Support (Apple now officially supports EGPU setups for AMD cards)
+
+&lt;ul&gt;
+&lt;li&gt;&lt;del&gt;If you go with the Vega or really any other setup other than the &lt;a href=&#34;https://developer.apple.com/development-kit/external-graphics/&#34; target=&#34;_blank&#34;&gt;Apple EGPU kit&lt;/a&gt; you are in an area that isn&amp;rsquo;t officially supported&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;That being said you won&amp;rsquo;t be alone or the first so don&amp;rsquo;t let that hold you back too much&lt;/del&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In summary I&amp;rsquo;d recommend an EGPU to anyone who is looking for a more robust GPU. The Pros are very compelling and the cons while worth considering don&amp;rsquo;t out weight the benefits for anyone looking for improved performance. The only other thing I&amp;rsquo;ll call out is that I&amp;rsquo;d recommend the &lt;a href=&#34;http://amzn.to/2C4u4Gw&#34; target=&#34;_blank&#34;&gt;Vega56&lt;/a&gt; + &lt;a href=&#34;http://amzn.to/2CgKwQR&#34; target=&#34;_blank&#34;&gt;Mantiz&lt;/a&gt; rather than the &lt;a href=&#34;http://amzn.to/2Ci1wpR&#34; target=&#34;_blank&#34;&gt;Vega64&lt;/a&gt; + Mantiz given the Vega64 requires an unsupported/warranty-breaking modification.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

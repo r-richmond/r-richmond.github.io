@@ -1,27 +1,116 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kerberos on Just Numbers &amp; Things</title>
+    <title>Kerberos | Just Numbers &amp; Things</title>
     <link>http://justnumbersandthings.com/tags/kerberos/</link>
-    <description>Recent content in Kerberos on Just Numbers &amp; Things</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sat, 06 May 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://justnumbersandthings.com/tags/kerberos/index.xml" rel="self" type="application/rss+xml" />
-    
+      <atom:link href="http://justnumbersandthings.com/tags/kerberos/index.xml" rel="self" type="application/rss+xml" />
+    <description>Kerberos</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Sat, 06 May 2017 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://justnumbersandthings.com/img/icon-192.png</url>
+      <title>Kerberos</title>
+      <link>http://justnumbersandthings.com/tags/kerberos/</link>
+    </image>
     
     <item>
       <title> Connecting to Hive with DBeaver using Kerberos Authentication</title>
       <link>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</link>
       <pubDate>Sat, 06 May 2017 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</guid>
-      <description>0) Install DBeaver You can find installation instructions here
-1) Download the latest drivers You can find the latest drivers on the Cloudera website
-2) Create a folder to store the drivers mkdir ~/.dbeaver-drivers/cloudera-hive/
-3) Extract driver jars and move to the folder we made earlier 4) Create a New Driver in DBeaver  Navigate to Database &amp;gt; Driver Manager &amp;gt; New Add all the files from ~/.dbeaver-drivers/cloudera-hive/ Driver name: Hive-Cloudera (for labeling only) Class name: com.</description>
+      <description>
+
+&lt;h1 id=&#34;0-install-dbeaver&#34;&gt;0) Install DBeaver&lt;/h1&gt;
+
+&lt;p&gt;You can find installation instructions &lt;a href=&#34;http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;1-download-the-latest-drivers&#34;&gt;1) Download the latest drivers&lt;/h1&gt;
+
+&lt;p&gt;You can find the latest drivers on the &lt;a href=&#34;https://www.cloudera.com/downloads/connectors/hive/jdbc.html&#34; target=&#34;_blank&#34;&gt;Cloudera website&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;2-create-a-folder-to-store-the-drivers&#34;&gt;2) Create a folder to store the drivers&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;mkdir ~/.dbeaver-drivers/cloudera-hive/&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;3-extract-driver-jars-and-move-to-the-folder-we-made-earlier&#34;&gt;3) Extract driver jars and move to the folder we made earlier&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20170506_hive_jars_in_place.png&#34; alt=&#34;jars_in_folder&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;4-create-a-new-driver-in-dbeaver&#34;&gt;4) Create a New Driver in DBeaver&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Navigate to &lt;code&gt;Database &amp;gt; Driver Manager &amp;gt; New&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add all the files from &lt;code&gt;~/.dbeaver-drivers/cloudera-hive/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Driver name: &lt;code&gt;Hive-Cloudera&lt;/code&gt; (for labeling only)&lt;/li&gt;
+&lt;li&gt;Class name: &lt;code&gt;com.cloudera.hive.jdbc41.HS2Driver&lt;/code&gt; (at the time of this writing)&lt;/li&gt;
+&lt;li&gt;Default port: &lt;code&gt;10000&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;URL template: &lt;code&gt;jdbc:hive2://{host}:{port}/{database};AuthMech=1;KrbRealm=FOO.BAR;KrbHostFQDN={server}; KrbServiceName=hive;KrbAuthType=2&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Note you need to change &lt;code&gt;FOO.BAR&lt;/code&gt; to match your krb5.conf settings&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;5-create-a-new-connection&#34;&gt;5) Create a New Connection&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;In the menu bar Navigate to &lt;code&gt;Database &amp;gt; New Connection&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Select Hive-Cloudera&lt;/li&gt;
+&lt;li&gt;Fill in the appropriate values for host &amp;amp; database (I set database to default)&lt;/li&gt;
+&lt;li&gt;Set server to be your KrbHostFQDN&lt;/li&gt;
+&lt;li&gt;Leave your user name &amp;amp; password blank&lt;/li&gt;
+&lt;li&gt;Test connection&lt;/li&gt;
+&lt;li&gt;Press next, next, &amp;amp; change the name of this connection as you see fit&lt;/li&gt;
+&lt;li&gt;Press finish&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Congrats you&amp;rsquo;ve successfully connected to hive using kerberos authentication!&lt;/p&gt;
+
+&lt;h1 id=&#34;6-troubleshooting&#34;&gt;6) Troubleshooting&lt;/h1&gt;
+
+&lt;p&gt;If you are receiving &lt;code&gt;[Cloudera][HiveJDBCDriver](500168) Error creating login context using ticket cache: Unable to obtain Principal Name for authentication&lt;/code&gt; make sure to check the following&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Ensure that you have the latest cryptography libraries installed
+
+&lt;ul&gt;
+&lt;li&gt;Java 9 includes these libraries by default&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;That you&amp;rsquo;ve configured your &lt;code&gt;/etc/krb5.conf&lt;/code&gt; successfully
+
+&lt;ul&gt;
+&lt;li&gt;If you&amp;rsquo;ve done this correctly you should be able to run &lt;code&gt;kinit&lt;/code&gt; in terminal and create a ticket without issue&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;For Windows adding the following lines to your dbeaver.ini may be necessary as well&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-Djava.security.krb5.conf=c:\kerberos\krb5.ini&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;note: this is the windows equivalent of &lt;code&gt;/etc/krb5.conf&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;-Djava.security.auth.login.config=c:\kerberos\jaas.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;success has also been reported with the following jaas.conf file &amp;amp; keytab usage&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Client {
+com.sun.security.auth.module.Krb5LoginModule required
+debug=true
+doNotPrompt=true
+useKeyTab=true
+keyTab=&amp;quot;C:\Users\{user}\krb5cc_{user}&amp;quot;
+useTicketCache=true
+renewTGT=true
+principal=&amp;quot;{user}@FOO.BAR&amp;quot;
+;
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
     </item>
     
   </channel>

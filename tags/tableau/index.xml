@@ -1,24 +1,60 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tableau on Just Numbers &amp; Things</title>
+    <title>Tableau | Just Numbers &amp; Things</title>
     <link>http://justnumbersandthings.com/tags/tableau/</link>
-    <description>Recent content in Tableau on Just Numbers &amp; Things</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 04 Jun 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://justnumbersandthings.com/tags/tableau/index.xml" rel="self" type="application/rss+xml" />
-    
+      <atom:link href="http://justnumbersandthings.com/tags/tableau/index.xml" rel="self" type="application/rss+xml" />
+    <description>Tableau</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Sun, 04 Jun 2017 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://justnumbersandthings.com/img/icon-192.png</url>
+      <title>Tableau</title>
+      <link>http://justnumbersandthings.com/tags/tableau/</link>
+    </image>
     
     <item>
       <title>Improving Tableau&#39;s Document API</title>
       <link>http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</link>
       <pubDate>Sun, 04 Jun 2017 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/post/2017-06-04-improving-tableaus-document-api/</guid>
-      <description>1) What is Tableau&amp;rsquo;s Document API? With the release of Tableau 10, Tableau released a python utility called the Tableau Document API (or TDA for short). TDA allows users to easily programmatically modify tableau workbooks. Modifying tableau workbooks without using Tableau Desktop was possible before as tableau files .twb are actually just xml files. However, manually editing the xml of .twb files could easily result in a corrupted workbook. Fortunately with the release of this tool it is now much less risky to modify workbooks without using Tableau Desktop.</description>
+      <description>
+
+&lt;h1 id=&#34;1-what-is-tableau-s-document-api&#34;&gt;1) What is Tableau&amp;rsquo;s Document API?&lt;/h1&gt;
+
+&lt;p&gt;With the release of Tableau 10, Tableau released a &lt;a href=&#34;https://github.com/tableau/document-api-python&#34; target=&#34;_blank&#34;&gt;python utility&lt;/a&gt; called the Tableau Document API (or TDA for short). TDA allows users to easily programmatically modify tableau workbooks. Modifying tableau workbooks without using Tableau Desktop was possible before as tableau files &lt;code&gt;.twb&lt;/code&gt; are actually just xml files. However, manually editing the xml of &lt;code&gt;.twb&lt;/code&gt; files could easily result in a corrupted workbook. Fortunately with the release of this tool it is now much less risky to modify workbooks without using Tableau Desktop.&lt;/p&gt;
+
+&lt;h1 id=&#34;2-using-tableau-s-document-api&#34;&gt;2) Using Tableau&amp;rsquo;s Document API&lt;/h1&gt;
+
+&lt;p&gt;TDA is written in Python so using it is as simple as &lt;code&gt;pip install TableauDocumentApi&lt;/code&gt; and &lt;code&gt;import TableauDocumentApi&lt;/code&gt;. For example if you needed to update the connection strings in a dozen local tableau files you could use the following script to update them all.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import TableauDocumentApi as tda
+import glob, os
+
+os.chdir(&amp;quot;my_folder&amp;quot;)
+for file in glob.glob(&amp;quot;*.twb&amp;quot;):
+  tableau_workbook = tda.Workbook(file)
+  for datasource in tableau_workbook.datasources:
+    for connection in datasource.connections:
+      connection.server = &#39;my-new-host&#39;
+tableau_workbook.save()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;3-tableau-s-query-bands-initial-sql&#34;&gt;3) Tableau&amp;rsquo;s Query Bands &amp;amp; Initial SQL&lt;/h1&gt;
+
+&lt;p&gt;Taking a step away from TDA for a moment Tableau has two less visible but still immensely useful features: &lt;a href=&#34;http://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_teradata.html#initial_sql&#34; target=&#34;_blank&#34;&gt;Initial SQL&lt;/a&gt; &amp;amp; &lt;a href=&#34;http://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_teradata.html#query_band&#34; target=&#34;_blank&#34;&gt;querybands&lt;/a&gt;. I&amp;rsquo;ve personally used these features to stage temporary tables &amp;amp; tag each query (there are so many&amp;hellip;) that tableau runs.&lt;/p&gt;
+
+&lt;h1 id=&#34;4-how-does-this-relate-to-the-tableaudocumentapi&#34;&gt;4) How does this relate to the TableauDocumentAPI&lt;/h1&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/t8y8/document-api-python/blob/3a38058f168e29874dc95af4f697888bba71a4fe/tableaudocumentapi/connection.py&#34; target=&#34;_blank&#34;&gt;first version I used of Tableau&amp;rsquo;s Document API&lt;/a&gt; did not support modifying initial sql &amp;amp; query bands. After being faced with modifying thousands of workbooks to use query bands I decided to review the library and see if support could be easily added. Glancing at the source code I could see that each of the properties of a connection was cleanly defined. Using Port as an example I was able to submit a &lt;a href=&#34;https://github.com/tableau/document-api-python/pull/123&#34; target=&#34;_blank&#34;&gt;pull request&lt;/a&gt; implementing the functionality. Fortunately, the Tableau team was very responsive and quickly merged the pull request.&lt;/p&gt;
+
+&lt;h1 id=&#34;5-tying-it-all-together&#34;&gt;5) Tying it all together&lt;/h1&gt;
+
+&lt;p&gt;So now if you find yourself in a situation where you need to modify the query bands or the initial sql in your workbooks you can use the TDA to save yourself some time.&lt;/p&gt;
+
+&lt;p&gt;Update: Looks like Tableau was even kind enough to mention this new feature in the &lt;a href=&#34;https://www.tableau.com/about/blog/2017/2/check-out-new-enterprise-features-tableau-102-66459&#34; target=&#34;_blank&#34;&gt;release notes of 10.2&lt;/a&gt; Search for &amp;ldquo;and with our Document API&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Cheers!&lt;/p&gt;
+</description>
     </item>
     
   </channel>

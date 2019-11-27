@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>isql | Just Numbers &amp; Things</title>
+    <link>http://justnumbersandthings.com/tags/isql/</link>
+      <atom:link href="http://justnumbersandthings.com/tags/isql/index.xml" rel="self" type="application/rss+xml" />
+    <description>isql</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Sun, 24 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://justnumbersandthings.com/img/icon-192.png</url>
+      <title>isql</title>
+      <link>http://justnumbersandthings.com/tags/isql/</link>
+    </image>
+    
+    <item>
+      <title> Setting up Oracle ODBC on macOS with ISQL</title>
+      <link>http://justnumbersandthings.com/post/2019-11-24-setup-oracle-odbc-with-isql/</link>
+      <pubDate>Sun, 24 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>http://justnumbersandthings.com/post/2019-11-24-setup-oracle-odbc-with-isql/</guid>
+      <description>
+
+&lt;h1 id=&#34;0-install-isql&#34;&gt;0) Install ISQL&lt;/h1&gt;
+
+&lt;p&gt;If you&amp;rsquo;re on macOS the easiest way to install isql is using &lt;a href=&#34;https://brew.sh&#34; target=&#34;_blank&#34;&gt;homebrew&lt;/a&gt; &lt;code&gt;brew install unixodbc&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;1-download-drivers&#34;&gt;1) Download drivers&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download ODBC Package &amp;amp; Basic Package from &lt;a href=&#34;https://www.oracle.com/database/technologies/instant-client/macos-intel-x86-downloads.html&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Create an oracle account if necessary&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;2-prepare-driver-files&#34;&gt;2) Prepare driver files&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;cd Downloads&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;unzip instantclient-basic-macos.x64-19.3.0.0.0dbru.zip&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;unsip instantclient-odbc-macos.x64-19.3.0.0.0dbru.zip&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mkdir ~/lib&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mkdir -p /opt/oracle/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mv $(pwd)/instantclient_19_3 /opt/oracle/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln -s /opt/oracle/instantclient_19_3/libclntsh.dylib.19.1 /opt/oracle/instantclient_19_3/libclntshcore.dylib.19.1 ~/lib&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;3-update-odbc-ini-files&#34;&gt;3) Update ODBC ini files&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;update &lt;code&gt;odbcinst.ini&lt;/code&gt; to add&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[ODBC Drivers]
+Oracle ODBC Driver = Installed
+...
+...
+[Oracle ODBC Driver]
+Description = Oracle 19 ODBC driver
+Driver      = /opt/oracle/instantclient_19_3/libsqora.dylib.19.1
+Setup       =
+FileUsage   =
+CPTimeout   =
+CPReuse     =
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Update &lt;code&gt;odbc.ini&lt;/code&gt; to add&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[ODBC Data Sources]
+{dsn_name} = [Oracle ODBC Driver]
+...
+...
+[{dsn_name}]
+AggregateSQLType=FLOAT
+Application Attributes=T
+Attributes=W
+BatchAutocommitMode=IfAllSuccessful
+BindAsFLOAT=F
+CacheBufferSize=20
+CloseCursor=F
+DisableDPM=F
+DisableMTS=T
+DisableRULEHint=T
+Driver=/opt/oracle/instantclient_19_3/libsqora.dylib.19.1
+DSN={dsn_name}
+EXECSchemaOpt=
+EXECSyntax=T
+Failover=T
+FailoverDelay=10
+FailoverRetryCount=10
+FetchBufferSize=64000
+ForceWCHAR=F
+LobPrefetchSize=8192
+Lobs=T
+Longs=T
+MaxLargeData=0
+MaxTokenSize=8192
+MetadataIdDefault=F
+QueryTimeout=T
+ResultSets=T
+ServerName={host}:{port}/{server}
+SQLGetData extensions=F
+SQLTranslateErrors=F
+StatementCache=F
+Translation DLL=
+Translation Option=0
+UseOCIDescribeAny=F
+UserID={username}
+Password={password}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;4-verify-installation&#34;&gt;4) Verify installation&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Verify by connecting &lt;code&gt;isql -v {dsn_name}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Note: on macOS Catalina or later you may have to workaround the lack of notarization by navigating to &amp;ldquo;system preferences&amp;gt;security&amp;gt;allow&amp;rdquo; and approving multiple files after multiple connection attempts using step 4.1&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

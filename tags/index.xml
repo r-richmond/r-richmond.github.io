@@ -1,41 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Just Numbers &amp; Things</title>
+    <title>Tags | Just Numbers &amp; Things</title>
     <link>http://justnumbersandthings.com/tags/</link>
-    <description>Recent content in Tags on Just Numbers &amp; Things</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 07 Oct 2018 00:00:00 +0000</lastBuildDate>
+      <atom:link href="http://justnumbersandthings.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <description>Tags</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Sun, 24 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://justnumbersandthings.com/img/icon-192.png</url>
+      <title>Tags</title>
+      <link>http://justnumbersandthings.com/tags/</link>
+    </image>
     
-	<atom:link href="http://justnumbersandthings.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>isql</title>
+      <link>http://justnumbersandthings.com/tags/isql/</link>
+      <pubDate>Sun, 24 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>http://justnumbersandthings.com/tags/isql/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>ODBC</title>
+      <link>http://justnumbersandthings.com/tags/odbc/</link>
+      <pubDate>Sun, 24 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>http://justnumbersandthings.com/tags/odbc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oracle</title>
+      <link>http://justnumbersandthings.com/tags/oracle/</link>
+      <pubDate>Sun, 24 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>http://justnumbersandthings.com/tags/oracle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQL</title>
+      <link>http://justnumbersandthings.com/tags/sql/</link>
+      <pubDate>Sun, 24 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>http://justnumbersandthings.com/tags/sql/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>BigQuery</title>
       <link>http://justnumbersandthings.com/tags/bigquery/</link>
       <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/tags/bigquery/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Blogging</title>
-      <link>http://justnumbersandthings.com/tags/blogging/</link>
-      <pubDate>Fri, 23 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://justnumbersandthings.com/tags/blogging/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>CSV</title>
-      <link>http://justnumbersandthings.com/tags/csv/</link>
-      <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://justnumbersandthings.com/tags/csv/</guid>
       <description></description>
     </item>
     
@@ -43,8 +56,23 @@
       <title>DBeaver</title>
       <link>http://justnumbersandthings.com/tags/dbeaver/</link>
       <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/tags/dbeaver/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CSV</title>
+      <link>http://justnumbersandthings.com/tags/csv/</link>
+      <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
+      <guid>http://justnumbersandthings.com/tags/csv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blogging</title>
+      <link>http://justnumbersandthings.com/tags/blogging/</link>
+      <pubDate>Fri, 23 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>http://justnumbersandthings.com/tags/blogging/</guid>
       <description></description>
     </item>
     
@@ -52,8 +80,23 @@
       <title>EGPU</title>
       <link>http://justnumbersandthings.com/tags/egpu/</link>
       <pubDate>Thu, 28 Dec 2017 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/tags/egpu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>http://justnumbersandthings.com/tags/python/</link>
+      <pubDate>Sun, 04 Jun 2017 00:00:00 +0000</pubDate>
+      <guid>http://justnumbersandthings.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tableau</title>
+      <link>http://justnumbersandthings.com/tags/tableau/</link>
+      <pubDate>Sun, 04 Jun 2017 00:00:00 +0000</pubDate>
+      <guid>http://justnumbersandthings.com/tags/tableau/</guid>
       <description></description>
     </item>
     
@@ -61,7 +104,6 @@
       <title>Hive</title>
       <link>http://justnumbersandthings.com/tags/hive/</link>
       <pubDate>Sat, 06 May 2017 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/tags/hive/</guid>
       <description></description>
     </item>
@@ -70,35 +112,7 @@
       <title>Kerberos</title>
       <link>http://justnumbersandthings.com/tags/kerberos/</link>
       <pubDate>Sat, 06 May 2017 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/tags/kerberos/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>http://justnumbersandthings.com/tags/python/</link>
-      <pubDate>Sun, 04 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://justnumbersandthings.com/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SQL</title>
-      <link>http://justnumbersandthings.com/tags/sql/</link>
-      <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://justnumbersandthings.com/tags/sql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tableau</title>
-      <link>http://justnumbersandthings.com/tags/tableau/</link>
-      <pubDate>Sun, 04 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://justnumbersandthings.com/tags/tableau/</guid>
       <description></description>
     </item>
     

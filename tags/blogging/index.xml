@@ -1,36 +1,88 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogging on Just Numbers &amp; Things</title>
+    <title>Blogging | Just Numbers &amp; Things</title>
     <link>http://justnumbersandthings.com/tags/blogging/</link>
-    <description>Recent content in Blogging on Just Numbers &amp; Things</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Fri, 23 Mar 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://justnumbersandthings.com/tags/blogging/index.xml" rel="self" type="application/rss+xml" />
-    
+      <atom:link href="http://justnumbersandthings.com/tags/blogging/index.xml" rel="self" type="application/rss+xml" />
+    <description>Blogging</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Fri, 23 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://justnumbersandthings.com/img/icon-192.png</url>
+      <title>Blogging</title>
+      <link>http://justnumbersandthings.com/tags/blogging/</link>
+    </image>
     
     <item>
       <title>Moved to Hugo</title>
       <link>http://justnumbersandthings.com/post/2018-03-23-hugo-migration/</link>
       <pubDate>Fri, 23 Mar 2018 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/post/2018-03-23-hugo-migration/</guid>
-      <description>What was I using before Previously I was using Pelican a static site generator written in Python. Personally I&amp;rsquo;m a huge Python fan which led me to search out Pelican rather than go with a more popular solution such as Jekyll.
-Why Change As it turns out if you aren&amp;rsquo;t going to be modifying the static site generator in anyway you don&amp;rsquo;t need to concern yourself with the language that it is written in.</description>
+      <description>
+
+&lt;h2 id=&#34;what-was-i-using-before&#34;&gt;What was I using before&lt;/h2&gt;
+
+&lt;p&gt;Previously I was using &lt;a href=&#34;https://github.com/getpelican/pelican&#34; target=&#34;_blank&#34;&gt;Pelican&lt;/a&gt; a static site generator written in Python. Personally I&amp;rsquo;m a huge Python fan which led me to search out Pelican rather than go with a more popular solution such as &lt;a href=&#34;https://jekyllrb.com/&#34; target=&#34;_blank&#34;&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;why-change&#34;&gt;Why Change&lt;/h2&gt;
+
+&lt;p&gt;As it turns out if you aren&amp;rsquo;t going to be modifying the static site generator in anyway you don&amp;rsquo;t need to concern yourself with the language that it is written in. This fact escaped me while I was seeking out Pelican. Coming to this realization opened up a world of possibilities and when I saw an article discussing Hugo and its killer feature, &lt;a href=&#34;https://gohugo.io/getting-started/usage/#livereload&#34; target=&#34;_blank&#34;&gt;Live Reload&lt;/a&gt;, I made the jump!&lt;/p&gt;
+
+&lt;h2 id=&#34;unique-migration-tasks&#34;&gt;Unique Migration tasks&lt;/h2&gt;
+
+&lt;p&gt;The most complex task of this migration for me was ensuring that the old urls would point to the correct articles after I moved. fortunately Hugo made this dead simple via url &lt;a href=&#34;https://gohugo.io/content-management/urls/#aliases&#34; target=&#34;_blank&#34;&gt;Aliases&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Simply add the following to the front matter of the article you&amp;rsquo;d like migrate.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+++
+aliases = [
+    &amp;quot;/posts/my-original-url/&amp;quot;,
+    &amp;quot;/2010/01/01/even-earlier-url.html&amp;quot;
+]
++++
+&lt;/code&gt;&lt;/pre&gt;
+</description>
     </item>
     
     <item>
       <title>First Blog With Pelican</title>
       <link>http://justnumbersandthings.com/post/2017-03-03-pelican-intro/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/post/2017-03-03-pelican-intro/</guid>
-      <description>Update 2018-03-18: I&amp;rsquo;ve since moved to Hugo This is my first blog post using Pelican and Markdown. A lot of the content below is to be used as reference mostly for myself and any others who are exploring using Python3, Pelican, &amp;amp; Markdown to create a blog.
-How to get up and running
-mkvirtualenv personal_blog pip install pelican pip install markdown pip install fabric3 pip install ghp-import pip install webassets npm install less -g cd Dropbox/projects/python/personal_blog/ git clone https://github.</description>
+      <description>
+
+&lt;h2 id=&#34;update-2018-03-18-i-ve-since-moved-to-hugo&#34;&gt;Update 2018-03-18: I&amp;rsquo;ve since moved to Hugo&lt;/h2&gt;
+
+&lt;p&gt;This is my first blog post using Pelican and Markdown. A lot of the content below is to be used as reference mostly for myself and any others who are exploring using Python3, Pelican, &amp;amp; Markdown to create a blog.&lt;/p&gt;
+
+&lt;p&gt;How to get up and running&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkvirtualenv personal_blog
+pip install pelican
+pip install markdown
+pip install fabric3
+pip install ghp-import
+pip install webassets
+npm install less -g
+cd Dropbox/projects/python/personal_blog/
+git clone https://github.com/r-richmond/rirchmond.github.io.git
+git submodule add https://github.com/textbook/bulrush.git
+git submodule add https://github.com/getpelican/pelican-plugins.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Running commands using Fab3 which help prepare posts&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;fab rebuild
+fab preview
+fab serve
+fab clean
+fab gh_pages
+fab reserve
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This &lt;a href=&#34;http://nafiulis.me/making-a-static-blog-with-pelican.html&#34; target=&#34;_blank&#34;&gt;post&lt;/a&gt; was very helpful as well&lt;/p&gt;
+
+&lt;p&gt;I followed this &lt;a href=&#34;http://www.curtismlarson.com/blog/2015/04/12/github-pages-google-domains/&#34; target=&#34;_blank&#34;&gt;post&lt;/a&gt; to setup my custom domain&lt;/p&gt;
+</description>
     </item>
     
   </channel>

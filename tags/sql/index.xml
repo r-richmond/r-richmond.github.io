@@ -1,93 +1,682 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SQL on Just Numbers &amp; Things</title>
+    <title>SQL | Just Numbers &amp; Things</title>
     <link>http://justnumbersandthings.com/tags/sql/</link>
-    <description>Recent content in SQL on Just Numbers &amp; Things</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 07 Oct 2018 00:00:00 +0000</lastBuildDate>
+      <atom:link href="http://justnumbersandthings.com/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <description>SQL</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Sun, 24 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://justnumbersandthings.com/img/icon-192.png</url>
+      <title>SQL</title>
+      <link>http://justnumbersandthings.com/tags/sql/</link>
+    </image>
     
-	<atom:link href="http://justnumbersandthings.com/tags/sql/index.xml" rel="self" type="application/rss+xml" />
-    
+    <item>
+      <title> Setting up Oracle ODBC on macOS with ISQL</title>
+      <link>http://justnumbersandthings.com/post/2019-11-24-setup-oracle-odbc-with-isql/</link>
+      <pubDate>Sun, 24 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>http://justnumbersandthings.com/post/2019-11-24-setup-oracle-odbc-with-isql/</guid>
+      <description>
+
+&lt;h1 id=&#34;0-install-isql&#34;&gt;0) Install ISQL&lt;/h1&gt;
+
+&lt;p&gt;If you&amp;rsquo;re on macOS the easiest way to install isql is using &lt;a href=&#34;https://brew.sh&#34; target=&#34;_blank&#34;&gt;homebrew&lt;/a&gt; &lt;code&gt;brew install unixodbc&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;1-download-drivers&#34;&gt;1) Download drivers&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download ODBC Package &amp;amp; Basic Package from &lt;a href=&#34;https://www.oracle.com/database/technologies/instant-client/macos-intel-x86-downloads.html&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Create an oracle account if necessary&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;2-prepare-driver-files&#34;&gt;2) Prepare driver files&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;cd Downloads&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;unzip instantclient-basic-macos.x64-19.3.0.0.0dbru.zip&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;unsip instantclient-odbc-macos.x64-19.3.0.0.0dbru.zip&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mkdir ~/lib&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mkdir -p /opt/oracle/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mv $(pwd)/instantclient_19_3 /opt/oracle/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln -s /opt/oracle/instantclient_19_3/libclntsh.dylib.19.1 /opt/oracle/instantclient_19_3/libclntshcore.dylib.19.1 ~/lib&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;3-update-odbc-ini-files&#34;&gt;3) Update ODBC ini files&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;update &lt;code&gt;odbcinst.ini&lt;/code&gt; to add&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[ODBC Drivers]
+Oracle ODBC Driver = Installed
+...
+...
+[Oracle ODBC Driver]
+Description = Oracle 19 ODBC driver
+Driver      = /opt/oracle/instantclient_19_3/libsqora.dylib.19.1
+Setup       =
+FileUsage   =
+CPTimeout   =
+CPReuse     =
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Update &lt;code&gt;odbc.ini&lt;/code&gt; to add&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[ODBC Data Sources]
+{dsn_name} = [Oracle ODBC Driver]
+...
+...
+[{dsn_name}]
+AggregateSQLType=FLOAT
+Application Attributes=T
+Attributes=W
+BatchAutocommitMode=IfAllSuccessful
+BindAsFLOAT=F
+CacheBufferSize=20
+CloseCursor=F
+DisableDPM=F
+DisableMTS=T
+DisableRULEHint=T
+Driver=/opt/oracle/instantclient_19_3/libsqora.dylib.19.1
+DSN={dsn_name}
+EXECSchemaOpt=
+EXECSyntax=T
+Failover=T
+FailoverDelay=10
+FailoverRetryCount=10
+FetchBufferSize=64000
+ForceWCHAR=F
+LobPrefetchSize=8192
+Lobs=T
+Longs=T
+MaxLargeData=0
+MaxTokenSize=8192
+MetadataIdDefault=F
+QueryTimeout=T
+ResultSets=T
+ServerName={host}:{port}/{server}
+SQLGetData extensions=F
+SQLTranslateErrors=F
+StatementCache=F
+Translation DLL=
+Translation Option=0
+UseOCIDescribeAny=F
+UserID={username}
+Password={password}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;4-verify-installation&#34;&gt;4) Verify installation&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Verify by connecting &lt;code&gt;isql -v {dsn_name}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Note: on macOS Catalina or later you may have to workaround the lack of notarization by navigating to &amp;ldquo;system preferences&amp;gt;security&amp;gt;allow&amp;rdquo; and approving multiple files after multiple connection attempts using step 4.1&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title> Connecting to Google BigQuery with DBeaver</title>
       <link>http://justnumbersandthings.com/post/2018-10-07-dbeaver-bigquery-part2/</link>
       <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/post/2018-10-07-dbeaver-bigquery-part2/</guid>
-      <description>0) Install DBeaver You can find installation instructions here. Make sure to install version 5.2.2 or later. If you haven&amp;rsquo;t updated to 5.2.2 or later you may use this post as a guide for connecting to BigQuery.
-1) Create a new service account  Instructions &amp;amp; details for creating a new service account can be found on Google&amp;rsquo;s website Grant your desired BigQuery permissions to your new service account Download the service account key  2) Create a new connection  In the menu bar navigate to Database &amp;gt; New Connection Select BigQuery &amp;amp; press next Fill in project with the name of your BigQuery Project  Optional, add additional projects in the subsequent field  Select service-based Fill in the name of the service account ex: bigquery-demo@project_name.</description>
+      <description>
+
+&lt;h1 id=&#34;0-install-dbeaver&#34;&gt;0) Install DBeaver&lt;/h1&gt;
+
+&lt;p&gt;You can find installation instructions &lt;a href=&#34;http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/&#34;&gt;here&lt;/a&gt;.
+Make sure to install version 5.2.2 or later. If you haven&amp;rsquo;t updated to 5.2.2 or later you may use this &lt;a href=&#34;http://justnumbersandthings.com/post/2018-09-22-dbeaver-bigquery/&#34;&gt;post&lt;/a&gt;
+as a guide for connecting to BigQuery.&lt;/p&gt;
+
+&lt;h1 id=&#34;1-create-a-new-service-account&#34;&gt;1) Create a new service account&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Instructions &amp;amp; details for creating a new service account can be found on &lt;a href=&#34;https://cloud.google.com/docs/authentication/production#auth-cloud-implicit-python&#34; target=&#34;_blank&#34;&gt;Google&amp;rsquo;s website&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Grant your desired BigQuery permissions to your new service account&lt;/li&gt;
+&lt;li&gt;Download the service account key&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;2-create-a-new-connection&#34;&gt;2) Create a new connection&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;In the menu bar navigate to &lt;code&gt;Database &amp;gt; New Connection&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Select BigQuery &amp;amp; press next&lt;/li&gt;
+&lt;li&gt;Fill in project with the name of your BigQuery Project
+
+&lt;ul&gt;
+&lt;li&gt;Optional, add additional projects in the subsequent field&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Select service-based&lt;/li&gt;
+&lt;li&gt;Fill in the name of the service account ex: &lt;code&gt;bigquery-demo@project_name.iam.gserviceaccount.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Fill in the path to the service key downloaded earlier&lt;/li&gt;
+&lt;li&gt;Press finish&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Congrats you&amp;rsquo;ve successfully connected to BigQuery using Dbeaver!&lt;/p&gt;
+
+&lt;h1 id=&#34;7-troubleshooting&#34;&gt;7) Troubleshooting&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you receive
+&lt;code&gt;[Simba][BigQueryJDBCDriver](100004) HttpTransport IO error : 403 Forbidden&lt;/code&gt; make sure you&amp;rsquo;ve created a service account with the necessary permissions.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
       <title>Exploring Complex Types in BigQuery</title>
       <link>http://justnumbersandthings.com/post/2018-09-23-exploring-complex-types-bigquery/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/post/2018-09-23-exploring-complex-types-bigquery/</guid>
-      <description>Introduction Google&amp;rsquo;s BigQuery has support for complex types (arrays &amp;amp; structs) which are relatively new in analytical databases. While the ideas and of arrays and structs aren&amp;rsquo;t unique to BigQuery some of the syntax and capabilities are unique. In this post I&amp;rsquo;ll be going over what I&amp;rsquo;ve found to be the most useful patterns and tricks.
-Arrays Put plainly an array is a series of values of the same type stored within a single value.</description>
+      <description>
+
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Google&amp;rsquo;s BigQuery has support for complex types (arrays &amp;amp; structs) which are relatively new in analytical databases.
+While the ideas and of arrays and structs aren&amp;rsquo;t unique to BigQuery some of the syntax and capabilities are unique.
+In this post I&amp;rsquo;ll be going over what I&amp;rsquo;ve found to be the most useful patterns and tricks.&lt;/p&gt;
+
+&lt;h2 id=&#34;arrays&#34;&gt;Arrays&lt;/h2&gt;
+
+&lt;p&gt;Put plainly an array is a series of values of the same type stored within a single value.
+You can create array literals via brackets &lt;code&gt;[]&lt;/code&gt; as demonstrated by the following snippet.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select [1, 2, 3] as array_of_ints
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can also explicitly declare the type of an array as follows.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  [&#39;2018-01-01&#39;, &#39;2018-02-01&#39;, &#39;2018-03-01&#39;] as array_of_string,
+  array&amp;lt;date&amp;gt;[&#39;2018-01-01&#39;, &#39;2018-02-01&#39;, &#39;2018-03-01&#39;] as array_of_date
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;structs&#34;&gt;Structs&lt;/h2&gt;
+
+&lt;p&gt;A struct is a grouping of values that need not be of the same type and is very similar to the concept of tuples.
+They are commonly used to group related values together.
+You can create struct literals using the function struct&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select struct(1 as id, 2 as value) as user_info
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;purpose&#34;&gt;Purpose&lt;/h2&gt;
+
+&lt;p&gt;Arrays and structs allow for a more compact organization of related data which makes writing and reading many queries easier.
+So while BigQuery is the engine that I&amp;rsquo;m covering today I expect these concepts to spread to other databases as knowledge of their utility spreads.&lt;/p&gt;
+
+&lt;h1 id=&#34;basic-usage&#34;&gt;Basic Usage&lt;/h1&gt;
+
+&lt;h2 id=&#34;example-dataset&#34;&gt;Example DataSet&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;ll be using the following CTE to demonstrate various functions for arrays &amp;amp; structs.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;with data_sample as (
+  select
+    1 as id_race,
+    date&#39;2018-08-01&#39; as date_race,
+    [3, 4] as id_participants,
+    [ struct(7.0 as distance, 1 as lap_number, [struct(3 as id_participant, 1 as position),
+                                                struct(4 as id_participant, 2 as position)] as finish_order),
+      struct(6.5 as distance, 2 as lap_number, [struct(3 as id_participant, 1 as position),
+                                                struct(4 as id_participant, 2 as position)] as finish_order),
+      struct(7.2 as distance, 3 as lap_number, [struct(4 as id_participant, 1 as position),
+                                                struct(3 as id_participant, 2 as position)] as finish_order)
+      ] as race_laps
+  union all
+  select
+    2 as id_race,
+    date&#39;2018-08-08&#39; as date_race,
+    [3, 5] as id_participants,
+    [ struct(7.5 as distance, 1 as lap_number, [struct(5 as id_participant, 1 as position),
+                                                struct(3 as id_participant, 2 as position)] as finish_order),
+      struct(7.4 as distance, 2 as lap_number, [struct(5 as id_participant, 1 as position),
+                                                struct(3 as id_participant, 2 as position)] as finish_order),
+      struct(7.3 as distance, 3 as lap_number, [struct(5 as id_participant, 1 as position),
+                                                struct(3 as id_participant, 2 as position)] as finish_order)
+      ] as race_laps
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;access-an-individual-element-from-an-array&#34;&gt;Access an individual element from an array&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;with data_sample as (
+  --See above
+  --Note: these lines will be omitted from subsequent examples
+)
+select
+  ds.id_participants[offset(0)] as first_participant, --zero based
+  ds.id_participants[ordinal(1)] as first_participant_also --one based
+from data_sample as ds
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;determine-the-length-of-an-array&#34;&gt;Determine the length of an array&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  array_length(ds.id_participants) as number_of_participants
+from data_sample as ds
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;access-values-structs-within-an-array&#34;&gt;Access values &amp;amp; structs within an array&lt;/h2&gt;
+
+&lt;p&gt;There are a couple of different ways to interact with arrays in BigQuery. The following three examples show different ways to access the example data structure and calculate the total distance for each race.&lt;/p&gt;
+
+&lt;h3 id=&#34;by-joining-the-lap-array&#34;&gt;by joining the lap array&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  ds.id_race,
+  sum(rl.distance) as race_distance
+from data_sample as ds
+join ds.race_laps as rl
+group by 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;by-unnesting-the-lap-array&#34;&gt;by unnesting the lap array&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  ds.id_race,
+  sum(rl.distance) as race_distance
+from data_sample as ds,
+unnest(ds.race_laps) as rl
+group by 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;by-using-at-inline-query&#34;&gt;by using at inline query&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  ds.id_race,
+  (select sum(rl.distance) from unnest(ds.race_laps) as rl) as race_distance
+from data_sample as ds
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;by-joining-multiple-arrays&#34;&gt;by joining multiple arrays&lt;/h3&gt;
+
+&lt;p&gt;The following query returns a list of race ids &amp;amp; participants ids &amp;amp; and a comma separated string showing that participants place each lap of each race.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  ds.id_race,
+  fo.id_participant,
+  string_agg(cast(fo.position as string), &#39;, &#39; order by rl.lap_number) lap_positions
+from data_sample as ds
+join ds.race_laps as rl
+join rl.finish_order as fo
+group by 1, 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;filtering-by-contents-of-an-array&#34;&gt;Filtering by contents of an array&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+  ds.id_race
+from data_sample as ds
+where 3 in unnest(ds.id_participants)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
     </item>
     
     <item>
       <title> Connecting to Google BigQuery with DBeaver with JDBC Drivers</title>
       <link>http://justnumbersandthings.com/post/2018-09-22-dbeaver-bigquery/</link>
       <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/post/2018-09-22-dbeaver-bigquery/</guid>
-      <description>Update (2018-10-07) Shortly after this post DBeaver was updated with a native connector. Please see this post for a more up to date connection instructions if you have updated DBeaver to 5.2.2 or later.
-0) Install DBeaver You can find installation instructions here
-1) Download the latest drivers You can find the latest drivers on Google&amp;rsquo;s website
-2) Create a folder to store the drivers mkdir ~/.dbeaver-drivers/bigquery/
-3) Extract driver jars and move to the folder we made earlier 4) Create a New Driver in DBeaver  Navigate to Database &amp;gt; Driver Manager &amp;gt; New Add all the files from ~/.</description>
+      <description>
+
+&lt;h1 id=&#34;update-2018-10-07&#34;&gt;Update (2018-10-07)&lt;/h1&gt;
+
+&lt;p&gt;Shortly after this post DBeaver was updated with a native connector.
+Please see this &lt;a href=&#34;http://justnumbersandthings.com/post/2018-10-07-dbeaver-bigquery-part2/&#34;&gt;post&lt;/a&gt; for a more up to date connection instructions if
+you have updated DBeaver to 5.2.2 or later.&lt;/p&gt;
+
+&lt;h1 id=&#34;0-install-dbeaver&#34;&gt;0) Install DBeaver&lt;/h1&gt;
+
+&lt;p&gt;You can find installation instructions &lt;a href=&#34;http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;1-download-the-latest-drivers&#34;&gt;1) Download the latest drivers&lt;/h1&gt;
+
+&lt;p&gt;You can find the latest drivers on &lt;a href=&#34;https://cloud.google.com/bigquery/partners/simba-drivers/&#34; target=&#34;_blank&#34;&gt;Google&amp;rsquo;s website&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;2-create-a-folder-to-store-the-drivers&#34;&gt;2) Create a folder to store the drivers&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;mkdir ~/.dbeaver-drivers/bigquery/&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;3-extract-driver-jars-and-move-to-the-folder-we-made-earlier&#34;&gt;3) Extract driver jars and move to the folder we made earlier&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180922_bigquery_jars_in_place.png&#34; alt=&#34;jars_in_folder&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;4-create-a-new-driver-in-dbeaver&#34;&gt;4) Create a New Driver in DBeaver&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Navigate to &lt;code&gt;Database &amp;gt; Driver Manager &amp;gt; New&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add all the files from &lt;code&gt;~/.dbeaver-drivers/bigquery/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Driver name: &lt;code&gt;BigQuery&lt;/code&gt; (for labeling only)&lt;/li&gt;
+&lt;li&gt;Class name: &lt;code&gt;com.simba.googlebigquery.jdbc42.Driver&lt;/code&gt; (at the time of this writing)&lt;/li&gt;
+&lt;li&gt;Default port: &lt;code&gt;443&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;URL template: &lt;code&gt;jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId={server};OAuthType=0;OAuthServiceAcctEmail={user};OAuthPvtKeyPath={host};&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Note there are 4 different ways to connect to BigQuery using the JDBC driver. This tutorial illustrates connecting using the service account authorization method.&lt;/li&gt;
+&lt;li&gt;Additionally, at the time of this writing, Dbeaver only supports a couple URL template variables (e.g. server, user, host) which is why I&amp;rsquo;ve used the &lt;code&gt;host&lt;/code&gt; variable for a path to key file rather than something like &lt;code&gt;key_path&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;5-create-a-new-service-account&#34;&gt;5) Create a new service account&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Instructions &amp;amp; details for creating a new service account can be found on &lt;a href=&#34;https://cloud.google.com/docs/authentication/production#auth-cloud-implicit-python&#34; target=&#34;_blank&#34;&gt;Google&amp;rsquo;s website&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Grant your desired BigQuery permissions to your new service account&lt;/li&gt;
+&lt;li&gt;Download the service account key&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;6-create-a-new-connection&#34;&gt;6) Create a New Connection&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;In the menu bar navigate to &lt;code&gt;Database &amp;gt; New Connection&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Select BigQuery&lt;/li&gt;
+&lt;li&gt;Fill in the appropriate values for host, server, user&lt;/li&gt;
+&lt;li&gt;Set host to the path the service account key e.g., &lt;code&gt;/Users/admin/.dbeaver_drivers/bigquery/project_name-####.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Set server to project id for your BigQuery project&lt;/li&gt;
+&lt;li&gt;Set user to the email address for the generated service account&lt;/li&gt;
+&lt;li&gt;Press finish&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Congrats you&amp;rsquo;ve successfully connected to BigQuery using Dbeaver!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180922_bigquery_connection.png&#34; alt=&#34;successful connection&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;7-troubleshooting&#34;&gt;7) Troubleshooting&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you receive &lt;code&gt;[Simba][BigQueryJDBCDriver](100004) HttpTransport IO error : 403 Forbidden&lt;/code&gt; make sure you&amp;rsquo;ve created a service account with the necessary permissions.&lt;/li&gt;
+&lt;li&gt;-As of Dbeaver 5.2.0 Dbeaver is unable to return arrays of ints and other numerics-
+
+&lt;ul&gt;
+&lt;li&gt;e.g., select [1, 2] as ids results in &lt;code&gt;org.jkiss.dbeaver.model.exec.DBCException: SQL Error [10140] [22003]: [Simba][JDBC](10140) Error converting value to long.&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
       <title>Importing a CSV into a database using DBeaver Part 2</title>
       <link>http://justnumbersandthings.com/post/2018-08-12-dbeaver-import-csv-2/</link>
       <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/post/2018-08-12-dbeaver-import-csv-2/</guid>
-      <description>Forward This is a followup to my previous post. My previous post demonstrated how to import a CSV using Dbeaver&amp;rsquo;s database to database export &amp;amp; import feature. As of version 5.1.5 Dbeaver introduced a direct CSV option for importing CSVs.
-0) Install DBeaver You can find installation instructions here
-1) Connect to your target database 1.1) Navigate through your target database &amp;amp; schema and right click on your target table and select import table data</description>
+      <description>
+
+&lt;h2 id=&#34;forward&#34;&gt;Forward&lt;/h2&gt;
+
+&lt;p&gt;This is a followup to my previous &lt;a href=&#34;http://justnumbersandthings.com/post/2018-06-12-dbeaver-import-csv/&#34;&gt;post&lt;/a&gt;. My previous post demonstrated how to import a CSV using Dbeaver&amp;rsquo;s database to database export &amp;amp; import feature. As of version 5.1.5 Dbeaver introduced a direct CSV option for importing CSVs.&lt;/p&gt;
+
+&lt;h2 id=&#34;0-install-dbeaver&#34;&gt;0) Install DBeaver&lt;/h2&gt;
+
+&lt;p&gt;You can find installation instructions &lt;a href=&#34;http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;1-connect-to-your-target-database&#34;&gt;1) Connect to your target database&lt;/h2&gt;
+
+&lt;p&gt;1.1) Navigate through your target database &amp;amp; schema and right click on your target table and select import table data&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_import_table_data.png&#34; alt=&#34;import_table_data&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;1.2) Next select CSV from the list&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180812_select_csv_option.png&#34; alt=&#34;select_csv_option&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;1.3) Select your CSV file for upload&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180812_select_csv_file.png&#34; alt=&#34;select_csv_table&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;2-ensure-that-the-mappings-of-each-of-your-columns-is-correct&#34;&gt;2) Ensure that the mappings of each of your columns is correct&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For column names that are an exact match DBeaver will automatically map them for you&lt;/li&gt;
+&lt;li&gt;For the remaining columns make sure to map the source columns to your desired target columns&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180812_map_columns.png&#34; alt=&#34;map_columns&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;3-complete-the-wizard-and-watch-dbeaver-import-your-data&#34;&gt;3) Complete the wizard and watch DBeaver import your data&lt;/h2&gt;
+
+&lt;p&gt;Note: For large files it may be necessary to go get lunch but in my case 4 records doesn&amp;rsquo;t take long to import :)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_data_finished.png&#34; alt=&#34;data_finished&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;4-check-to-make-sure-that-the-data-has-loaded-correctly&#34;&gt;4) Check to make sure that the data has loaded correctly&lt;/h2&gt;
+
+&lt;p&gt;As a last optional step it is good practice to make sure that everything loaded correctly which can easily be done by running a query against your target DB&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_data_in_table.png&#34; alt=&#34;data_in_table&#34; /&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title>Importing a CSV into a database using DBeaver</title>
       <link>http://justnumbersandthings.com/post/2018-06-12-dbeaver-import-csv/</link>
       <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/post/2018-06-12-dbeaver-import-csv/</guid>
-      <description>Update: August 12, 2018 The following post demonstrates how to import CSVs using Dbeaver&amp;rsquo;s database to database export &amp;amp; import feature. If you are certain of the quality of your CSV &amp;amp; just want to import it quickly my subsequent post may be more useful.
-0) Install DBeaver You can find installation instructions here
-1) Create a folder to be used as your CSV Database mkdir ~/desktop/csvs
-Place the CSV you want to load into this folder</description>
+      <description>
+
+&lt;h2 id=&#34;update-august-12-2018&#34;&gt;Update: August 12, 2018&lt;/h2&gt;
+
+&lt;p&gt;The following post demonstrates how to import CSVs using Dbeaver&amp;rsquo;s database to database export &amp;amp; import feature. If you are certain of the quality of your CSV &amp;amp; just want to import it quickly my subsequent &lt;a href=&#34;http://justnumbersandthings.com/post/2018-08-12-dbeaver-import-csv-2/&#34;&gt;post&lt;/a&gt; may be more useful.&lt;/p&gt;
+
+&lt;h2 id=&#34;0-install-dbeaver&#34;&gt;0) Install DBeaver&lt;/h2&gt;
+
+&lt;p&gt;You can find installation instructions &lt;a href=&#34;http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;1-create-a-folder-to-be-used-as-your-csv-database&#34;&gt;1) Create a folder to be used as your CSV Database&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;mkdir ~/desktop/csvs&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Place the CSV you want to load into this folder&lt;/p&gt;
+
+&lt;h2 id=&#34;2-create-a-csv-database-connection&#34;&gt;2) Create a CSV database connection&lt;/h2&gt;
+
+&lt;p&gt;In the menu bar select &lt;code&gt;Database &amp;gt; Create a New Connection&lt;/code&gt;
+ &amp;amp; from the list of drivers select &lt;code&gt;Flat files(CSV) &amp;gt; CSV/DBF&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_select_driver.png&#34; alt=&#34;select_driver&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Set the path of the connection to the folder you created earlier (the JDBC URL will auto-populate)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_configure_path.png&#34; alt=&#34;configure_path&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note: If you run into trouble downloading the driver navigate to the &lt;a href=&#34;http://csvjdbc.sourceforge.net/&#34; target=&#34;_blank&#34;&gt;source website&lt;/a&gt; and download the driver manually&lt;/p&gt;
+
+&lt;h2 id=&#34;3-connect-to-your-target-database&#34;&gt;3) Connect to your target database&lt;/h2&gt;
+
+&lt;p&gt;3.1) Navigate through your target database &amp;amp; schema and right click on your target table and select import table data&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_import_table_data.png&#34; alt=&#34;import_table_data&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3.2) Next select your source CSV from your CSV connection as the source container&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_select_csv_table.png&#34; alt=&#34;select_csv_table&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note: In this example case I&amp;rsquo;m loading a test CSV into a Postgres database but this functionality works with any connection that DBeaver supports (which is basically everything)&lt;/p&gt;
+
+&lt;h2 id=&#34;4-ensure-that-the-mappings-of-each-of-your-columns-is-correct&#34;&gt;4) Ensure that the mappings of each of your columns is correct&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For column names that are an exact match DBeaver will automatically map them for you&lt;/li&gt;
+&lt;li&gt;For the remaining columns make sure to map the source columns to your desired target columns&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_map_columns.png&#34; alt=&#34;map_columns&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;5-complete-the-wizard-and-watch-dbeaver-import-your-data&#34;&gt;5) Complete the wizard and watch DBeaver import your data&lt;/h2&gt;
+
+&lt;p&gt;Note: For large files it may be necessary to go get lunch but in my case 4 records doesn&amp;rsquo;t take long to import :)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_data_finished.png&#34; alt=&#34;data_finished&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;6-check-to-make-sure-that-the-data-has-loaded-correctly&#34;&gt;6) Check to make sure that the data has loaded correctly&lt;/h2&gt;
+
+&lt;p&gt;As a last optional step it is good practice to make sure that everything loaded correctly which can easily be done by running a query against your target DB&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20180612_data_in_table.png&#34; alt=&#34;data_in_table&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;7-final-notes-thoughts&#34;&gt;7) Final Notes &amp;amp; Thoughts&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;While this process takes a little bit more time to get setup than other tools setting up the CSV connection only needs to be done once
+
+&lt;ul&gt;
+&lt;li&gt;One side benefit of this as well is that you are now able to run SQL queries against CSVs very easily&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;The only real pain point that I have run across is that if you add a new CSV file or add/delete columns in an active CSV connection you have to cancel the import wizard &amp;amp; refresh the CSV connection for the changes to be picked up
+
+&lt;ul&gt;
+&lt;li&gt;this feedback was provided in &lt;a href=&#34;https://github.com/dbeaver/dbeaver/issues/926&#34; target=&#34;_blank&#34;&gt;issue 926&lt;/a&gt; and hopefully it will be resolved in a future update&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
       <title> Connecting to Hive with DBeaver using Kerberos Authentication</title>
       <link>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</link>
       <pubDate>Sat, 06 May 2017 00:00:00 +0000</pubDate>
-      
       <guid>http://justnumbersandthings.com/post/2017-05-06-dbeaver-hive/</guid>
-      <description>0) Install DBeaver You can find installation instructions here
-1) Download the latest drivers You can find the latest drivers on the Cloudera website
-2) Create a folder to store the drivers mkdir ~/.dbeaver-drivers/cloudera-hive/
-3) Extract driver jars and move to the folder we made earlier 4) Create a New Driver in DBeaver  Navigate to Database &amp;gt; Driver Manager &amp;gt; New Add all the files from ~/.dbeaver-drivers/cloudera-hive/ Driver name: Hive-Cloudera (for labeling only) Class name: com.</description>
+      <description>
+
+&lt;h1 id=&#34;0-install-dbeaver&#34;&gt;0) Install DBeaver&lt;/h1&gt;
+
+&lt;p&gt;You can find installation instructions &lt;a href=&#34;http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;1-download-the-latest-drivers&#34;&gt;1) Download the latest drivers&lt;/h1&gt;
+
+&lt;p&gt;You can find the latest drivers on the &lt;a href=&#34;https://www.cloudera.com/downloads/connectors/hive/jdbc.html&#34; target=&#34;_blank&#34;&gt;Cloudera website&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;2-create-a-folder-to-store-the-drivers&#34;&gt;2) Create a folder to store the drivers&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;mkdir ~/.dbeaver-drivers/cloudera-hive/&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;3-extract-driver-jars-and-move-to-the-folder-we-made-earlier&#34;&gt;3) Extract driver jars and move to the folder we made earlier&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://justnumbersandthings.com/img/20170506_hive_jars_in_place.png&#34; alt=&#34;jars_in_folder&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;4-create-a-new-driver-in-dbeaver&#34;&gt;4) Create a New Driver in DBeaver&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Navigate to &lt;code&gt;Database &amp;gt; Driver Manager &amp;gt; New&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add all the files from &lt;code&gt;~/.dbeaver-drivers/cloudera-hive/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Driver name: &lt;code&gt;Hive-Cloudera&lt;/code&gt; (for labeling only)&lt;/li&gt;
+&lt;li&gt;Class name: &lt;code&gt;com.cloudera.hive.jdbc41.HS2Driver&lt;/code&gt; (at the time of this writing)&lt;/li&gt;
+&lt;li&gt;Default port: &lt;code&gt;10000&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;URL template: &lt;code&gt;jdbc:hive2://{host}:{port}/{database};AuthMech=1;KrbRealm=FOO.BAR;KrbHostFQDN={server}; KrbServiceName=hive;KrbAuthType=2&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Note you need to change &lt;code&gt;FOO.BAR&lt;/code&gt; to match your krb5.conf settings&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;5-create-a-new-connection&#34;&gt;5) Create a New Connection&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;In the menu bar Navigate to &lt;code&gt;Database &amp;gt; New Connection&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Select Hive-Cloudera&lt;/li&gt;
+&lt;li&gt;Fill in the appropriate values for host &amp;amp; database (I set database to default)&lt;/li&gt;
+&lt;li&gt;Set server to be your KrbHostFQDN&lt;/li&gt;
+&lt;li&gt;Leave your user name &amp;amp; password blank&lt;/li&gt;
+&lt;li&gt;Test connection&lt;/li&gt;
+&lt;li&gt;Press next, next, &amp;amp; change the name of this connection as you see fit&lt;/li&gt;
+&lt;li&gt;Press finish&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Congrats you&amp;rsquo;ve successfully connected to hive using kerberos authentication!&lt;/p&gt;
+
+&lt;h1 id=&#34;6-troubleshooting&#34;&gt;6) Troubleshooting&lt;/h1&gt;
+
+&lt;p&gt;If you are receiving &lt;code&gt;[Cloudera][HiveJDBCDriver](500168) Error creating login context using ticket cache: Unable to obtain Principal Name for authentication&lt;/code&gt; make sure to check the following&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Ensure that you have the latest cryptography libraries installed
+
+&lt;ul&gt;
+&lt;li&gt;Java 9 includes these libraries by default&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;That you&amp;rsquo;ve configured your &lt;code&gt;/etc/krb5.conf&lt;/code&gt; successfully
+
+&lt;ul&gt;
+&lt;li&gt;If you&amp;rsquo;ve done this correctly you should be able to run &lt;code&gt;kinit&lt;/code&gt; in terminal and create a ticket without issue&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;For Windows adding the following lines to your dbeaver.ini may be necessary as well&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-Djava.security.krb5.conf=c:\kerberos\krb5.ini&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;note: this is the windows equivalent of &lt;code&gt;/etc/krb5.conf&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;-Djava.security.auth.login.config=c:\kerberos\jaas.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;success has also been reported with the following jaas.conf file &amp;amp; keytab usage&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Client {
+com.sun.security.auth.module.Krb5LoginModule required
+debug=true
+doNotPrompt=true
+useKeyTab=true
+keyTab=&amp;quot;C:\Users\{user}\krb5cc_{user}&amp;quot;
+useTicketCache=true
+renewTGT=true
+principal=&amp;quot;{user}@FOO.BAR&amp;quot;
+;
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
     </item>
     
     <item>
       <title>Installing DBeaver on a Mac</title>
       <link>http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</link>
       <pubDate>Sun, 26 Mar 2017 21:35:50 -0800</pubDate>
-      
       <guid>http://justnumbersandthings.com/post/2017-03-26-dbeaver-mac/</guid>
-      <description>0) What is DBeaver? Quite simply DBeaver is the best multi-database SQL IDE that I&amp;rsquo;ve used. It supports every JDBC connection that I&amp;rsquo;ve thrown at it and has advanced features for some of the more popular databases such as Mysql &amp;amp; Postgres. Many thanks to serge-rider for creating such an awesome tool.
-1) Install Java First we need to install java which can be easily by running the following command in terminal (homebrew required):</description>
+      <description>
+
+&lt;h1 id=&#34;0-what-is-dbeaver-http-dbeaver-jkiss-org&#34;&gt;0) What is &lt;a href=&#34;http://dbeaver.jkiss.org/&#34; target=&#34;_blank&#34;&gt;DBeaver&lt;/a&gt;?&lt;/h1&gt;
+
+&lt;p&gt;Quite simply DBeaver is the best multi-database SQL IDE that I&amp;rsquo;ve used. It supports every JDBC connection that I&amp;rsquo;ve thrown at it and has advanced features for some of the more popular databases such as Mysql &amp;amp; Postgres. Many thanks to &lt;a href=&#34;https://github.com/serge-rider&#34; target=&#34;_blank&#34;&gt;serge-rider&lt;/a&gt; for creating such an awesome tool.&lt;/p&gt;
+
+&lt;h1 id=&#34;1-install-java&#34;&gt;1) Install Java&lt;/h1&gt;
+
+&lt;p&gt;First we need to install java which can be easily by running the following command in terminal (&lt;a href=&#34;https://brew.sh/&#34; target=&#34;_blank&#34;&gt;homebrew required&lt;/a&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install java
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note: Previous versions of this article instructed an installation of the cask &lt;code&gt;jce-unlimited-strength-policy&lt;/code&gt; but that has been removed as its contents have been incorporated into the cask &lt;code&gt;java&lt;/code&gt; with the release of 9.0&lt;/p&gt;
+
+&lt;h2 id=&#34;notes&#34;&gt;Notes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I recommend the newest version of Java as DBeaver regularly depreciates old versions of Java
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.apple.com/kb/DL1572?locale=en_US&#34; target=&#34;_blank&#34;&gt;Java SE6&lt;/a&gt; is not supported&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;2-install-dbeaver&#34;&gt;2) Install DBeaver&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download the &lt;a href=&#34;http://dbeaver.jkiss.org/download/&#34; target=&#34;_blank&#34;&gt;latest version&lt;/a&gt; | &lt;a href=&#34;https://github.com/serge-rider/dbeaver/releases&#34; target=&#34;_blank&#34;&gt;Github Alternate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;After downloading drag and drop into your application folder
+
+&lt;ul&gt;
+&lt;li&gt;The first time you run the application you may need to right-click on the application and then press open&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Congratulations you&amp;rsquo;ve installed DBeaver!&lt;/p&gt;
+
+&lt;p&gt;Your next step is configuring a connection(s) to your database(s).&lt;/p&gt;
+</description>
     </item>
     
   </channel>
